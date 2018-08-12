@@ -28,12 +28,12 @@ namespace CodeStack.VPages.Sw.Controls
             }
         }
         
-        protected override double GetValue()
+        protected override double GetSpecificValue()
         {
             return NumberBox.Value;
         }
 
-        protected override void SetValue(double value)
+        protected override void SetSpecificValue(double value)
         {
             NumberBox.Value = value;
         }

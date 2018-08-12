@@ -7,6 +7,7 @@ using System.Text;
 using System.Drawing;
 using Xarial.VPages.Framework.Attributes;
 using System.ComponentModel;
+using SolidWorks.Interop.sldworks;
 
 namespace SwVPagesSample
 {
@@ -31,9 +32,12 @@ namespace SwVPagesSample
 
         public DataGroup Group { get; set; }
 
-        [PropertyManagerPageSelectionBox(swSelectType_e.swSelDATUMPLANES, swSelectType_e.swSelFACES, swSelectType_e.swSelEDGES)]
-        [PropertyManagerPageSelectionBoxStyle(height: 50, selColor: KnownColor.Yellow)]
-        public List<SolidWorks.Interop.sldworks.IEntity> Selection { get; set; }
+        [PropertyManagerPageSelectionBox(1, swSelectType_e.swSelDATUMPLANES, swSelectType_e.swSelFACES, swSelectType_e.swSelEDGES)]
+        [PropertyManagerPageSelectionBoxStyle(height: 50)]
+        public List<IEntity> Selection { get; set; }
+
+        [PropertyManagerPageSelectionBox(2, swSelectType_e.swSelSOLIDBODIES)]
+        public IBody2 Body { get; set; }
     }
 
     public class DataGroup

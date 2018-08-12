@@ -58,6 +58,7 @@
   <ItemGroup>
     <Compile Include="Attributes\PropertyManagerPageControlAttributionAttribute.cs" />
     <Compile Include="Attributes\PropertyManagerPageControlOptionsAttribute.cs" />
+    <Compile Include="Attributes\PropertyManagerPageHelpAttribute.cs" />
     <Compile Include="Attributes\PropertyManagerPageSelectionBoxStyleAttribute.cs" />
     <Compile Include="Attributes\PropertyManagerPageNumberBoxStyleAttribute.cs" />
     <Compile Include="Attributes\PropertyManagerPageOptionsAttribute.cs" />

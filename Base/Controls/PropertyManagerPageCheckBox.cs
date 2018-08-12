@@ -28,12 +28,12 @@ namespace CodeStack.VPages.Sw.Controls
             }
         }
 
-        protected override bool GetValue()
+        protected override bool GetSpecificValue()
         {
             return CheckBox.Checked;
         }
 
-        protected override void SetValue(bool value)
+        protected override void SetSpecificValue(bool value)
         {
             CheckBox.Checked = value;
         }

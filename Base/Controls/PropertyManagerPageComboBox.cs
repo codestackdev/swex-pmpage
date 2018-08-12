@@ -14,12 +14,12 @@ namespace CodeStack.VPages.Sw.Controls
 
         protected override event ControlValueChangedDelegate<Enum> ValueChanged;
 
-        protected override Enum GetValue()
+        protected override Enum GetSpecificValue()
         {
             throw new NotImplementedException();
         }
 
-        protected override void SetValue(Enum value)
+        protected override void SetSpecificValue(Enum value)
         {
             throw new NotImplementedException();
         }

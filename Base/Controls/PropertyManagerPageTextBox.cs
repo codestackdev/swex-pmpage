@@ -28,12 +28,12 @@ namespace CodeStack.VPages.Sw.Controls
             }
         }
 
-        protected override string GetValue()
+        protected override string GetSpecificValue()
         {
             return TextBox.Text;
         }
 
-        protected override void SetValue(string value)
+        protected override void SetSpecificValue(string value)
         {
             TextBox.Text = value;
         }

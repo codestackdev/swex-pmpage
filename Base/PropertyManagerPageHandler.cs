@@ -14,6 +14,8 @@ namespace CodeStack.VPages.Sw
         internal event Action<int, double> NumberChanged;
         internal event Action<int, bool> CheckChanged;
         internal event Action<int, int> SelectionChanged;
+        internal event Action HelpRequested;
+        internal event Action WhatsNewRequested;
 
         public void AfterActivation()
         {
@@ -63,6 +65,7 @@ namespace CodeStack.VPages.Sw
 
         public bool OnHelp()
         {
+            HelpRequested?.Invoke();
             return true;
         }
 
@@ -169,6 +172,7 @@ namespace CodeStack.VPages.Sw
 
         public void OnWhatsNew()
         {
+            WhatsNewRequested?.Invoke();
         }
 
         public int OnWindowFromHandleControlCreated(int Id, bool Status)

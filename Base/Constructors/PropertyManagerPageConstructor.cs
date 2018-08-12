@@ -37,11 +37,30 @@ namespace CodeStack.VPages.Sw.Constructors
                 opts = swPropertyManagerPageOptions_e.swPropertyManagerOptions_OkayButton;
             }
 
+            var helpLink = "";
+            var whatsNewLink = "";
+
+            if (atts.Has<PropertyManagerPageHelpAttribute>())
+            {
+                var helpAtt = atts.Get<PropertyManagerPageHelpAttribute>();
+
+                if (!string.IsNullOrEmpty(helpAtt.WhatsNewLink))
+                {
+                    if (!opts.HasFlag(swPropertyManagerPageOptions_e.swPropertyManagerOptions_WhatsNew))
+                    {
+                        opts |= swPropertyManagerPageOptions_e.swPropertyManagerOptions_WhatsNew;
+                    }
+                }
+
+                helpLink = helpAtt.HelpLink;
+                whatsNewLink = helpAtt.WhatsNewLink;
+            }
+
             var page = m_App.CreatePropertyManagerPage(atts.Name,
                 (int)opts,
                 handler, ref err) as IPropertyManagerPage2;
 
-            return new PropertyManagerPage<THandler>(page, handler, m_App);
+            return new PropertyManagerPage<THandler>(page, handler, m_App, helpLink, whatsNewLink);
         }
     }
 }
