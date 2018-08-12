@@ -7,6 +7,7 @@ using Xarial.VPages.Framework.Constructors;
 using Xarial.VPages.Framework.Base;
 using SolidWorks.Interop.sldworks;
 using SolidWorks.Interop.swconst;
+using CodeStack.VPages.Sw.Attributes;
 
 namespace CodeStack.VPages.Sw.Constructors
 {
@@ -24,8 +25,20 @@ namespace CodeStack.VPages.Sw.Constructors
         {
             var handler = new THandler();
             int err = -1;
+
+            swPropertyManagerPageOptions_e opts;
+
+            if (atts.Has<PropertyManagerPageOptionsAttribute>())
+            {
+                opts = atts.Get<PropertyManagerPageOptionsAttribute>().Options;
+            }
+            else
+            {
+                opts = swPropertyManagerPageOptions_e.swPropertyManagerOptions_OkayButton;
+            }
+
             var page = m_App.CreatePropertyManagerPage(atts.Name,
-                (int)swPropertyManagerPageOptions_e.swPropertyManagerOptions_OkayButton,
+                (int)opts,
                 handler, ref err) as IPropertyManagerPage2;
 
             return new PropertyManagerPage<THandler>(page, handler, m_App);

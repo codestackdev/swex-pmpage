@@ -17,7 +17,10 @@ namespace CodeStack.VPages.Sw
         public PropertyManagerPageBuilder(SolidWorks.Interop.sldworks.ISldWorks app)
             : base(new TypeDataBinder(), new PropertyManagerPageConstructor<THandler>(app),
                   new PropertyManagerPageGroupConstructor<THandler>(),
-                  new PropertyManagerPageTextBoxConstructor<THandler>())
+                  new PropertyManagerPageTextBoxConstructor<THandler>(),
+                  new PropertyManagerPageNumberBoxConstructor<THandler>(),
+                  new PropertyManagerPageCheckBoxConstructor<THandler>(),
+                  new PropertyManagerPageSelectionBoxConstructor<THandler>(app))
         {
         }
     }

@@ -10,7 +10,10 @@ namespace CodeStack.VPages.Sw
     [ComVisible(true)]
     public abstract class PropertyManagerPageHandler : IPropertyManagerPage2Handler9
     {
-        public event Action<int, string> TextChanged;
+        internal event Action<int, string> TextChanged;
+        internal event Action<int, double> NumberChanged;
+        internal event Action<int, bool> CheckChanged;
+        internal event Action<int, int> SelectionChanged;
 
         public void AfterActivation()
         {
@@ -31,6 +34,7 @@ namespace CodeStack.VPages.Sw
 
         public void OnCheckboxCheck(int Id, bool Checked)
         {
+            CheckChanged?.Invoke(Id, Checked);
         }
 
         public void OnClose(int Reason)
@@ -86,6 +90,7 @@ namespace CodeStack.VPages.Sw
 
         public void OnNumberboxChanged(int Id, double Value)
         {
+            NumberChanged?.Invoke(Id, Value);
         }
 
         public void OnNumberBoxTrackingCompleted(int Id, double Value)
@@ -129,9 +134,10 @@ namespace CodeStack.VPages.Sw
         public void OnSelectionboxFocusChanged(int Id)
         {
         }
-
+        
         public void OnSelectionboxListChanged(int Id, int Count)
         {
+            SelectionChanged?.Invoke(Id, Count);
         }
 
         public void OnSliderPositionChanged(int Id, double Value)

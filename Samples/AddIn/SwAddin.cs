@@ -9,6 +9,7 @@ using SolidWorksTools.File;
 using System.Collections.Generic;
 using CodeStack.VPages.Sw;
 using System.Linq;
+using CodeStack.VPages.Sw.Controls;
 
 namespace SwVPagesSample
 {
@@ -32,6 +33,7 @@ namespace SwVPagesSample
         public const int CMD_PMP_ID = 1;
 
         private PropertyManagerPageBuilder<PropertyPageEventsHandler> m_PmpBuilder;
+        private PropertyManagerPage<PropertyPageEventsHandler> m_ActivePage;
 
         private DataModel m_Model;
 
@@ -141,8 +143,10 @@ namespace SwVPagesSample
                 m_Model = new DataModel();
             }
 
-            var page = m_PmpBuilder.CreatePage(m_Model);
-            page.Page.Show2(0);
+            m_App.IActiveDoc2.ClearSelection2(true);
+
+            m_ActivePage = m_PmpBuilder.CreatePage(m_Model);
+            m_ActivePage.Page.Show2(0);
         }
 
         public int EnablePMP()
@@ -201,10 +205,10 @@ namespace SwVPagesSample
             }
 
             cmdGroup = m_CmdMgr.CreateCommandGroup2(CMD_GRP_ID, "vPages", "vPages for SOLIDWORKS example", "", -1, ignorePrevious, ref cmdGroupErr);
-            cmdGroup.LargeIconList = m_Bmp.CreateFileFromResourceBitmap("SwVPagesSample.Icons.IconLarge.bmp", thisAssembly);
-            cmdGroup.SmallIconList = m_Bmp.CreateFileFromResourceBitmap("SwVPagesSample.Icons.IconSmall.bmp", thisAssembly);
-            cmdGroup.LargeMainIcon = m_Bmp.CreateFileFromResourceBitmap("SwVPagesSample.Icons.IconLarge.bmp", thisAssembly);
-            cmdGroup.SmallMainIcon = m_Bmp.CreateFileFromResourceBitmap("SwVPagesSample.Icons.IconSmall.bmp", thisAssembly);
+            cmdGroup.LargeIconList = m_Bmp.CreateFileFromResourceBitmap("AddIn.Icons.IconLarge.bmp", thisAssembly);
+            cmdGroup.SmallIconList = m_Bmp.CreateFileFromResourceBitmap("AddIn.Icons.IconSmall.bmp", thisAssembly);
+            cmdGroup.LargeMainIcon = m_Bmp.CreateFileFromResourceBitmap("AddIn.Icons.IconLarge.bmp", thisAssembly);
+            cmdGroup.SmallMainIcon = m_Bmp.CreateFileFromResourceBitmap("AddIn.Icons.IconSmall.bmp", thisAssembly);
 
             int menuToolbarOption = (int)(swCommandItemType_e.swMenuItem | swCommandItemType_e.swToolbarItem);
             cmdIndex = cmdGroup.AddCommandItem2("Show PMP", -1, "Display sample property manager",

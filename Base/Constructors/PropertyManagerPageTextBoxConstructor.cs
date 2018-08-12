@@ -7,44 +7,40 @@ using Xarial.VPages.Framework.Attributes;
 using Xarial.VPages.Framework.Constructors;
 using Xarial.VPages.Framework.Base;
 using SolidWorks.Interop.swconst;
+using CodeStack.VPages.Sw.Attributes;
+using System.Drawing;
+using SolidWorks.Interop.sldworks;
 
 namespace CodeStack.VPages.Sw.Constructors
 {
     [DefaultType(typeof(string))]
-    public class PropertyManagerPageTextBoxConstructor<THandler> 
-        : ControlConstructor<PropertyManagerPageTextBox, PropertyManagerPageGroup<THandler>, PropertyManagerPage<THandler>>
+    public class PropertyManagerPageTextBoxConstructor<THandler>
+        : PropertyManagerPageControlConstructor<THandler, PropertyManagerPageTextBox, SolidWorks.Interop.sldworks.IPropertyManagerPageTextbox>
         where THandler : PropertyManagerPageHandler, new()
     {
-        protected delegate TControl CreateControlDelegate<TControl>(int id, string name, short align, short opts, string tooltip);
-
-        protected override PropertyManagerPageTextBox Create(PropertyManagerPageGroup<THandler> group, IAttributeSet atts)
+        public PropertyManagerPageTextBoxConstructor()
+            : base(swPropertyManagerPageControlType_e.swControlType_Textbox)
         {
-            var txt = AddControl(atts,
-                (i, n, a, o, t) => group.Group.AddControl2(
-                    i, (short)swPropertyManagerPageControlType_e.swControlType_Textbox, n, a, o, t)
-                    as SolidWorks.Interop.sldworks.IPropertyManagerPageTextbox);
-
-            return new PropertyManagerPageTextBox(atts.Id, txt, group.Handler);
         }
 
-        protected override PropertyManagerPageTextBox Create(PropertyManagerPage<THandler> page, IAttributeSet atts)
+        protected override PropertyManagerPageTextBox CreateControl(IPropertyManagerPageTextbox swCtrl, IAttributeSet atts, THandler handler)
         {
-            var txt = AddControl(atts,
-                (i, n, a, o, t) => page.Page.AddControl2(
-                    i, (short)swPropertyManagerPageControlType_e.swControlType_Textbox, n, a, o, t) 
-                    as SolidWorks.Interop.sldworks.IPropertyManagerPageTextbox);
+            if (atts.Has<PropertyManagerPageTextBoxStyleAttribute>())
+            {
+                var style = atts.Get<PropertyManagerPageTextBoxStyleAttribute>();
 
-            return new PropertyManagerPageTextBox(atts.Id, txt, page.Handler);
-        }
+                if (style.Height != -1)
+                {
+                    swCtrl.Height = style.Height;
+                }
 
-        private TControl AddControl<TControl>(IAttributeSet atts, CreateControlDelegate<TControl> creator)
-        {
-            var id = atts.Id;
-            var name = atts.Name;
-            var align = (short)swPropertyManagerPageControlLeftAlign_e.swControlAlign_LeftEdge;
-            var opts = (short)(swAddControlOptions_e.swControlOptions_Visible | swAddControlOptions_e.swControlOptions_Enabled);
-            var tooltip = "";
-            return creator.Invoke(id, name, align, opts, tooltip);
+                if (style.Style != 0)
+                {
+                    swCtrl.Style = (int)style.Style;
+                }
+            }
+
+            return new PropertyManagerPageTextBox(atts.Id, swCtrl, handler);
         }
     }
 }
