@@ -1,4 +1,5 @@
-﻿using SolidWorks.Interop.swpublished;
+﻿using SolidWorks.Interop.swconst;
+using SolidWorks.Interop.swpublished;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,12 +18,18 @@ namespace CodeStack.VPages.Sw
         internal event Action HelpRequested;
         internal event Action WhatsNewRequested;
 
+        public event Action DataChanged;
+        public event Action<swPropertyManagerPageCloseReasons_e> Closed;
+
+        private swPropertyManagerPageCloseReasons_e m_CloseReason;
+
         public void AfterActivation()
         {
         }
 
         public void AfterClose()
         {
+            Closed?.Invoke(m_CloseReason);
         }
 
         public int OnActiveXControlCreated(int Id, bool Status)
@@ -37,10 +44,12 @@ namespace CodeStack.VPages.Sw
         public void OnCheckboxCheck(int Id, bool Checked)
         {
             CheckChanged?.Invoke(Id, Checked);
+            DataChanged?.Invoke();
         }
 
         public void OnClose(int Reason)
         {
+            m_CloseReason = (swPropertyManagerPageCloseReasons_e)Reason;
         }
 
         public void OnComboboxEditChanged(int Id, string Text)
@@ -94,6 +103,7 @@ namespace CodeStack.VPages.Sw
         public void OnNumberboxChanged(int Id, double Value)
         {
             NumberChanged?.Invoke(Id, Value);
+            DataChanged?.Invoke();
         }
 
         public void OnNumberBoxTrackingCompleted(int Id, double Value)
@@ -119,7 +129,7 @@ namespace CodeStack.VPages.Sw
 
         public bool OnPreviousPage()
         {
-            throw new NotImplementedException();
+            return true;
         }
 
         public void OnRedo()
@@ -141,6 +151,7 @@ namespace CodeStack.VPages.Sw
         public void OnSelectionboxListChanged(int Id, int Count)
         {
             SelectionChanged?.Invoke(Id, Count);
+            DataChanged?.Invoke();
         }
 
         public void OnSliderPositionChanged(int Id, double Value)
@@ -164,6 +175,7 @@ namespace CodeStack.VPages.Sw
         public void OnTextboxChanged(int Id, string Text)
         {
             TextChanged?.Invoke(Id, Text);
+            DataChanged?.Invoke();
         }
 
         public void OnUndo()
