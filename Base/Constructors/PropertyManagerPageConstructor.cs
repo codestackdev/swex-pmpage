@@ -24,6 +24,7 @@ namespace CodeStack.VPages.Sw.Constructors
         protected override PropertyManagerPage<THandler> Create(IAttributeSet atts)
         {
             var handler = new THandler();
+            handler.Init(m_App);
             int err = -1;
 
             swPropertyManagerPageOptions_e opts;

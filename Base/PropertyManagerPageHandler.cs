@@ -1,4 +1,5 @@
-﻿using SolidWorks.Interop.swconst;
+﻿using SolidWorks.Interop.sldworks;
+using SolidWorks.Interop.swconst;
 using SolidWorks.Interop.swpublished;
 using System;
 using System.Collections.Generic;
@@ -8,6 +9,13 @@ using System.Text;
 
 namespace CodeStack.VPages.Sw
 {
+    public class ClosingArg
+    {
+        public bool Cancel { get; set; }
+        public string ErrorTitle { get; set; }
+        public string ErrorMessage { get; set; }
+    }
+
     [ComVisible(true)]
     public abstract class PropertyManagerPageHandler : IPropertyManagerPage2Handler9
     {
@@ -19,9 +27,17 @@ namespace CodeStack.VPages.Sw
         internal event Action WhatsNewRequested;
 
         public event Action DataChanged;
+        public event Action<swPropertyManagerPageCloseReasons_e, ClosingArg> Closing;
         public event Action<swPropertyManagerPageCloseReasons_e> Closed;
 
         private swPropertyManagerPageCloseReasons_e m_CloseReason;
+
+        private ISldWorks m_App;
+
+        internal void Init(ISldWorks app)
+        {
+            m_App = app;
+        }
 
         public void AfterActivation()
         {
@@ -50,6 +66,22 @@ namespace CodeStack.VPages.Sw
         public void OnClose(int Reason)
         {
             m_CloseReason = (swPropertyManagerPageCloseReasons_e)Reason;
+
+            var arg = new ClosingArg();
+            Closing.Invoke(m_CloseReason, arg);
+
+            if (arg.Cancel)
+            {
+                if (!string.IsNullOrEmpty(arg.ErrorTitle) && !string.IsNullOrEmpty(arg.ErrorMessage))
+                {
+                    m_App.ShowBubbleTooltipAt2(0, 0, (int)swArrowPosition.swArrowLeftTop,
+                        arg.ErrorTitle, arg.ErrorMessage, (int)swBitMaps.swBitMapTreeError,
+                        "", "", 0, (int)swLinkString.swLinkStringNone, "", "");
+                }
+
+                const int S_FALSE = 1;
+                throw new COMException(arg.ErrorMessage, S_FALSE);
+            }
         }
 
         public void OnComboboxEditChanged(int Id, string Text)
