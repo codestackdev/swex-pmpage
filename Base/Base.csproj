@@ -29,6 +29,12 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>codestack.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="SolidWorks.Interop.sldworks">
       <HintPath>thirdpty\SolidWorks.Interop.sldworks.dll</HintPath>
@@ -50,6 +56,9 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
+    <Reference Include="Xarial.VPages.Framework, Version=0.1.0.0, Culture=neutral, PublicKeyToken=60c8d43397840914, processorArchitecture=MSIL">
+      <HintPath>..\packages\Xarial.VPages.Framework.0.1.0-beta\lib\net40\Xarial.VPages.Framework.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Attributes\PropertyManagerPageControlAttributionAttribute.cs" />
@@ -81,10 +90,8 @@
     <Compile Include="PropertyManagerPageHandler.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\vpages-dev\vpages-dev\Framework\Framework.csproj">
-      <Project>{b7074539-e584-4a73-a505-d239de9376dc}</Project>
-      <Name>Framework</Name>
-    </ProjectReference>
+    <None Include="codestack.snk" />
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

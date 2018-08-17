@@ -12,8 +12,7 @@
     <AssemblyKeyContainerName>
     </AssemblyKeyContainerName>
     <AssemblyName>SwVPagesSample</AssemblyName>
-    <AssemblyOriginatorKeyFile>
-    </AssemblyOriginatorKeyFile>
+    <AssemblyOriginatorKeyFile>codestack.snk</AssemblyOriginatorKeyFile>
     <DefaultClientScript>JScript</DefaultClientScript>
     <DefaultHTMLPageLayout>Grid</DefaultHTMLPageLayout>
     <DefaultTargetSchema>IE50</DefaultTargetSchema>
@@ -94,6 +93,9 @@
     <DebugType>none</DebugType>
     <ErrorReport>prompt</ErrorReport>
   </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="SolidWorks.Interop.sldworks, Version=22.5.0.77, Culture=neutral, PublicKeyToken=7c4797c3e4eeac03, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -127,9 +129,8 @@
     <Reference Include="System.XML">
       <Name>System.XML</Name>
     </Reference>
-    <Reference Include="Xarial.VPages.Framework, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\Base\thirdpty\Xarial.VPages.Framework.dll</HintPath>
+    <Reference Include="Xarial.VPages.Framework, Version=0.1.0.0, Culture=neutral, PublicKeyToken=60c8d43397840914, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Xarial.VPages.Framework.0.1.0-beta\lib\net40\Xarial.VPages.Framework.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -156,6 +157,10 @@
       <Project>{8ec761a6-e338-4ed1-af15-5f159341da9c}</Project>
       <Name>Base</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="codestack.snk" />
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
