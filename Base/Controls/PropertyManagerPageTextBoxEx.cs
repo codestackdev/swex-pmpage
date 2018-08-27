@@ -1,8 +1,8 @@
 ﻿//**********************
-//vPages for SOLIDWORKS
+//SwEx.Pmp
 //Copyright(C) 2018 www.codestack.net
 //License: https://github.com/codestack-net-dev/vpages-sw/blob/master/LICENSE
-//Product URL: https://www.codestack.net/labs/solidworks/vpages/
+//Product URL: https://www.codestack.net/labs/solidworks/swex/pmp/
 //**********************
 
 using System;
@@ -11,15 +11,15 @@ using System.Linq;
 using System.Text;
 using Xarial.VPages.Framework.PageElements;
 
-namespace CodeStack.VPages.Sw.Controls
+namespace CodeStack.SwEx.Pmp.Controls
 {
-    public class PropertyManagerPageTextBox : PropertyManagerPageControl<string>
+    public class PropertyManagerPageTextBoxEx : PropertyManagerPageControlEx<string>
     {
         protected override event ControlValueChangedDelegate<string> ValueChanged;
 
         public SolidWorks.Interop.sldworks.IPropertyManagerPageTextbox TextBox { get; private set; }
         
-        internal PropertyManagerPageTextBox(int id,
+        internal PropertyManagerPageTextBoxEx(int id,
             SolidWorks.Interop.sldworks.IPropertyManagerPageTextbox textBox,
             PropertyManagerPageHandler handler) : base(id, handler)
         {

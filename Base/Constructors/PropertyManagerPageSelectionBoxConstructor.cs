@@ -1,11 +1,11 @@
 ﻿//**********************
-//vPages for SOLIDWORKS
+//SwEx.Pmp
 //Copyright(C) 2018 www.codestack.net
 //License: https://github.com/codestack-net-dev/vpages-sw/blob/master/LICENSE
-//Product URL: https://www.codestack.net/labs/solidworks/vpages/
+//Product URL: https://www.codestack.net/labs/solidworks/swex/pmp/
 //**********************
 
-using CodeStack.VPages.Sw.Controls;
+using CodeStack.SwEx.Pmp.Controls;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,19 +14,19 @@ using Xarial.VPages.Framework.Attributes;
 using Xarial.VPages.Framework.Constructors;
 using Xarial.VPages.Framework.Base;
 using SolidWorks.Interop.swconst;
-using CodeStack.VPages.Sw.Attributes;
+using CodeStack.SwEx.Pmp.Attributes;
 using System.Drawing;
 using SolidWorks.Interop.sldworks;
 using System.Collections;
 
-namespace CodeStack.VPages.Sw.Constructors
+namespace CodeStack.SwEx.Pmp.Constructors
 {
     public interface IPropertyManagerPageSelectionBoxConstructor
     {
     }
 
     public class PropertyManagerPageSelectionBoxConstructor<THandler>
-        : PropertyManagerPageControlConstructor<THandler, PropertyManagerPageSelectionBox, IPropertyManagerPageSelectionbox>,
+        : PropertyManagerPageControlConstructor<THandler, PropertyManagerPageSelectionBoxEx, IPropertyManagerPageSelectionbox>,
         IPropertyManagerPageSelectionBoxConstructor
         where THandler : PropertyManagerPageHandler, new()
     {
@@ -38,7 +38,7 @@ namespace CodeStack.VPages.Sw.Constructors
             m_App = app;
         }
 
-        protected override PropertyManagerPageSelectionBox CreateControl(
+        protected override PropertyManagerPageSelectionBoxEx CreateControl(
             IPropertyManagerPageSelectionbox swCtrl, IAttributeSet atts, THandler handler)
         {
             var selAtt = atts.Get<PropertyManagerPageSelectionBoxAttribute>();
@@ -67,7 +67,7 @@ namespace CodeStack.VPages.Sw.Constructors
                 }
             }
 
-            return new PropertyManagerPageSelectionBox(m_App, atts.Id, swCtrl, handler, atts.BoundType);
+            return new PropertyManagerPageSelectionBoxEx(m_App, atts.Id, swCtrl, handler, atts.BoundType);
         }
     }
 }

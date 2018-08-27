@@ -1,8 +1,8 @@
 ﻿//**********************
-//vPages for SOLIDWORKS
+//SwEx.Pmp
 //Copyright(C) 2018 www.codestack.net
 //License: https://github.com/codestack-net-dev/vpages-sw/blob/master/LICENSE
-//Product URL: https://www.codestack.net/labs/solidworks/vpages/
+//Product URL: https://www.codestack.net/labs/solidworks/swex/pmp/
 //**********************
 
 using SolidWorks.Interop.sldworks;
@@ -14,7 +14,7 @@ using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
 
-namespace CodeStack.VPages.Sw
+namespace CodeStack.SwEx.Pmp
 {
     public class ClosingArg
     {
@@ -30,6 +30,8 @@ namespace CodeStack.VPages.Sw
         internal event Action<int, double> NumberChanged;
         internal event Action<int, bool> CheckChanged;
         internal event Action<int, int> SelectionChanged;
+        internal event Action<int, int> ComboBoxChanged;
+
         internal event Action HelpRequested;
         internal event Action WhatsNewRequested;
 
@@ -75,7 +77,7 @@ namespace CodeStack.VPages.Sw
             m_CloseReason = (swPropertyManagerPageCloseReasons_e)Reason;
 
             var arg = new ClosingArg();
-            Closing.Invoke(m_CloseReason, arg);
+            Closing?.Invoke(m_CloseReason, arg);
 
             if (arg.Cancel)
             {
@@ -97,6 +99,7 @@ namespace CodeStack.VPages.Sw
 
         public void OnComboboxSelectionChanged(int Id, int Item)
         {
+            ComboBoxChanged?.Invoke(Id, Item);
         }
 
         public void OnGainedFocus(int Id)

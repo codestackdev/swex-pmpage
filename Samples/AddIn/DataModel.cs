@@ -1,4 +1,4 @@
-﻿using CodeStack.VPages.Sw.Attributes;
+﻿using CodeStack.SwEx.Pmp.Attributes;
 using SolidWorks.Interop.swconst;
 using System;
 using System.Collections.Generic;
@@ -38,10 +38,19 @@ namespace SwVPagesSample
 
         [PropertyManagerPageSelectionBox(2, swSelectType_e.swSelSOLIDBODIES)]
         public IBody2 Body { get; set; }
+
+        public Options_e Options { get; set; }
     }
 
     public class DataGroup
     {
         public string Text3 { get; set; }
+    }
+
+    public enum Options_e
+    {
+        Option1,
+        Option2,
+        Option3
     }
 }

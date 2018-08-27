@@ -7,8 +7,8 @@
     <ProjectGuid>{8EC761A6-E338-4ED1-AF15-5F159341DA9C}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>CodeStack.VPages.Sw</RootNamespace>
-    <AssemblyName>CodeStack.VPages.Sw</AssemblyName>
+    <RootNamespace>CodeStack.SwEx.Pmp</RootNamespace>
+    <AssemblyName>CodeStack.SwEx.Pmp</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -30,10 +30,11 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <SignAssembly>true</SignAssembly>
+    <SignAssembly>false</SignAssembly>
   </PropertyGroup>
   <PropertyGroup>
-    <AssemblyOriginatorKeyFile>codestack.snk</AssemblyOriginatorKeyFile>
+    <AssemblyOriginatorKeyFile>
+    </AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="SolidWorks.Interop.sldworks">
@@ -56,9 +57,6 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
-    <Reference Include="Xarial.VPages.Framework, Version=0.1.0.0, Culture=neutral, PublicKeyToken=60c8d43397840914, processorArchitecture=MSIL">
-      <HintPath>..\packages\Xarial.VPages.Framework.0.1.0-beta\lib\net40\Xarial.VPages.Framework.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Attributes\PropertyManagerPageControlAttributionAttribute.cs" />
@@ -68,30 +66,34 @@
     <Compile Include="Attributes\PropertyManagerPageNumberBoxStyleAttribute.cs" />
     <Compile Include="Attributes\PropertyManagerPageOptionsAttribute.cs" />
     <Compile Include="Attributes\PropertyManagerPageSelectionBoxAttribute.cs" />
+    <Compile Include="Attributes\PropertyManagerPageComboBoxStyleAttribute.cs" />
     <Compile Include="Attributes\PropertyManagerPageTextBoxStyleAttribute.cs" />
     <Compile Include="Constructors\PropertyManagerPageConstructor.cs" />
     <Compile Include="Constructors\PropertyManagerPageControlConstructor.cs" />
+    <Compile Include="Constructors\PropertyManagerPageComboBoxConstructor.cs" />
     <Compile Include="Constructors\PropertyManagerPageGroupConstructor.cs" />
     <Compile Include="Constructors\PropertyManagerPageSelectionBoxConstructor.cs" />
     <Compile Include="Constructors\PropertyManagerPageNumberBoxConstructor.cs" />
     <Compile Include="Constructors\PropertyManagerPageCheckBoxConstructor.cs" />
     <Compile Include="Constructors\PropertyManagerPageTextBoxConstructor.cs" />
-    <Compile Include="Controls\PropertyManagerPage.cs" />
-    <Compile Include="Controls\PropertyManagerPageButton.cs" />
-    <Compile Include="Controls\PropertyManagerPageCheckBox.cs" />
-    <Compile Include="Controls\PropertyManagerPageComboBox.cs" />
-    <Compile Include="Controls\PropertyManagerPageControl.cs" />
-    <Compile Include="Controls\PropertyManagerPageGroup.cs" />
-    <Compile Include="Controls\PropertyManagerPageNumberBox.cs" />
-    <Compile Include="Controls\PropertyManagerPageSelectionBox.cs" />
-    <Compile Include="Controls\PropertyManagerPageTextBox.cs" />
+    <Compile Include="Controls\PropertyManagerPageEx.cs" />
+    <Compile Include="Controls\PropertyManagerPageButtonEx.cs" />
+    <Compile Include="Controls\PropertyManagerPageCheckBoxEx.cs" />
+    <Compile Include="Controls\PropertyManagerPageComboBoxEx.cs" />
+    <Compile Include="Controls\PropertyManagerPageControlEx.cs" />
+    <Compile Include="Controls\PropertyManagerPageGroupEx.cs" />
+    <Compile Include="Controls\PropertyManagerPageNumberBoxEx.cs" />
+    <Compile Include="Controls\PropertyManagerPageSelectionBoxEx.cs" />
+    <Compile Include="Controls\PropertyManagerPageTextBoxEx.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="PropertyManagerPageBuilder.cs" />
     <Compile Include="PropertyManagerPageHandler.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="codestack.snk" />
-    <None Include="packages.config" />
+    <ProjectReference Include="..\..\vpages-dev\Framework\Framework.csproj">
+      <Project>{b7074539-e584-4a73-a505-d239de9376dc}</Project>
+      <Name>Framework</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

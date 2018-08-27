@@ -7,9 +7,9 @@ using SolidWorks.Interop.swconst;
 using SolidWorksTools;
 using SolidWorksTools.File;
 using System.Collections.Generic;
-using CodeStack.VPages.Sw;
+using CodeStack.SwEx.Pmp;
 using System.Linq;
-using CodeStack.VPages.Sw.Controls;
+using CodeStack.SwEx.Pmp.Controls;
 
 namespace SwVPagesSample
 {
@@ -33,7 +33,7 @@ namespace SwVPagesSample
         public const int CMD_PMP_ID = 1;
 
         private PropertyManagerPageBuilder<PropertyPageEventsHandler> m_PmpBuilder;
-        private PropertyManagerPage<PropertyPageEventsHandler> m_ActivePage;
+        private PropertyManagerPageEx<PropertyPageEventsHandler> m_ActivePage;
 
         private DataModel m_Model;
 
@@ -204,7 +204,7 @@ namespace SwVPagesSample
                 }
             }
 
-            cmdGroup = m_CmdMgr.CreateCommandGroup2(CMD_GRP_ID, "vPages", "vPages for SOLIDWORKS example", "", -1, ignorePrevious, ref cmdGroupErr);
+            cmdGroup = m_CmdMgr.CreateCommandGroup2(CMD_GRP_ID, "vPages", "SwEx.Pmp example", "", -1, ignorePrevious, ref cmdGroupErr);
             cmdGroup.LargeIconList = m_Bmp.CreateFileFromResourceBitmap("AddIn.Icons.IconLarge.bmp", thisAssembly);
             cmdGroup.SmallIconList = m_Bmp.CreateFileFromResourceBitmap("AddIn.Icons.IconSmall.bmp", thisAssembly);
             cmdGroup.LargeMainIcon = m_Bmp.CreateFileFromResourceBitmap("AddIn.Icons.IconLarge.bmp", thisAssembly);

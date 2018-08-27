@@ -1,8 +1,8 @@
 ﻿//**********************
-//vPages for SOLIDWORKS
+//SwEx.Pmp
 //Copyright(C) 2018 www.codestack.net
 //License: https://github.com/codestack-net-dev/vpages-sw/blob/master/LICENSE
-//Product URL: https://www.codestack.net/labs/solidworks/vpages/
+//Product URL: https://www.codestack.net/labs/solidworks/swex/pmp/
 //**********************
 
 using System;
@@ -12,17 +12,17 @@ using System.Text;
 using Xarial.VPages.Framework.Base;
 using Xarial.VPages.Framework.PageElements;
 
-namespace CodeStack.VPages.Sw.Controls
+namespace CodeStack.SwEx.Pmp.Controls
 {
-    public interface IPropertyManagerPageControl : IControl
+    public interface IPropertyManagerPageControlEx : IControl
     {
     }
 
-    public abstract class PropertyManagerPageControl<TVal> : Control<TVal>, IPropertyManagerPageControl
+    public abstract class PropertyManagerPageControlEx<TVal> : Control<TVal>, IPropertyManagerPageControlEx
     {
         protected PropertyManagerPageHandler m_Handler;
         
-        protected PropertyManagerPageControl(int id, PropertyManagerPageHandler handler) : base(id)
+        protected PropertyManagerPageControlEx(int id, PropertyManagerPageHandler handler) : base(id)
         {
             m_Handler = handler;
         }

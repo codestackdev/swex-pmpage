@@ -6,11 +6,11 @@ using System.Runtime.CompilerServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 //
-[assembly: AssemblyTitle("vPages for SOLIDWORKS Example")]
+[assembly: AssemblyTitle("SwEx.Pmp Example")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("CodeStack")]
-[assembly: AssemblyProduct("vPages for SOLIDWORKS")]
+[assembly: AssemblyProduct("SwEx.Pmp")]
 [assembly: AssemblyCopyright("Copyright © CodeStack  2018")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]

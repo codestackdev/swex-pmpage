@@ -1,8 +1,8 @@
 ﻿//**********************
-//vPages for SOLIDWORKS
+//SwEx.Pmp
 //Copyright(C) 2018 www.codestack.net
 //License: https://github.com/codestack-net-dev/vpages-sw/blob/master/LICENSE
-//Product URL: https://www.codestack.net/labs/solidworks/vpages/
+//Product URL: https://www.codestack.net/labs/solidworks/swex/pmp/
 //**********************
 
 using SolidWorks.Interop.sldworks;
@@ -13,9 +13,9 @@ using System.Linq;
 using System.Text;
 using Xarial.VPages.Framework.PageElements;
 
-namespace CodeStack.VPages.Sw.Controls
+namespace CodeStack.SwEx.Pmp.Controls
 {
-    public class PropertyManagerPage<THandler> : Page
+    public class PropertyManagerPageEx<THandler> : Page
         where THandler : PropertyManagerPageHandler, new()
     {
         public IPropertyManagerPage2 Page { get; private set; }
@@ -25,7 +25,7 @@ namespace CodeStack.VPages.Sw.Controls
         private string m_HelpLink;
         private string m_WhatsNewLink;
 
-        internal PropertyManagerPage(IPropertyManagerPage2 page,
+        internal PropertyManagerPageEx(IPropertyManagerPage2 page,
             THandler handler, ISldWorks app, string helpLink, string whatsNewLink)
         {
             Page = page;

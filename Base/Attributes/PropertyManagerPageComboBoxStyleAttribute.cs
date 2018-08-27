@@ -5,6 +5,7 @@
 //Product URL: https://www.codestack.net/labs/solidworks/swex/pmp/
 //**********************
 
+using SolidWorks.Interop.swconst;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,15 +14,15 @@ using Xarial.VPages.Framework.Base;
 
 namespace CodeStack.SwEx.Pmp.Attributes
 {
-    public class PropertyManagerPageHelpAttribute : Attribute, IAttribute
+    public class PropertyManagerPageComboBoxStyleAttribute : Attribute, IAttribute
     {
-        public string HelpLink { get; private set; }
-        public string WhatsNewLink { get; private set; }
+        public swPropMgrPageComboBoxStyle_e Style { get; private set; }
+        public short Height { get; private set; }
 
-        public PropertyManagerPageHelpAttribute(string helpLink, string whatsNewLink = "")
+        public PropertyManagerPageComboBoxStyleAttribute(swPropMgrPageComboBoxStyle_e style = 0, short height = -1)
         {
-            HelpLink = helpLink;
-            WhatsNewLink = whatsNewLink;
+            Style = style;
+            Height = height;
         }
     }
 }

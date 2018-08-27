@@ -1,19 +1,19 @@
 ﻿//**********************
-//vPages for SOLIDWORKS
+//SwEx.Pmp
 //Copyright(C) 2018 www.codestack.net
 //License: https://github.com/codestack-net-dev/vpages-sw/blob/master/LICENSE
-//Product URL: https://www.codestack.net/labs/solidworks/vpages/
+//Product URL: https://www.codestack.net/labs/solidworks/swex/pmp/
 //**********************
 
-using CodeStack.VPages.Sw.Constructors;
-using CodeStack.VPages.Sw.Controls;
+using CodeStack.SwEx.Pmp.Constructors;
+using CodeStack.SwEx.Pmp.Controls;
 using Xarial.VPages.Core;
 using Xarial.VPages.Framework.Binders;
 
-namespace CodeStack.VPages.Sw
+namespace CodeStack.SwEx.Pmp
 {
     public class PropertyManagerPageBuilder<THandler>
-        : PageBuilder<PropertyManagerPage<THandler>, PropertyManagerPageGroup<THandler>, IPropertyManagerPageControl>
+        : PageBuilder<PropertyManagerPageEx<THandler>, PropertyManagerPageGroupEx<THandler>, IPropertyManagerPageControlEx>
         where THandler : PropertyManagerPageHandler, new()
     {
         public PropertyManagerPageBuilder(SolidWorks.Interop.sldworks.ISldWorks app)
@@ -22,6 +22,7 @@ namespace CodeStack.VPages.Sw
                   new PropertyManagerPageTextBoxConstructor<THandler>(),
                   new PropertyManagerPageNumberBoxConstructor<THandler>(),
                   new PropertyManagerPageCheckBoxConstructor<THandler>(),
+                  new PropertyManagerPageComboBoxConstructor<THandler>(),
                   new PropertyManagerPageSelectionBoxConstructor<THandler>(app))
         {
         }

@@ -1,12 +1,12 @@
 ﻿//**********************
-//vPages for SOLIDWORKS
+//SwEx.Pmp
 //Copyright(C) 2018 www.codestack.net
 //License: https://github.com/codestack-net-dev/vpages-sw/blob/master/LICENSE
-//Product URL: https://www.codestack.net/labs/solidworks/vpages/
+//Product URL: https://www.codestack.net/labs/solidworks/swex/pmp/
 //**********************
 
-using CodeStack.VPages.Sw.Attributes;
-using CodeStack.VPages.Sw.Controls;
+using CodeStack.SwEx.Pmp.Attributes;
+using CodeStack.SwEx.Pmp.Controls;
 using SolidWorks.Interop.swconst;
 using System;
 using System.Collections.Generic;
@@ -16,12 +16,12 @@ using System.Text;
 using Xarial.VPages.Framework.Base;
 using Xarial.VPages.Framework.Constructors;
 
-namespace CodeStack.VPages.Sw.Constructors
+namespace CodeStack.SwEx.Pmp.Constructors
 {
     public abstract class PropertyManagerPageControlConstructor<THandler, TControl, TControlSw>
-            : ControlConstructor<TControl, PropertyManagerPageGroup<THandler>, PropertyManagerPage<THandler>>
+            : ControlConstructor<TControl, PropertyManagerPageGroupEx<THandler>, PropertyManagerPageEx<THandler>>
             where THandler : PropertyManagerPageHandler, new()
-            where TControl : IPropertyManagerPageControl
+            where TControl : IPropertyManagerPageControlEx
             where TControlSw : class
     {
         protected delegate TSwControl CreateControlDelegate<TSwControl>(
@@ -35,7 +35,7 @@ namespace CodeStack.VPages.Sw.Constructors
             m_Type = type;
         }
         
-        protected override TControl Create(PropertyManagerPageGroup<THandler> group, IAttributeSet atts)
+        protected override TControl Create(PropertyManagerPageGroupEx<THandler> group, IAttributeSet atts)
         {
             return AddControl(
                 (i, t, n, a, o, d) => group.Group.AddControl2(
@@ -43,7 +43,7 @@ namespace CodeStack.VPages.Sw.Constructors
                     as TControlSw, atts, group.Handler);
         }
 
-        protected override TControl Create(PropertyManagerPage<THandler> page, IAttributeSet atts)
+        protected override TControl Create(PropertyManagerPageEx<THandler> page, IAttributeSet atts)
         {
             return AddControl(
                 (i, t, n, a, o, d) => page.Page.AddControl2(

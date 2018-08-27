@@ -1,8 +1,8 @@
 ﻿//**********************
-//vPages for SOLIDWORKS
+//SwEx.Pmp
 //Copyright(C) 2018 www.codestack.net
 //License: https://github.com/codestack-net-dev/vpages-sw/blob/master/LICENSE
-//Product URL: https://www.codestack.net/labs/solidworks/vpages/
+//Product URL: https://www.codestack.net/labs/solidworks/swex/pmp/
 //**********************
 
 using SolidWorks.Interop.swconst;
@@ -12,7 +12,7 @@ using System.Linq;
 using System.Text;
 using Xarial.VPages.Framework.Base;
 
-namespace CodeStack.VPages.Sw.Attributes
+namespace CodeStack.SwEx.Pmp.Attributes
 {
     public class PropertyManagerPageNumberBoxStyleAttribute : Attribute, IAttribute
     {

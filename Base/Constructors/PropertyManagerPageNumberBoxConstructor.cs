@@ -1,11 +1,11 @@
 ﻿//**********************
-//vPages for SOLIDWORKS
+//SwEx.Pmp
 //Copyright(C) 2018 www.codestack.net
 //License: https://github.com/codestack-net-dev/vpages-sw/blob/master/LICENSE
-//Product URL: https://www.codestack.net/labs/solidworks/vpages/
+//Product URL: https://www.codestack.net/labs/solidworks/swex/pmp/
 //**********************
 
-using CodeStack.VPages.Sw.Controls;
+using CodeStack.SwEx.Pmp.Controls;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,16 +14,16 @@ using Xarial.VPages.Framework.Attributes;
 using Xarial.VPages.Framework.Constructors;
 using Xarial.VPages.Framework.Base;
 using SolidWorks.Interop.swconst;
-using CodeStack.VPages.Sw.Attributes;
+using CodeStack.SwEx.Pmp.Attributes;
 using System.Drawing;
 using SolidWorks.Interop.sldworks;
 
-namespace CodeStack.VPages.Sw.Constructors
+namespace CodeStack.SwEx.Pmp.Constructors
 {
     [DefaultType(typeof(int))]
     [DefaultType(typeof(double))]
     public class PropertyManagerPageNumberBoxConstructor<THandler>
-        : PropertyManagerPageControlConstructor<THandler, PropertyManagerPageNumberBox, SolidWorks.Interop.sldworks.IPropertyManagerPageNumberbox>
+        : PropertyManagerPageControlConstructor<THandler, PropertyManagerPageNumberBoxEx, IPropertyManagerPageNumberbox>
         where THandler : PropertyManagerPageHandler, new()
     {
         public PropertyManagerPageNumberBoxConstructor() 
@@ -31,7 +31,7 @@ namespace CodeStack.VPages.Sw.Constructors
         {
         }
 
-        protected override PropertyManagerPageNumberBox CreateControl(IPropertyManagerPageNumberbox swCtrl, IAttributeSet atts, THandler handler)
+        protected override PropertyManagerPageNumberBoxEx CreateControl(IPropertyManagerPageNumberbox swCtrl, IAttributeSet atts, THandler handler)
         {
             if (atts.Has<PropertyManagerPageNumberBoxStyleAttribute>())
             {
@@ -54,7 +54,7 @@ namespace CodeStack.VPages.Sw.Constructors
                 }
             }
 
-            return new PropertyManagerPageNumberBox(atts.Id, swCtrl, handler);
+            return new PropertyManagerPageNumberBoxEx(atts.Id, swCtrl, handler);
         }
     }
 }

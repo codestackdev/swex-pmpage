@@ -1,11 +1,11 @@
 ﻿//**********************
-//vPages for SOLIDWORKS
+//SwEx.Pmp
 //Copyright(C) 2018 www.codestack.net
 //License: https://github.com/codestack-net-dev/vpages-sw/blob/master/LICENSE
-//Product URL: https://www.codestack.net/labs/solidworks/vpages/
+//Product URL: https://www.codestack.net/labs/solidworks/swex/pmp/
 //**********************
 
-using CodeStack.VPages.Sw.Controls;
+using CodeStack.SwEx.Pmp.Controls;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,11 +14,11 @@ using Xarial.VPages.Framework.Constructors;
 using Xarial.VPages.Framework.Base;
 using SolidWorks.Interop.sldworks;
 using SolidWorks.Interop.swconst;
-using CodeStack.VPages.Sw.Attributes;
+using CodeStack.SwEx.Pmp.Attributes;
 
-namespace CodeStack.VPages.Sw.Constructors
+namespace CodeStack.SwEx.Pmp.Constructors
 {
-    public class PropertyManagerPageConstructor<THandler> : PageConstructor<PropertyManagerPage<THandler>>
+    public class PropertyManagerPageConstructor<THandler> : PageConstructor<PropertyManagerPageEx<THandler>>
         where THandler : PropertyManagerPageHandler, new()
     {
         private ISldWorks m_App;
@@ -28,7 +28,7 @@ namespace CodeStack.VPages.Sw.Constructors
             m_App = app;
         }
 
-        protected override PropertyManagerPage<THandler> Create(IAttributeSet atts)
+        protected override PropertyManagerPageEx<THandler> Create(IAttributeSet atts)
         {
             var handler = new THandler();
             handler.Init(m_App);
@@ -68,7 +68,7 @@ namespace CodeStack.VPages.Sw.Constructors
                 (int)opts,
                 handler, ref err) as IPropertyManagerPage2;
 
-            return new PropertyManagerPage<THandler>(page, handler, m_App, helpLink, whatsNewLink);
+            return new PropertyManagerPageEx<THandler>(page, handler, m_App, helpLink, whatsNewLink);
         }
     }
 }

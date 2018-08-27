@@ -1,10 +1,11 @@
 ﻿//**********************
-//vPages for SOLIDWORKS
+//SwEx.Pmp
 //Copyright(C) 2018 www.codestack.net
 //License: https://github.com/codestack-net-dev/vpages-sw/blob/master/LICENSE
-//Product URL: https://www.codestack.net/labs/solidworks/vpages/
+//Product URL: https://www.codestack.net/labs/solidworks/swex/pmp/
 //**********************
 
+using SolidWorks.Interop.sldworks;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -14,20 +15,20 @@ using System.Runtime.InteropServices;
 using System.Text;
 using Xarial.VPages.Framework.PageElements;
 
-namespace CodeStack.VPages.Sw.Controls
+namespace CodeStack.SwEx.Pmp.Controls
 {
-    public class PropertyManagerPageSelectionBox : PropertyManagerPageControl<object>
+    public class PropertyManagerPageSelectionBoxEx : PropertyManagerPageControlEx<object>
     {
         protected override event ControlValueChangedDelegate<object> ValueChanged;
 
-        public SolidWorks.Interop.sldworks.IPropertyManagerPageSelectionbox SelectionBox { get; private set; }
+        public IPropertyManagerPageSelectionbox SelectionBox { get; private set; }
 
-        private SolidWorks.Interop.sldworks.ISldWorks m_App;
+        private ISldWorks m_App;
 
         private Type m_ObjType;
 
-        public PropertyManagerPageSelectionBox(SolidWorks.Interop.sldworks.ISldWorks app, int id,
-            SolidWorks.Interop.sldworks.IPropertyManagerPageSelectionbox selBox,
+        public PropertyManagerPageSelectionBoxEx(ISldWorks app, int id,
+            IPropertyManagerPageSelectionbox selBox,
             PropertyManagerPageHandler handler, Type objType) : base(id, handler)
         {
             m_App = app;
