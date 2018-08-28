@@ -8,7 +8,7 @@ using System.Text;
 namespace SwVPagesSample
 {
     [ComVisible(true)]
-    public class PropertyPageEventsHandler : PropertyManagerPageHandler
+    public class PropertyPageEventsHandler : PropertyManagerPageHandlerEx
     {
     }
 }

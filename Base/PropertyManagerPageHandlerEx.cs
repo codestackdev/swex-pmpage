@@ -5,6 +5,7 @@
 //Product URL: https://www.codestack.net/labs/solidworks/swex/pmp/
 //**********************
 
+using CodeStack.SwEx.Pmp.Base;
 using SolidWorks.Interop.sldworks;
 using SolidWorks.Interop.swconst;
 using SolidWorks.Interop.swpublished;
@@ -16,15 +17,11 @@ using System.Text;
 
 namespace CodeStack.SwEx.Pmp
 {
-    public class ClosingArg
-    {
-        public bool Cancel { get; set; }
-        public string ErrorTitle { get; set; }
-        public string ErrorMessage { get; set; }
-    }
-
+    /// <summary>
+    /// <inheritdoc/>
+    /// </summary>
     [ComVisible(true)]
-    public abstract class PropertyManagerPageHandler : IPropertyManagerPage2Handler9
+    public abstract class PropertyManagerPageHandlerEx : IPropertyManagerPageHandlerEx, IPropertyManagerPage2Handler9
     {
         internal event Action<int, string> TextChanged;
         internal event Action<int, double> NumberChanged;
@@ -35,9 +32,20 @@ namespace CodeStack.SwEx.Pmp
         internal event Action HelpRequested;
         internal event Action WhatsNewRequested;
 
+        /// <summary>
+        /// <inheritdoc/>
+        /// </summary>
         public event Action DataChanged;
-        public event Action<swPropertyManagerPageCloseReasons_e, ClosingArg> Closing;
-        public event Action<swPropertyManagerPageCloseReasons_e> Closed;
+
+        /// <summary>
+        /// <inheritdoc/>
+        /// </summary>
+        public event PropertyManagerPageClosingDelegate Closing;
+
+        /// <summary>
+        /// <inheritdoc/>
+        /// </summary>
+        public event PropertyManagerPageClosedDelegate Closed;
 
         private swPropertyManagerPageCloseReasons_e m_CloseReason;
 

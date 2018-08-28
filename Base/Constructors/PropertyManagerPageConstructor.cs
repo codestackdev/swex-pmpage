@@ -18,8 +18,8 @@ using CodeStack.SwEx.Pmp.Attributes;
 
 namespace CodeStack.SwEx.Pmp.Constructors
 {
-    public class PropertyManagerPageConstructor<THandler> : PageConstructor<PropertyManagerPageEx<THandler>>
-        where THandler : PropertyManagerPageHandler, new()
+    internal class PropertyManagerPageConstructor<THandler> : PageConstructor<PropertyManagerPagePageEx<THandler>>
+        where THandler : PropertyManagerPageHandlerEx, new()
     {
         private ISldWorks m_App;
 
@@ -28,7 +28,7 @@ namespace CodeStack.SwEx.Pmp.Constructors
             m_App = app;
         }
 
-        protected override PropertyManagerPageEx<THandler> Create(IAttributeSet atts)
+        protected override PropertyManagerPagePageEx<THandler> Create(IAttributeSet atts)
         {
             var handler = new THandler();
             handler.Init(m_App);
@@ -68,7 +68,7 @@ namespace CodeStack.SwEx.Pmp.Constructors
                 (int)opts,
                 handler, ref err) as IPropertyManagerPage2;
 
-            return new PropertyManagerPageEx<THandler>(page, handler, m_App, helpLink, whatsNewLink);
+            return new PropertyManagerPagePageEx<THandler>(page, handler, m_App, helpLink, whatsNewLink);
         }
     }
 }

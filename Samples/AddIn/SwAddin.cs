@@ -32,8 +32,7 @@ namespace SwVPagesSample
         public const int CMD_GRP_ID = 0;
         public const int CMD_PMP_ID = 1;
 
-        private PropertyManagerPageBuilder<PropertyPageEventsHandler> m_PmpBuilder;
-        private PropertyManagerPageEx<PropertyPageEventsHandler> m_ActivePage;
+        private PropertyManagerPageEx<PropertyPageEventsHandler, DataModel> m_ActivePage;
 
         private DataModel m_Model;
 
@@ -131,7 +130,7 @@ namespace SwVPagesSample
             m_CmdMgr = m_App.GetCommandManager(cookie);
             AddCommandMgr();
 
-            m_PmpBuilder = new PropertyManagerPageBuilder<PropertyPageEventsHandler>(m_App);
+            //m_PmpBuilder = new PropertyManagerPageBuilder<PropertyPageEventsHandler>(m_App);
 
             return true;
         }
@@ -145,8 +144,11 @@ namespace SwVPagesSample
 
             m_App.IActiveDoc2.ClearSelection2(true);
 
-            m_ActivePage = m_PmpBuilder.CreatePage(m_Model);
-            m_ActivePage.Page.Show2(0);
+            m_ActivePage = new PropertyManagerPageEx<PropertyPageEventsHandler, DataModel>(m_Model, m_App);
+
+            m_ActivePage.Show();
+            //m_ActivePage = m_PmpBuilder.CreatePage(m_Model);
+            //m_ActivePage.Page.Show2(0);
         }
 
         public int EnablePMP()

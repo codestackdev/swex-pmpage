@@ -15,7 +15,7 @@ using Xarial.VPages.Framework.PageElements;
 
 namespace CodeStack.SwEx.Pmp.Controls
 {
-    public class PropertyManagerPageComboBoxEx : PropertyManagerPageControlEx<Enum>
+    internal class PropertyManagerPageComboBoxEx : PropertyManagerPageControlEx<Enum>
     {
         protected override event ControlValueChangedDelegate<Enum> ValueChanged;
 
@@ -25,7 +25,7 @@ namespace CodeStack.SwEx.Pmp.Controls
 
         public PropertyManagerPageComboBoxEx(int id,
             IPropertyManagerPageCombobox comboBox, ReadOnlyCollection<Enum> values,
-            PropertyManagerPageHandler handler) : base(id, handler)
+            PropertyManagerPageHandlerEx handler) : base(id, handler)
         {
             ComboBox = comboBox;
             m_Values = values;

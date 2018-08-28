@@ -14,15 +14,15 @@ using Xarial.VPages.Framework.PageElements;
 
 namespace CodeStack.SwEx.Pmp.Controls
 {
-    public interface IPropertyManagerPageControlEx : IControl
+    internal interface IPropertyManagerPageControlEx : IControl
     {
     }
 
-    public abstract class PropertyManagerPageControlEx<TVal> : Control<TVal>, IPropertyManagerPageControlEx
+    internal abstract class PropertyManagerPageControlEx<TVal> : Control<TVal>, IPropertyManagerPageControlEx
     {
-        protected PropertyManagerPageHandler m_Handler;
+        protected PropertyManagerPageHandlerEx m_Handler;
         
-        protected PropertyManagerPageControlEx(int id, PropertyManagerPageHandler handler) : base(id)
+        protected PropertyManagerPageControlEx(int id, PropertyManagerPageHandlerEx handler) : base(id)
         {
             m_Handler = handler;
         }

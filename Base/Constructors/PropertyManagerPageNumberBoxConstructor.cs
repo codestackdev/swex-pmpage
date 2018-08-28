@@ -22,9 +22,9 @@ namespace CodeStack.SwEx.Pmp.Constructors
 {
     [DefaultType(typeof(int))]
     [DefaultType(typeof(double))]
-    public class PropertyManagerPageNumberBoxConstructor<THandler>
+    internal class PropertyManagerPageNumberBoxConstructor<THandler>
         : PropertyManagerPageControlConstructor<THandler, PropertyManagerPageNumberBoxEx, IPropertyManagerPageNumberbox>
-        where THandler : PropertyManagerPageHandler, new()
+        where THandler : PropertyManagerPageHandlerEx, new()
     {
         public PropertyManagerPageNumberBoxConstructor() 
             : base(swPropertyManagerPageControlType_e.swControlType_Numberbox)

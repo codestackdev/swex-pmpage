@@ -68,6 +68,11 @@
     <Compile Include="Attributes\PropertyManagerPageSelectionBoxAttribute.cs" />
     <Compile Include="Attributes\PropertyManagerPageComboBoxStyleAttribute.cs" />
     <Compile Include="Attributes\PropertyManagerPageTextBoxStyleAttribute.cs" />
+    <Compile Include="Base\ClosingArg.cs" />
+    <Compile Include="Base\IPropertyManagerPageEx.cs" />
+    <Compile Include="Base\IPropertyManagerPageHandlerEx.cs" />
+    <Compile Include="Base\PropertyManagerPageClosedDelegate.cs" />
+    <Compile Include="Base\PropertyManagerPageClosingDelegate.cs" />
     <Compile Include="Constructors\PropertyManagerPageConstructor.cs" />
     <Compile Include="Constructors\PropertyManagerPageControlConstructor.cs" />
     <Compile Include="Constructors\PropertyManagerPageComboBoxConstructor.cs" />
@@ -76,7 +81,7 @@
     <Compile Include="Constructors\PropertyManagerPageNumberBoxConstructor.cs" />
     <Compile Include="Constructors\PropertyManagerPageCheckBoxConstructor.cs" />
     <Compile Include="Constructors\PropertyManagerPageTextBoxConstructor.cs" />
-    <Compile Include="Controls\PropertyManagerPageEx.cs" />
+    <Compile Include="Controls\PropertyManagerPagePageEx.cs" />
     <Compile Include="Controls\PropertyManagerPageButtonEx.cs" />
     <Compile Include="Controls\PropertyManagerPageCheckBoxEx.cs" />
     <Compile Include="Controls\PropertyManagerPageComboBoxEx.cs" />
@@ -87,7 +92,8 @@
     <Compile Include="Controls\PropertyManagerPageTextBoxEx.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="PropertyManagerPageBuilder.cs" />
-    <Compile Include="PropertyManagerPageHandler.cs" />
+    <Compile Include="PropertyManagerPageEx.cs" />
+    <Compile Include="PropertyManagerPageHandlerEx.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\vpages-dev\Framework\Framework.csproj">

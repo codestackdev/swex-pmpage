@@ -21,9 +21,9 @@ using SolidWorks.Interop.sldworks;
 namespace CodeStack.SwEx.Pmp.Constructors
 {
     [DefaultType(typeof(bool))]
-    public class PropertyManagerPageCheckBoxConstructor<THandler>
+    internal class PropertyManagerPageCheckBoxConstructor<THandler>
         : PropertyManagerPageControlConstructor<THandler, PropertyManagerPageCheckBoxEx, IPropertyManagerPageCheckbox>
-        where THandler : PropertyManagerPageHandler, new()
+        where THandler : PropertyManagerPageHandlerEx, new()
     {
         public PropertyManagerPageCheckBoxConstructor() 
             : base(swPropertyManagerPageControlType_e.swControlType_Checkbox)

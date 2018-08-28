@@ -21,9 +21,9 @@ using CodeStack.SwEx.Pmp.Attributes;
 namespace CodeStack.SwEx.Pmp.Constructors
 {
     [DefaultType(typeof(SpecialTypes.EnumType))]
-    public class PropertyManagerPageComboBoxConstructor<THandler>
+    internal class PropertyManagerPageComboBoxConstructor<THandler>
         : PropertyManagerPageControlConstructor<THandler, PropertyManagerPageComboBoxEx, IPropertyManagerPageCombobox>
-        where THandler : PropertyManagerPageHandler, new()
+        where THandler : PropertyManagerPageHandlerEx, new()
     {
         public PropertyManagerPageComboBoxConstructor() 
             : base(swPropertyManagerPageControlType_e.swControlType_Combobox)

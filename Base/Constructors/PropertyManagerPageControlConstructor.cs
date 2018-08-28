@@ -18,9 +18,9 @@ using Xarial.VPages.Framework.Constructors;
 
 namespace CodeStack.SwEx.Pmp.Constructors
 {
-    public abstract class PropertyManagerPageControlConstructor<THandler, TControl, TControlSw>
-            : ControlConstructor<TControl, PropertyManagerPageGroupEx<THandler>, PropertyManagerPageEx<THandler>>
-            where THandler : PropertyManagerPageHandler, new()
+    internal abstract class PropertyManagerPageControlConstructor<THandler, TControl, TControlSw>
+            : ControlConstructor<TControl, PropertyManagerPageGroupEx<THandler>, PropertyManagerPagePageEx<THandler>>
+            where THandler : PropertyManagerPageHandlerEx, new()
             where TControl : IPropertyManagerPageControlEx
             where TControlSw : class
     {
@@ -43,7 +43,7 @@ namespace CodeStack.SwEx.Pmp.Constructors
                     as TControlSw, atts, group.Handler);
         }
 
-        protected override TControl Create(PropertyManagerPageEx<THandler> page, IAttributeSet atts)
+        protected override TControl Create(PropertyManagerPagePageEx<THandler> page, IAttributeSet atts)
         {
             return AddControl(
                 (i, t, n, a, o, d) => page.Page.AddControl2(

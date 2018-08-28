@@ -13,7 +13,7 @@ using Xarial.VPages.Framework.PageElements;
 
 namespace CodeStack.SwEx.Pmp.Controls
 {
-    public class PropertyManagerPageTextBoxEx : PropertyManagerPageControlEx<string>
+    internal class PropertyManagerPageTextBoxEx : PropertyManagerPageControlEx<string>
     {
         protected override event ControlValueChangedDelegate<string> ValueChanged;
 
@@ -21,7 +21,7 @@ namespace CodeStack.SwEx.Pmp.Controls
         
         internal PropertyManagerPageTextBoxEx(int id,
             SolidWorks.Interop.sldworks.IPropertyManagerPageTextbox textBox,
-            PropertyManagerPageHandler handler) : base(id, handler)
+            PropertyManagerPageHandlerEx handler) : base(id, handler)
         {
             TextBox = textBox;
             m_Handler.TextChanged += OnTextChanged;

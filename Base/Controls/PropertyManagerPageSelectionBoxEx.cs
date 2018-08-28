@@ -17,7 +17,7 @@ using Xarial.VPages.Framework.PageElements;
 
 namespace CodeStack.SwEx.Pmp.Controls
 {
-    public class PropertyManagerPageSelectionBoxEx : PropertyManagerPageControlEx<object>
+    internal class PropertyManagerPageSelectionBoxEx : PropertyManagerPageControlEx<object>
     {
         protected override event ControlValueChangedDelegate<object> ValueChanged;
 
@@ -29,7 +29,7 @@ namespace CodeStack.SwEx.Pmp.Controls
 
         public PropertyManagerPageSelectionBoxEx(ISldWorks app, int id,
             IPropertyManagerPageSelectionbox selBox,
-            PropertyManagerPageHandler handler, Type objType) : base(id, handler)
+            PropertyManagerPageHandlerEx handler, Type objType) : base(id, handler)
         {
             m_App = app;
             SelectionBox = selBox;

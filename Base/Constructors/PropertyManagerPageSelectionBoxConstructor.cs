@@ -21,14 +21,14 @@ using System.Collections;
 
 namespace CodeStack.SwEx.Pmp.Constructors
 {
-    public interface IPropertyManagerPageSelectionBoxConstructor
+    internal interface IPropertyManagerPageSelectionBoxConstructor
     {
     }
 
-    public class PropertyManagerPageSelectionBoxConstructor<THandler>
+    internal class PropertyManagerPageSelectionBoxConstructor<THandler>
         : PropertyManagerPageControlConstructor<THandler, PropertyManagerPageSelectionBoxEx, IPropertyManagerPageSelectionbox>,
         IPropertyManagerPageSelectionBoxConstructor
-        where THandler : PropertyManagerPageHandler, new()
+        where THandler : PropertyManagerPageHandlerEx, new()
     {
         private ISldWorks m_App;
 

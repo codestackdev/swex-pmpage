@@ -21,9 +21,9 @@ using SolidWorks.Interop.sldworks;
 namespace CodeStack.SwEx.Pmp.Constructors
 {
     [DefaultType(typeof(string))]
-    public class PropertyManagerPageTextBoxConstructor<THandler>
+    internal class PropertyManagerPageTextBoxConstructor<THandler>
         : PropertyManagerPageControlConstructor<THandler, PropertyManagerPageTextBoxEx, IPropertyManagerPageTextbox>
-        where THandler : PropertyManagerPageHandler, new()
+        where THandler : PropertyManagerPageHandlerEx, new()
     {
         public PropertyManagerPageTextBoxConstructor()
             : base(swPropertyManagerPageControlType_e.swControlType_Textbox)

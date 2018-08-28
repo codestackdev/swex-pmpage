@@ -14,7 +14,7 @@ using Xarial.VPages.Framework.PageElements;
 
 namespace CodeStack.SwEx.Pmp.Controls
 {
-    public class PropertyManagerPageCheckBoxEx : PropertyManagerPageControlEx<bool>
+    internal class PropertyManagerPageCheckBoxEx : PropertyManagerPageControlEx<bool>
     {
         protected override event ControlValueChangedDelegate<bool> ValueChanged;
 
@@ -22,7 +22,7 @@ namespace CodeStack.SwEx.Pmp.Controls
 
         public PropertyManagerPageCheckBoxEx(int id,
             IPropertyManagerPageCheckbox checkBox,
-            PropertyManagerPageHandler handler) : base(id, handler)
+            PropertyManagerPageHandlerEx handler) : base(id, handler)
         {
             CheckBox = checkBox;
             m_Handler.CheckChanged += OnCheckChanged;

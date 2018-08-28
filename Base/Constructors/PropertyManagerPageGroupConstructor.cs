@@ -19,15 +19,15 @@ using Xarial.VPages.Framework.Core;
 namespace CodeStack.SwEx.Pmp.Constructors
 {
     [DefaultType(typeof(SpecialTypes.ComplexType))]
-    public class PropertyManagerPageGroupConstructor<THandler> : GroupConstructor<PropertyManagerPageGroupEx<THandler>, PropertyManagerPageEx<THandler>>
-        where THandler : PropertyManagerPageHandler, new()
+    internal class PropertyManagerPageGroupConstructor<THandler> : GroupConstructor<PropertyManagerPageGroupEx<THandler>, PropertyManagerPagePageEx<THandler>>
+        where THandler : PropertyManagerPageHandlerEx, new()
     {
         protected override PropertyManagerPageGroupEx<THandler> Create(PropertyManagerPageGroupEx<THandler> group, IAttributeSet atts)
         {
             throw new NotSupportedException();
         }
 
-        protected override PropertyManagerPageGroupEx<THandler> Create(PropertyManagerPageEx<THandler> page, IAttributeSet atts)
+        protected override PropertyManagerPageGroupEx<THandler> Create(PropertyManagerPagePageEx<THandler> page, IAttributeSet atts)
         {
             var grp = page.Page.AddGroupBox(atts.Id, atts.Name,
                 (int)(swAddGroupBoxOptions_e.swGroupBoxOptions_Expanded

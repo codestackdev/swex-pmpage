@@ -14,8 +14,8 @@ using Xarial.VPages.Framework.PageElements;
 
 namespace CodeStack.SwEx.Pmp.Controls
 {
-    public class PropertyManagerPageGroupEx<THandler> : Group
-        where THandler : PropertyManagerPageHandler, new()
+    internal class PropertyManagerPageGroupEx<THandler> : Group
+        where THandler : PropertyManagerPageHandlerEx, new()
     {
         public IPropertyManagerPageGroup Group { get; private set; }
         public ISldWorks App { get; private set; }

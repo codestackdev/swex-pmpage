@@ -12,9 +12,9 @@ using Xarial.VPages.Framework.Binders;
 
 namespace CodeStack.SwEx.Pmp
 {
-    public class PropertyManagerPageBuilder<THandler>
-        : PageBuilder<PropertyManagerPageEx<THandler>, PropertyManagerPageGroupEx<THandler>, IPropertyManagerPageControlEx>
-        where THandler : PropertyManagerPageHandler, new()
+    internal class PropertyManagerPageBuilder<THandler>
+        : PageBuilder<PropertyManagerPagePageEx<THandler>, PropertyManagerPageGroupEx<THandler>, IPropertyManagerPageControlEx>
+        where THandler : PropertyManagerPageHandlerEx, new()
     {
         public PropertyManagerPageBuilder(SolidWorks.Interop.sldworks.ISldWorks app)
             : base(new TypeDataBinder(), new PropertyManagerPageConstructor<THandler>(app),

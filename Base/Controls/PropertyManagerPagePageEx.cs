@@ -15,8 +15,8 @@ using Xarial.VPages.Framework.PageElements;
 
 namespace CodeStack.SwEx.Pmp.Controls
 {
-    public class PropertyManagerPageEx<THandler> : Page
-        where THandler : PropertyManagerPageHandler, new()
+    internal class PropertyManagerPagePageEx<THandler> : Page
+        where THandler : PropertyManagerPageHandlerEx, new()
     {
         public IPropertyManagerPage2 Page { get; private set; }
         public THandler Handler { get; private set; }
@@ -25,7 +25,7 @@ namespace CodeStack.SwEx.Pmp.Controls
         private string m_HelpLink;
         private string m_WhatsNewLink;
 
-        internal PropertyManagerPageEx(IPropertyManagerPage2 page,
+        internal PropertyManagerPagePageEx(IPropertyManagerPage2 page,
             THandler handler, ISldWorks app, string helpLink, string whatsNewLink)
         {
             Page = page;

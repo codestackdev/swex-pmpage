@@ -12,7 +12,7 @@ using System.Text;
 
 namespace CodeStack.SwEx.Pmp.Controls
 {
-    class PropertyManagerPageButtonEx
+    internal class PropertyManagerPageButtonEx
     {
     }
 }

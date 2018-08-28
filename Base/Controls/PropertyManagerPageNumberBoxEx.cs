@@ -13,7 +13,7 @@ using Xarial.VPages.Framework.PageElements;
 
 namespace CodeStack.SwEx.Pmp.Controls
 {
-    public class PropertyManagerPageNumberBoxEx : PropertyManagerPageControlEx<double>
+    internal class PropertyManagerPageNumberBoxEx : PropertyManagerPageControlEx<double>
     {
         protected override event ControlValueChangedDelegate<double> ValueChanged;
 
@@ -21,7 +21,7 @@ namespace CodeStack.SwEx.Pmp.Controls
 
         public PropertyManagerPageNumberBoxEx(int id,
             SolidWorks.Interop.sldworks.IPropertyManagerPageNumberbox numberBox, 
-            PropertyManagerPageHandler handler) : base(id, handler)
+            PropertyManagerPageHandlerEx handler) : base(id, handler)
         {
             NumberBox = numberBox;
             m_Handler.NumberChanged += OnNumberChanged;

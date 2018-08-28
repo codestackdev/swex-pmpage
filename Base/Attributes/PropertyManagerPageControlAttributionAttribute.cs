@@ -14,8 +14,16 @@ using Xarial.VPages.Framework.Base;
 
 namespace CodeStack.SwEx.Pmp.Attributes
 {
+    /// <summary>
+    /// Provides additional attribution options (i.e. icons, labels, tooltips etc.) for all controls
+    /// </summary>
+    /// <remarks>Can be applied to any property which is bound to the property manager page control</remarks>
     public class PropertyManagerPageControlAttributionAttribute : Attribute, IAttribute
     {
+        /// <summary>
+        /// Control label as defined in <see cref="http://help.solidworks.com/2016/english/api/swconst/solidworks.interop.swconst~solidworks.interop.swconst.swcontrolbitmaplabeltype_e.html">swControlBitmapLabelType_e Enumeration</see>
+        /// </summary>
+        /// <remarks>0 for not bitmap</remarks>
         public swControlBitmapLabelType_e StandardIcon { get; private set; } = 0;
 
         public PropertyManagerPageControlAttributionAttribute(swControlBitmapLabelType_e standardIcon)
