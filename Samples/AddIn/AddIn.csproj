@@ -130,6 +130,10 @@
     <Reference Include="System.XML">
       <Name>System.XML</Name>
     </Reference>
+    <Reference Include="Xarial.VPages.Framework, Version=0.1.0.0, Culture=neutral, PublicKeyToken=60c8d43397840914, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\Xarial.VPages.Framework.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -151,10 +155,6 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\vpages-dev\Framework\Framework.csproj">
-      <Project>{b7074539-e584-4a73-a505-d239de9376dc}</Project>
-      <Name>Framework</Name>
-    </ProjectReference>
     <ProjectReference Include="..\..\Base\Base.csproj">
       <Project>{8ec761a6-e338-4ed1-af15-5f159341da9c}</Project>
       <Name>Base</Name>

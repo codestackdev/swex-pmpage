@@ -21,7 +21,7 @@ namespace CodeStack.SwEx.Pmp.Attributes
     public class PropertyManagerPageControlAttributionAttribute : Attribute, IAttribute
     {
         /// <summary>
-        /// Control label as defined in <see cref="http://help.solidworks.com/2016/english/api/swconst/solidworks.interop.swconst~solidworks.interop.swconst.swcontrolbitmaplabeltype_e.html">swControlBitmapLabelType_e Enumeration</see>
+        /// Control label as defined in <see href="http://help.solidworks.com/2016/english/api/swconst/solidworks.interop.swconst~solidworks.interop.swconst.swcontrolbitmaplabeltype_e.html">swControlBitmapLabelType_e Enumeration</see>
         /// </summary>
         /// <remarks>0 for not bitmap</remarks>
         public swControlBitmapLabelType_e StandardIcon { get; private set; } = 0;
