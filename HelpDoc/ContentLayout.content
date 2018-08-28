@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Topics>
-  <Topic id="welcome" visible="True" isDefault="true" title="Welcome to the [TODO: Add project name]">
+  <Topic id="welcome" visible="True" isDefault="true" isSelected="true" title="Welcome to the SwEx.Pmp">
     <HelpKeywords>
       <HelpKeyword index="K" term="Welcome" />
     </HelpKeywords>
@@ -9,7 +9,7 @@
     <HelpKeywords>
       <HelpKeyword index="K" term="version, history" />
     </HelpKeywords>
-    <Topic id="v0-1-0" visible="True" isSelected="true" title="Version 0.1.0">
+    <Topic id="v0-1-0" visible="True" title="Version 0.1.0">
       <HelpKeywords>
         <HelpKeyword index="K" term="version, 1.0.0.0" />
       </HelpKeywords>
