@@ -14,15 +14,19 @@ using Xarial.VPages.Framework.Base;
 
 namespace CodeStack.SwEx.Pmp.Attributes
 {
-    public class PropertyManagerPageTextBoxStyleAttribute : Attribute, IAttribute
+    /// <summary>
+    /// Additional options for text box control
+    /// </summary>
+    public class TextBoxOptionsAttribute : Attribute, IAttribute
     {
+        /// <summary>
+        /// Text box control style as defined in <see href="http://help.solidworks.com/2016/english/api/swconst/solidworks.interop.swconst~solidworks.interop.swconst.swpropmgrpagetextboxstyle_e.html">swPropMgrPageTextBoxStyle_e Enumeration</see>
+        /// </summary>
         public swPropMgrPageTextBoxStyle_e Style { get; private set; }
-        public short Height { get; private set; }
 
-        public PropertyManagerPageTextBoxStyleAttribute(swPropMgrPageTextBoxStyle_e style = 0, short height = -1)
+        public TextBoxOptionsAttribute(swPropMgrPageTextBoxStyle_e style = 0)
         {
             Style = style;
-            Height = height;
         }
     }
 }

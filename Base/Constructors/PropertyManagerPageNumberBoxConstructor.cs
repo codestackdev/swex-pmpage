@@ -31,17 +31,18 @@ namespace CodeStack.SwEx.Pmp.Constructors
         {
         }
 
-        protected override PropertyManagerPageNumberBoxEx CreateControl(IPropertyManagerPageNumberbox swCtrl, IAttributeSet atts, THandler handler)
+        protected override PropertyManagerPageNumberBoxEx CreateControl(
+            IPropertyManagerPageNumberbox swCtrl, IAttributeSet atts, THandler handler, short height)
         {
-            if (atts.Has<PropertyManagerPageNumberBoxStyleAttribute>())
+            if (height != -1)
             {
-                var style = atts.Get<PropertyManagerPageNumberBoxStyleAttribute>();
+                swCtrl.Height = height;
+            }
 
-                if (style.Height != -1)
-                {
-                    swCtrl.Height = style.Height;
-                }
-
+            if (atts.Has<NumberBoxOptionsAttribute>())
+            {
+                var style = atts.Get<NumberBoxOptionsAttribute>();
+                
                 if (style.Style != 0)
                 {
                     swCtrl.Style = (int)style.Style;

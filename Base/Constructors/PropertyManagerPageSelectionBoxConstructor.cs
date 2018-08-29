@@ -39,22 +39,24 @@ namespace CodeStack.SwEx.Pmp.Constructors
         }
 
         protected override PropertyManagerPageSelectionBoxEx CreateControl(
-            IPropertyManagerPageSelectionbox swCtrl, IAttributeSet atts, THandler handler)
+            IPropertyManagerPageSelectionbox swCtrl, IAttributeSet atts, THandler handler, short height)
         {
-            var selAtt = atts.Get<PropertyManagerPageSelectionBoxAttribute>();
+            var selAtt = atts.Get<SelectionBoxAttribute>();
             swCtrl.SetSelectionFilters(selAtt.Filters);
             swCtrl.Mark = selAtt.SelectionMark;
 
             swCtrl.SingleEntityOnly = !(typeof(IList).IsAssignableFrom(atts.BoundType));
-            
-            if (atts.Has<PropertyManagerPageSelectionBoxStyleAttribute>())
-            {
-                var style = atts.Get<PropertyManagerPageSelectionBoxStyleAttribute>();
 
-                if (style.Height != -1)
-                {
-                    swCtrl.Height = style.Height;
-                }
+            if (height == -1)
+            {
+                height = 20;
+            }
+
+            swCtrl.Height = height;
+
+            if (atts.Has<SelectionBoxOptionsAttribute>())
+            {
+                var style = atts.Get<SelectionBoxOptionsAttribute>();
 
                 if (style.Style != 0)
                 {

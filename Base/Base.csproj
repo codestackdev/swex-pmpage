@@ -58,21 +58,20 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
-    <Reference Include="Xarial.VPages.Framework, Version=0.1.0.0, Culture=neutral, PublicKeyToken=60c8d43397840914, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Samples\AddIn\bin\Debug\Xarial.VPages.Framework.dll</HintPath>
+    <Reference Include="Xarial.VPages.Framework">
+      <HintPath>..\..\_vpages-sw-dev\Base\bin\Debug\Xarial.VPages.Framework.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Attributes\PropertyManagerPageControlAttributionAttribute.cs" />
-    <Compile Include="Attributes\PropertyManagerPageControlOptionsAttribute.cs" />
-    <Compile Include="Attributes\PropertyManagerPageHelpAttribute.cs" />
-    <Compile Include="Attributes\PropertyManagerPageSelectionBoxStyleAttribute.cs" />
-    <Compile Include="Attributes\PropertyManagerPageNumberBoxStyleAttribute.cs" />
-    <Compile Include="Attributes\PropertyManagerPageOptionsAttribute.cs" />
-    <Compile Include="Attributes\PropertyManagerPageSelectionBoxAttribute.cs" />
-    <Compile Include="Attributes\PropertyManagerPageComboBoxStyleAttribute.cs" />
-    <Compile Include="Attributes\PropertyManagerPageTextBoxStyleAttribute.cs" />
+    <Compile Include="Attributes\ControlAttributionAttribute.cs" />
+    <Compile Include="Attributes\ControlOptionsAttribute.cs" />
+    <Compile Include="Attributes\HelpAttribute.cs" />
+    <Compile Include="Attributes\SelectionBoxOptionsAttribute.cs" />
+    <Compile Include="Attributes\NumberBoxOptionsAttribute.cs" />
+    <Compile Include="Attributes\PageOptionsAttribute.cs" />
+    <Compile Include="Attributes\SelectionBoxAttribute.cs" />
+    <Compile Include="Attributes\ComboBoxOptionsAttribute.cs" />
+    <Compile Include="Attributes\TextBoxOptionsAttribute.cs" />
     <Compile Include="Base\ClosingArg.cs" />
     <Compile Include="Base\IPropertyManagerPageEx.cs" />
     <Compile Include="Base\IPropertyManagerPageHandlerEx.cs" />

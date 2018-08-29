@@ -15,18 +15,26 @@ using Xarial.VPages.Framework.Base;
 
 namespace CodeStack.SwEx.Pmp.Attributes
 {
-    public class PropertyManagerPageSelectionBoxStyleAttribute : Attribute, IAttribute
+    /// <summary>
+    /// Additional options for selection box control
+    /// </summary>
+    public class SelectionBoxOptionsAttribute : Attribute, IAttribute
     {
+        /// <summary>
+        /// Selection box style as defined in <see href="http://help.solidworks.com/2016/english/api/swconst/solidworks.interop.swconst~solidworks.interop.swconst.swpropmgrpageselectionboxstyle_e.html">swPropMgrPageSelectionBoxStyle_e Enumeration</see>
+        /// </summary>
         public swPropMgrPageSelectionBoxStyle_e Style { get; private set; }
-        public short Height { get; private set; }
+
+        /// <summary>
+        /// Color of the selections in this selection box
+        /// </summary>
         public KnownColor SelectionColor { get; private set; }
 
-        public PropertyManagerPageSelectionBoxStyleAttribute(
-            swPropMgrPageSelectionBoxStyle_e style = 0, short height = -1,
+        public SelectionBoxOptionsAttribute(
+            swPropMgrPageSelectionBoxStyle_e style = 0,
             KnownColor selColor = 0)
         {
             Style = style;
-            Height = height;
             SelectionColor = selColor;
         }
     }

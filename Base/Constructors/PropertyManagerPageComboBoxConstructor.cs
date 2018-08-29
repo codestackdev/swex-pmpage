@@ -30,7 +30,8 @@ namespace CodeStack.SwEx.Pmp.Constructors
         {
         }
 
-        protected override PropertyManagerPageComboBoxEx CreateControl(IPropertyManagerPageCombobox swCtrl, IAttributeSet atts, THandler handler)
+        protected override PropertyManagerPageComboBoxEx CreateControl(
+            IPropertyManagerPageCombobox swCtrl, IAttributeSet atts, THandler handler, short height)
         {
             var enumValues = Enum.GetValues(atts.BoundType).Cast<Enum>().ToList();
 
@@ -39,14 +40,14 @@ namespace CodeStack.SwEx.Pmp.Constructors
 
             swCtrl.AddItems(values);
 
-            if (atts.Has<PropertyManagerPageComboBoxStyleAttribute>())
+            if (height != -1)
             {
-                var style = atts.Get<PropertyManagerPageComboBoxStyleAttribute>();
+                swCtrl.Height = height;
+            }
 
-                if (style.Height != -1)
-                {
-                    swCtrl.Height = style.Height;
-                }
+            if (atts.Has<ComboBoxOptionsAttribute>())
+            {
+                var style = atts.Get<ComboBoxOptionsAttribute>();
 
                 if (style.Style != 0)
                 {

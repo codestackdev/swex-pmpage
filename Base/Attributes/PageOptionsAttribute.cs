@@ -14,11 +14,18 @@ using Xarial.VPages.Framework.Base;
 
 namespace CodeStack.SwEx.Pmp.Attributes
 {
-    public class PropertyManagerPageOptionsAttribute : Attribute, IAttribute
+    /// <summary>
+    /// Property manager page options
+    /// </summary>
+    /// <remarks>Applied to the main class of the data model</remarks>
+    public class PageOptionsAttribute : Attribute, IAttribute
     {
+        /// <summary>
+        /// Property page options as defined in <see href="http://help.solidworks.com/2016/english/api/swconst/solidworks.interop.swconst~solidworks.interop.swconst.swpropertymanagerpageoptions_e.html">swPropertyManagerPageOptions_e Enumeration</see>
+        /// </summary>
         public swPropertyManagerPageOptions_e Options { get; private set; }
 
-        public PropertyManagerPageOptionsAttribute(swPropertyManagerPageOptions_e opts)
+        public PageOptionsAttribute(swPropertyManagerPageOptions_e opts)
         {
             Options = opts;
         }

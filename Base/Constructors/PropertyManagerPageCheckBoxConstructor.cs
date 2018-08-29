@@ -31,7 +31,7 @@ namespace CodeStack.SwEx.Pmp.Constructors
         }
 
         protected override PropertyManagerPageCheckBoxEx CreateControl(
-            IPropertyManagerPageCheckbox swCtrl, IAttributeSet atts, THandler handler)
+            IPropertyManagerPageCheckbox swCtrl, IAttributeSet atts, THandler handler, short height)
         {
             return new PropertyManagerPageCheckBoxEx(atts.Id, swCtrl, handler);
         }

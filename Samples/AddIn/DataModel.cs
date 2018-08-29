@@ -11,15 +11,15 @@ using SolidWorks.Interop.sldworks;
 
 namespace SwVPagesSample
 {
-    [PropertyManagerPageOptions(swPropertyManagerPageOptions_e.swPropertyManagerOptions_OkayButton
+    [PageOptions(swPropertyManagerPageOptions_e.swPropertyManagerOptions_OkayButton
         | swPropertyManagerPageOptions_e.swPropertyManagerOptions_CancelButton 
         | swPropertyManagerPageOptions_e.swPropertyManagerOptions_WhatsNew)]
     public class DataModel
     {
-        [PropertyManagerPageControlOptions(backgroundColor: KnownColor.Green, textColor: KnownColor.Yellow)]
+        [ControlOptions(backgroundColor: KnownColor.Green, textColor: KnownColor.Yellow)]
         public string Text1 { get; set; }
 
-        [PropertyManagerPageControlAttribution(swControlBitmapLabelType_e.swBitmapLabel_Depth)]
+        [ControlAttribution(swControlBitmapLabelType_e.swBitmapLabel_Depth)]
         public string Text2 { get; set; }
 
         public int Number1 { get; set; }
@@ -32,11 +32,11 @@ namespace SwVPagesSample
 
         public DataGroup Group { get; set; }
 
-        [PropertyManagerPageSelectionBox(1, swSelectType_e.swSelDATUMPLANES, swSelectType_e.swSelFACES, swSelectType_e.swSelEDGES)]
-        [PropertyManagerPageSelectionBoxStyle(height: 50)]
+        [SelectionBox(1, swSelectType_e.swSelDATUMPLANES, swSelectType_e.swSelFACES, swSelectType_e.swSelEDGES)]
+        [ControlOptions(height: 50)]
         public List<IEntity> Selection { get; set; }
 
-        [PropertyManagerPageSelectionBox(2, swSelectType_e.swSelSOLIDBODIES)]
+        [SelectionBox(2, swSelectType_e.swSelSOLIDBODIES)]
         public IBody2 Body { get; set; }
 
         public Options_e Options { get; set; }

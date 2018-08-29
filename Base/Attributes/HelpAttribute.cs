@@ -13,12 +13,23 @@ using Xarial.VPages.Framework.Base;
 
 namespace CodeStack.SwEx.Pmp.Attributes
 {
-    public class PropertyManagerPageHelpAttribute : Attribute, IAttribute
+    /// <summary>
+    /// Provides the additional help links for the page
+    /// </summary>
+    /// <remarks>Applied to the model class</remarks>
+    public class HelpAttribute : Attribute, IAttribute
     {
+        /// <summary>
+        /// Link to help documentation
+        /// </summary>
         public string HelpLink { get; private set; }
+
+        /// <summary>
+        /// Link to what's new page
+        /// </summary>
         public string WhatsNewLink { get; private set; }
 
-        public PropertyManagerPageHelpAttribute(string helpLink, string whatsNewLink = "")
+        public HelpAttribute(string helpLink, string whatsNewLink = "")
         {
             HelpLink = helpLink;
             WhatsNewLink = whatsNewLink;

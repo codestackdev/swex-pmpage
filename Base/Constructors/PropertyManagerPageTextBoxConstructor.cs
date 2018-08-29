@@ -30,17 +30,18 @@ namespace CodeStack.SwEx.Pmp.Constructors
         {
         }
 
-        protected override PropertyManagerPageTextBoxEx CreateControl(IPropertyManagerPageTextbox swCtrl, IAttributeSet atts, THandler handler)
+        protected override PropertyManagerPageTextBoxEx CreateControl(
+            IPropertyManagerPageTextbox swCtrl, IAttributeSet atts, THandler handler, short height)
         {
-            if (atts.Has<PropertyManagerPageTextBoxStyleAttribute>())
+            if (height != -1)
             {
-                var style = atts.Get<PropertyManagerPageTextBoxStyleAttribute>();
+                swCtrl.Height = height;
+            }
 
-                if (style.Height != -1)
-                {
-                    swCtrl.Height = style.Height;
-                }
-
+            if (atts.Has<TextBoxOptionsAttribute>())
+            {
+                var style = atts.Get<TextBoxOptionsAttribute>();
+                
                 if (style.Style != 0)
                 {
                     swCtrl.Style = (int)style.Style;

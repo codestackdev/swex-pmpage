@@ -130,9 +130,8 @@
     <Reference Include="System.XML">
       <Name>System.XML</Name>
     </Reference>
-    <Reference Include="Xarial.VPages.Framework, Version=0.1.0.0, Culture=neutral, PublicKeyToken=60c8d43397840914, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\Debug\Xarial.VPages.Framework.dll</HintPath>
+    <Reference Include="Xarial.VPages.Framework">
+      <HintPath>..\..\..\_vpages-sw-dev\Base\bin\Debug\Xarial.VPages.Framework.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

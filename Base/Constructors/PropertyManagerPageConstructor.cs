@@ -36,9 +36,9 @@ namespace CodeStack.SwEx.Pmp.Constructors
 
             swPropertyManagerPageOptions_e opts;
 
-            if (atts.Has<PropertyManagerPageOptionsAttribute>())
+            if (atts.Has<PageOptionsAttribute>())
             {
-                opts = atts.Get<PropertyManagerPageOptionsAttribute>().Options;
+                opts = atts.Get<PageOptionsAttribute>().Options;
             }
             else
             {
@@ -48,9 +48,9 @@ namespace CodeStack.SwEx.Pmp.Constructors
             var helpLink = "";
             var whatsNewLink = "";
 
-            if (atts.Has<PropertyManagerPageHelpAttribute>())
+            if (atts.Has<HelpAttribute>())
             {
-                var helpAtt = atts.Get<PropertyManagerPageHelpAttribute>();
+                var helpAtt = atts.Get<HelpAttribute>();
 
                 if (!string.IsNullOrEmpty(helpAtt.WhatsNewLink))
                 {

@@ -34,52 +34,53 @@ namespace CodeStack.SwEx.Pmp.Constructors
         {
             m_Type = type;
         }
-        
+
         protected override TControl Create(PropertyManagerPageGroupEx<THandler> group, IAttributeSet atts)
         {
             return AddControl(
-                (i, t, n, a, o, d) => group.Group.AddControl2(
-                    i, t, n, a, o, d)
-                    as TControlSw, atts, group.Handler);
+                (i, t, n, a, o, d) => group.Group.AddControl2(i, t, n, a, o, d) as TControlSw,
+                atts, group.Handler);
         }
 
         protected override TControl Create(PropertyManagerPagePageEx<THandler> page, IAttributeSet atts)
         {
             return AddControl(
-                (i, t, n, a, o, d) => page.Page.AddControl2(
-                    i, t, n, a, o, d)
-                    as TControlSw, atts, page.Handler);
+                (i, t, n, a, o, d) => page.Page.AddControl2(i, t, n, a, o, d) as TControlSw,
+                atts, page.Handler);
         }
 
         private TControl AddControl
             (CreateControlDelegate<TControlSw> creator,
             IAttributeSet atts, THandler handler)
         {
-            var ctrl = AddControl(atts, m_Type, creator);
+            short height;
+            var ctrl = AddControl(atts, m_Type, creator, out height);
 
-            return CreateControl(ctrl, atts, handler);
+            return CreateControl(ctrl, atts, handler, height);
         }
 
-        protected abstract TControl CreateControl(TControlSw swCtrl, IAttributeSet atts, THandler handler);
+        protected abstract TControl CreateControl(TControlSw swCtrl, IAttributeSet atts, THandler handler, short height);
         
         protected TSwControl AddControl<TSwControl>(IAttributeSet atts, 
-            swPropertyManagerPageControlType_e type, CreateControlDelegate<TSwControl> creator)
+            swPropertyManagerPageControlType_e type, CreateControlDelegate<TSwControl> creator, out short height)
         {
-            PropertyManagerPageControlOptionsAttribute opts;
+            ControlOptionsAttribute opts;
 
-            if (atts.Has<PropertyManagerPageControlOptionsAttribute>())
+            if (atts.Has<ControlOptionsAttribute>())
             {
-                opts = atts.Get<PropertyManagerPageControlOptionsAttribute>();
+                opts = atts.Get<ControlOptionsAttribute>();
             }
             else
             {
-                opts = new PropertyManagerPageControlOptionsAttribute();
+                opts = new ControlOptionsAttribute();
             }
 
             var id = atts.Id;
             var name = atts.Name;
             var tooltip = atts.Description;
-            var ctrl = creator.Invoke(id, (short)type, name, (short)opts.Align, (short)opts.Options, tooltip);
+            height = opts.Height;
+            var ctrl = creator.Invoke(id, (short)type, name, (short)opts.Align,
+                (short)opts.Options, tooltip);
 
             var swCtrl = ctrl as SolidWorks.Interop.sldworks.IPropertyManagerPageControl;
 
@@ -110,13 +111,12 @@ namespace CodeStack.SwEx.Pmp.Constructors
 
             if (opts.ResizeOptions != 0)
             {
-
                 swCtrl.OptionsForResize = (int)opts.ResizeOptions;
             }
 
-            if (atts.Has<PropertyManagerPageControlAttributionAttribute>())
+            if (atts.Has<ControlAttributionAttribute>())
             {
-                var attribution = atts.Get<PropertyManagerPageControlAttributionAttribute>();
+                var attribution = atts.Get<ControlAttributionAttribute>();
 
                 if (attribution.StandardIcon != 0)
                 {
