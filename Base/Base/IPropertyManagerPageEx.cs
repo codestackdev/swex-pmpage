@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace CodeStack.SwEx.Pmp.Base
+namespace CodeStack.SwEx.PMPage.Base
 {
     /// <summary>
     /// Represents the wrapper for the property manager page which builds the user interface 

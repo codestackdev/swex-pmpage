@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace CodeStack.SwEx.Pmp.Base
+namespace CodeStack.SwEx.PMPage.Base
 {
     /// <summary>
     /// Provides additional user interface related handlers and options

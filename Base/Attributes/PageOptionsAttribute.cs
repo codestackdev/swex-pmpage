@@ -12,7 +12,7 @@ using System.Linq;
 using System.Text;
 using Xarial.VPages.Framework.Base;
 
-namespace CodeStack.SwEx.Pmp.Attributes
+namespace CodeStack.SwEx.PMPage.Attributes
 {
     /// <summary>
     /// Property manager page options

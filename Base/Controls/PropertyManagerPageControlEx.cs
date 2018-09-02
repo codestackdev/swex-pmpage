@@ -12,7 +12,7 @@ using System.Text;
 using Xarial.VPages.Framework.Base;
 using Xarial.VPages.Framework.PageElements;
 
-namespace CodeStack.SwEx.Pmp.Controls
+namespace CodeStack.SwEx.PMPage.Controls
 {
     internal interface IPropertyManagerPageControlEx : IControl
     {

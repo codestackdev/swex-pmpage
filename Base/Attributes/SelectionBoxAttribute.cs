@@ -5,13 +5,13 @@
 //Product URL: https://www.codestack.net/labs/solidworks/swex/pmp/
 //**********************
 
-using CodeStack.SwEx.Pmp.Constructors;
+using CodeStack.SwEx.PMPage.Constructors;
 using SolidWorks.Interop.swconst;
 using SolidWorks.Interop.sldworks;
 using Xarial.VPages.Framework.Attributes;
 using System.Collections.Generic;
 
-namespace CodeStack.SwEx.Pmp.Attributes
+namespace CodeStack.SwEx.PMPage.Attributes
 {
     /// <summary>
     /// Sets the current control to be a selection box

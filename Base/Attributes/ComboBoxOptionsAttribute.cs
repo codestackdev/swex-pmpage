@@ -9,7 +9,7 @@ using SolidWorks.Interop.swconst;
 using System;
 using Xarial.VPages.Framework.Base;
 
-namespace CodeStack.SwEx.Pmp.Attributes
+namespace CodeStack.SwEx.PMPage.Attributes
 {
     /// <summary>
     /// Provides additional options for the drop-down list box

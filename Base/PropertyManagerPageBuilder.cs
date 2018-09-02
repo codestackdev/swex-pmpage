@@ -5,12 +5,12 @@
 //Product URL: https://www.codestack.net/labs/solidworks/swex/pmp/
 //**********************
 
-using CodeStack.SwEx.Pmp.Constructors;
-using CodeStack.SwEx.Pmp.Controls;
+using CodeStack.SwEx.PMPage.Constructors;
+using CodeStack.SwEx.PMPage.Controls;
 using Xarial.VPages.Core;
 using Xarial.VPages.Framework.Binders;
 
-namespace CodeStack.SwEx.Pmp
+namespace CodeStack.SwEx.PMPage
 {
     internal class PropertyManagerPageBuilder<THandler>
         : PageBuilder<PropertyManagerPagePageEx<THandler>, PropertyManagerPageGroupEx<THandler>, IPropertyManagerPageControlEx>

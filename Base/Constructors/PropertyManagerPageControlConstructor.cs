@@ -5,8 +5,8 @@
 //Product URL: https://www.codestack.net/labs/solidworks/swex/pmp/
 //**********************
 
-using CodeStack.SwEx.Pmp.Attributes;
-using CodeStack.SwEx.Pmp.Controls;
+using CodeStack.SwEx.PMPage.Attributes;
+using CodeStack.SwEx.PMPage.Controls;
 using SolidWorks.Interop.swconst;
 using System;
 using System.Collections.Generic;
@@ -16,7 +16,7 @@ using System.Text;
 using Xarial.VPages.Framework.Base;
 using Xarial.VPages.Framework.Constructors;
 
-namespace CodeStack.SwEx.Pmp.Constructors
+namespace CodeStack.SwEx.PMPage.Constructors
 {
     internal abstract class PropertyManagerPageControlConstructor<THandler, TControl, TControlSw>
             : ControlConstructor<TControl, PropertyManagerPageGroupEx<THandler>, PropertyManagerPagePageEx<THandler>>

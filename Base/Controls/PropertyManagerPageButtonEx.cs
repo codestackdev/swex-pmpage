@@ -10,7 +10,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace CodeStack.SwEx.Pmp.Controls
+namespace CodeStack.SwEx.PMPage.Controls
 {
     internal class PropertyManagerPageButtonEx
     {

@@ -1,8 +1,8 @@
-﻿using CodeStack.SwEx.Pmp.Base;
-using CodeStack.SwEx.Pmp.Controls;
+﻿using CodeStack.SwEx.PMPage.Base;
+using CodeStack.SwEx.PMPage.Controls;
 using SolidWorks.Interop.sldworks;
 
-namespace CodeStack.SwEx.Pmp
+namespace CodeStack.SwEx.PMPage
 {
     /// <summary>
     /// <inheritdoc/>

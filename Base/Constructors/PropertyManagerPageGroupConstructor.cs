@@ -5,7 +5,7 @@
 //Product URL: https://www.codestack.net/labs/solidworks/swex/pmp/
 //**********************
 
-using CodeStack.SwEx.Pmp.Controls;
+using CodeStack.SwEx.PMPage.Controls;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,7 +16,7 @@ using SolidWorks.Interop.swconst;
 using Xarial.VPages.Framework.Attributes;
 using Xarial.VPages.Framework.Core;
 
-namespace CodeStack.SwEx.Pmp.Constructors
+namespace CodeStack.SwEx.PMPage.Constructors
 {
     [DefaultType(typeof(SpecialTypes.ComplexType))]
     internal class PropertyManagerPageGroupConstructor<THandler> : GroupConstructor<PropertyManagerPageGroupEx<THandler>, PropertyManagerPagePageEx<THandler>>
@@ -24,7 +24,8 @@ namespace CodeStack.SwEx.Pmp.Constructors
     {
         protected override PropertyManagerPageGroupEx<THandler> Create(PropertyManagerPageGroupEx<THandler> group, IAttributeSet atts)
         {
-            throw new NotSupportedException();
+            //NOTE: nested groups are not supported in SOLIDWORKS, creating the group in page instead
+            return Create(group.ParentPage, atts);
         }
 
         protected override PropertyManagerPageGroupEx<THandler> Create(PropertyManagerPagePageEx<THandler> page, IAttributeSet atts)
@@ -33,7 +34,7 @@ namespace CodeStack.SwEx.Pmp.Constructors
                 (int)(swAddGroupBoxOptions_e.swGroupBoxOptions_Expanded
                 | swAddGroupBoxOptions_e.swGroupBoxOptions_Visible)) as SolidWorks.Interop.sldworks.IPropertyManagerPageGroup;
 
-            return new PropertyManagerPageGroupEx<THandler>(atts.Id, page.Handler, grp, page.App);
+            return new PropertyManagerPageGroupEx<THandler>(atts.Id, page.Handler, grp, page.App, page);
         }
     }
 }

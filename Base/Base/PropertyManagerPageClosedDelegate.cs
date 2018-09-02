@@ -1,6 +1,6 @@
 ﻿using SolidWorks.Interop.swconst;
 
-namespace CodeStack.SwEx.Pmp.Base
+namespace CodeStack.SwEx.PMPage.Base
 {
     /// <summary>
     /// Delegate for handling the parameters of property manager page closed event

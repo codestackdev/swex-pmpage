@@ -12,11 +12,12 @@ using System.Linq;
 using System.Text;
 using Xarial.VPages.Framework.Base;
 
-namespace CodeStack.SwEx.Pmp.Attributes
+namespace CodeStack.SwEx.PMPage.Attributes
 {
     /// <summary>
     /// Provides additional options for number box control
     /// </summary>
+    /// <remarks>Applied to all numeric properties (i.e. <see cref="double"/>, <see cref="int"/>)</remarks>
     public class NumberBoxOptionsAttribute : Attribute, IAttribute
     {
         /// <summary>

@@ -7,9 +7,9 @@ using SolidWorks.Interop.swconst;
 using SolidWorksTools;
 using SolidWorksTools.File;
 using System.Collections.Generic;
-using CodeStack.SwEx.Pmp;
+using CodeStack.SwEx.PMPage;
 using System.Linq;
-using CodeStack.SwEx.Pmp.Controls;
+using CodeStack.SwEx.PMPage.Controls;
 
 namespace SwVPagesSample
 {
@@ -147,8 +147,6 @@ namespace SwVPagesSample
             m_ActivePage = new PropertyManagerPageEx<PropertyPageEventsHandler, DataModel>(m_Model, m_App);
 
             m_ActivePage.Show();
-            //m_ActivePage = m_PmpBuilder.CreatePage(m_Model);
-            //m_ActivePage.Page.Show2(0);
         }
 
         public int EnablePMP()

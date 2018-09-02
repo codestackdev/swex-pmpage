@@ -5,7 +5,7 @@
 //Product URL: https://www.codestack.net/labs/solidworks/swex/pmp/
 //**********************
 
-using CodeStack.SwEx.Pmp.Base;
+using CodeStack.SwEx.PMPage.Base;
 using SolidWorks.Interop.sldworks;
 using SolidWorks.Interop.swconst;
 using SolidWorks.Interop.swpublished;
@@ -15,7 +15,7 @@ using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
 
-namespace CodeStack.SwEx.Pmp
+namespace CodeStack.SwEx.PMPage
 {
     /// <summary>
     /// <inheritdoc/>

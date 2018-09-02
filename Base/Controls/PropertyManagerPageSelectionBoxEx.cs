@@ -15,7 +15,7 @@ using System.Runtime.InteropServices;
 using System.Text;
 using Xarial.VPages.Framework.PageElements;
 
-namespace CodeStack.SwEx.Pmp.Controls
+namespace CodeStack.SwEx.PMPage.Controls
 {
     internal class PropertyManagerPageSelectionBoxEx : PropertyManagerPageControlEx<object>
     {

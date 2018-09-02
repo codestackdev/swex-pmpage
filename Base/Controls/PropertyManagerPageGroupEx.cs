@@ -12,7 +12,7 @@ using System.Linq;
 using System.Text;
 using Xarial.VPages.Framework.PageElements;
 
-namespace CodeStack.SwEx.Pmp.Controls
+namespace CodeStack.SwEx.PMPage.Controls
 {
     internal class PropertyManagerPageGroupEx<THandler> : Group
         where THandler : PropertyManagerPageHandlerEx, new()
@@ -21,13 +21,16 @@ namespace CodeStack.SwEx.Pmp.Controls
         public ISldWorks App { get; private set; }
         public THandler Handler { get; private set; }
 
+        internal PropertyManagerPagePageEx<THandler> ParentPage { get; private set; }
+
         internal PropertyManagerPageGroupEx(int id, THandler handler,
             IPropertyManagerPageGroup group,
-            ISldWorks app) : base(id)
+            ISldWorks app, PropertyManagerPagePageEx<THandler> parentPage) : base(id)
         {
             Group = group;
             Handler = handler;
             App = app;
+            ParentPage = parentPage;
         }
     }
 }

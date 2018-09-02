@@ -7,8 +7,8 @@
     <ProjectGuid>{8EC761A6-E338-4ED1-AF15-5F159341DA9C}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>CodeStack.SwEx.Pmp</RootNamespace>
-    <AssemblyName>CodeStack.SwEx.Pmp</AssemblyName>
+    <RootNamespace>CodeStack.SwEx.PMPage</RootNamespace>
+    <AssemblyName>CodeStack.SwEx.PMPage</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -28,7 +28,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <DocumentationFile>bin\Release\CodeStack.SwEx.Pmp.xml</DocumentationFile>
+    <DocumentationFile>bin\Release\CodeStack.SwEx.PMPage.xml</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup>
     <SignAssembly>false</SignAssembly>

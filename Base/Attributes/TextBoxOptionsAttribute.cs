@@ -12,11 +12,12 @@ using System.Linq;
 using System.Text;
 using Xarial.VPages.Framework.Base;
 
-namespace CodeStack.SwEx.Pmp.Attributes
+namespace CodeStack.SwEx.PMPage.Attributes
 {
     /// <summary>
     /// Additional options for text box control
     /// </summary>
+    /// <remarks>Applied to property of type <see cref="string"/></remarks>
     public class TextBoxOptionsAttribute : Attribute, IAttribute
     {
         /// <summary>

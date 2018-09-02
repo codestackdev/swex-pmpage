@@ -11,7 +11,7 @@ using System.Linq;
 using System.Text;
 using Xarial.VPages.Framework.PageElements;
 
-namespace CodeStack.SwEx.Pmp.Controls
+namespace CodeStack.SwEx.PMPage.Controls
 {
     internal class PropertyManagerPageTextBoxEx : PropertyManagerPageControlEx<string>
     {

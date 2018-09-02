@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace CodeStack.SwEx.Pmp.Base
+namespace CodeStack.SwEx.PMPage.Base
 {
     /// <summary>
     /// Delegate for handling the parameters of property manager page closing event

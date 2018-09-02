@@ -1,4 +1,4 @@
-﻿using CodeStack.SwEx.Pmp.Attributes;
+﻿using CodeStack.SwEx.PMPage.Attributes;
 using SolidWorks.Interop.swconst;
 using System;
 using System.Collections.Generic;
@@ -40,6 +40,9 @@ namespace SwVPagesSample
         public IBody2 Body { get; set; }
 
         public Options_e Options { get; set; }
+
+        [DisplayName("Second Data Group")]
+        public DataGroup1 Group1 { get; set; }
     }
 
     public class DataGroup
@@ -52,5 +55,17 @@ namespace SwVPagesSample
         Option1,
         Option2,
         Option3
+    }
+
+    public class DataGroup1
+    {
+        public int Number { get; set; }
+
+        public NestedDataGroup NestedGroup { get; set; }
+    }
+
+    public class NestedDataGroup
+    {
+        public double Double { get; set; }
     }
 }

@@ -5,7 +5,7 @@
 //Product URL: https://www.codestack.net/labs/solidworks/swex/pmp/
 //**********************
 
-using CodeStack.SwEx.Pmp.Controls;
+using CodeStack.SwEx.PMPage.Controls;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,11 +14,11 @@ using Xarial.VPages.Framework.Attributes;
 using Xarial.VPages.Framework.Constructors;
 using Xarial.VPages.Framework.Base;
 using SolidWorks.Interop.swconst;
-using CodeStack.SwEx.Pmp.Attributes;
+using CodeStack.SwEx.PMPage.Attributes;
 using System.Drawing;
 using SolidWorks.Interop.sldworks;
 
-namespace CodeStack.SwEx.Pmp.Constructors
+namespace CodeStack.SwEx.PMPage.Constructors
 {
     [DefaultType(typeof(int))]
     [DefaultType(typeof(double))]

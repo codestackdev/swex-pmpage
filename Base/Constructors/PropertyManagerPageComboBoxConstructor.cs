@@ -5,7 +5,7 @@
 //Product URL: https://www.codestack.net/labs/solidworks/swex/pmp/
 //**********************
 
-using CodeStack.SwEx.Pmp.Controls;
+using CodeStack.SwEx.PMPage.Controls;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,9 +16,9 @@ using SolidWorks.Interop.swconst;
 using Xarial.VPages.Framework.Attributes;
 using Xarial.VPages.Framework.Core;
 using SolidWorks.Interop.sldworks;
-using CodeStack.SwEx.Pmp.Attributes;
+using CodeStack.SwEx.PMPage.Attributes;
 
-namespace CodeStack.SwEx.Pmp.Constructors
+namespace CodeStack.SwEx.PMPage.Constructors
 {
     [DefaultType(typeof(SpecialTypes.EnumType))]
     internal class PropertyManagerPageComboBoxConstructor<THandler>
