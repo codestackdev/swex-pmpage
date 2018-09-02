@@ -2,6 +2,7 @@
 using SolidWorks.Interop.swpublished;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 
@@ -10,6 +11,8 @@ namespace CodeStack.SwEx.PMPage.Base
     /// <summary>
     /// Provides additional user interface related handlers and options
     /// </summary>
+    [Browsable(false)]
+    [EditorBrowsable(EditorBrowsableState.Never)]
     public interface IPropertyManagerPageHandlerEx
     {
         /// <summary>

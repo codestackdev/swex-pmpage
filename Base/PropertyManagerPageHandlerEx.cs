@@ -17,9 +17,7 @@ using System.Text;
 
 namespace CodeStack.SwEx.PMPage
 {
-    /// <summary>
     /// <inheritdoc/>
-    /// </summary>
     [ComVisible(true)]
     public abstract class PropertyManagerPageHandlerEx : IPropertyManagerPageHandlerEx, IPropertyManagerPage2Handler9
     {
@@ -32,19 +30,13 @@ namespace CodeStack.SwEx.PMPage
         internal event Action HelpRequested;
         internal event Action WhatsNewRequested;
 
-        /// <summary>
         /// <inheritdoc/>
-        /// </summary>
         public event Action DataChanged;
 
-        /// <summary>
         /// <inheritdoc/>
-        /// </summary>
         public event PropertyManagerPageClosingDelegate Closing;
 
-        /// <summary>
         /// <inheritdoc/>
-        /// </summary>
         public event PropertyManagerPageClosedDelegate Closed;
 
         private swPropertyManagerPageCloseReasons_e m_CloseReason;

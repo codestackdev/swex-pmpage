@@ -130,8 +130,8 @@
     <Reference Include="System.XML">
       <Name>System.XML</Name>
     </Reference>
-    <Reference Include="Xarial.VPages.Framework">
-      <HintPath>..\..\..\_vpages-sw-dev\Base\bin\Debug\Xarial.VPages.Framework.dll</HintPath>
+    <Reference Include="Xarial.VPages.Framework, Version=0.2.0.0, Culture=neutral, PublicKeyToken=6dcec729ca6a1943, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Xarial.VPages.Framework.0.2.0-beta\lib\net40\Xarial.VPages.Framework.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -158,6 +158,9 @@
       <Project>{8ec761a6-e338-4ed1-af15-5f159341da9c}</Project>
       <Name>Base</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

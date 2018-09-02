@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 
@@ -13,6 +14,8 @@ namespace CodeStack.SwEx.PMPage.Base
     /// Must be com visible</typeparam>
     /// <typeparam name="TModel">Type used both as the design layout and data model</typeparam>
     /// <remarks>The pointer to this page must be stored on a class level to avoid garbage collection</remarks>
+    [Browsable(false)]
+    [EditorBrowsable(EditorBrowsableState.Never)]
     public interface IPropertyManagerPageEx<THandler, TModel>
         where THandler : PropertyManagerPageHandlerEx, new()
     {

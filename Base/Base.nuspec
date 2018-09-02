@@ -1,13 +1,14 @@
 <?xml version="1.0"?>
 <package >
   <metadata>
-    <id>CodeStack.VPages.Sw</id>
-    <version>0.1.0-beta</version>
-    <title>vPages for SOLIDWORKS</title>
+    <id>CodeStack.SwEx.PMPage</id>
+    <version>0.2.0-beta</version>
+    <title>Framework for developing property manager pages in SOLIDWORKS</title>
     <authors>CodeStack</authors>
     <owners>CodeStack</owners>
     <licenseUrl>https://github.com/codestack-net-dev/vpages-sw/blob/master/LICENSE</licenseUrl>
-    <projectUrl>https://www.codestack.net/labs/solidworks/vpages/</projectUrl>
+    <projectUrl>https://www.codestack.net/labs/solidworks/swex/pmpage</projectUrl>
+    <iconUrl>https://www.codestack.net/labs/solidworks/swex/pmpage/logo.png</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Data driven SOLIDWORKS property manager pages based on vPages framework</description>
     <releaseNotes></releaseNotes>

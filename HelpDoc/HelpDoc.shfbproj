@@ -42,17 +42,31 @@
     <PresentationStyle>VS2013</PresentationStyle>
     <Preliminary>False</Preliminary>
     <NamingMethod>MemberName</NamingMethod>
-    <HelpTitle>SwEx.Pmp</HelpTitle>
+    <HelpTitle>SwEx.PMPage</HelpTitle>
     <ContentPlacement>AboveNamespaces</ContentPlacement>
     <VisibleItems>InheritedMembers, EditorBrowsableNever, NonBrowsable</VisibleItems>
     <CopyrightHref>https://www.codestack.net</CopyrightHref>
     <CopyrightText>Copyright &amp;#169%3b CodeStack  2018</CopyrightText>
     <FeedbackEMailAddress>codestack.net%40gmail.com</FeedbackEMailAddress>
     <FeedbackEMailLinkText>Contact Us</FeedbackEMailLinkText>
-    <ProjectSummary>SwEx.Pmp is a library for developing SOLIDWORKS property manager pages</ProjectSummary>
+    <ProjectSummary>SwEx.PMPage is a library for developing SOLIDWORKS property manager pages</ProjectSummary>
     <DocumentationSources>
       <DocumentationSource sourceFile="..\Base\Base.csproj" xmlns="" />
     </DocumentationSources>
+    <NamespaceSummaries>
+      <NamespaceSummaryItem name="CodeStack.SwEx.PMPage" isDocumented="True">Main classes for SwEx.PMPage framework</NamespaceSummaryItem>
+<NamespaceSummaryItem name="CodeStack.SwEx.PMPage.Attributes" isDocumented="True">Attributes collection for SwEx.PMPage framework</NamespaceSummaryItem>
+<NamespaceSummaryItem name="CodeStack.SwEx.PMPage.Base" isDocumented="True">Base classes and interfaces for SwEx.PMPage framework</NamespaceSummaryItem></NamespaceSummaries>
+    <ApiFilter>
+      <Filter entryType="Namespace" fullName="CodeStack.SwEx.PMPage" isExposed="False">
+  <Filter entryType="Class" fullName="CodeStack.SwEx.PMPage.PropertyManagerPageEx`2" filterName="PropertyManagerPageEx`2" isExposed="True" />
+  <Filter entryType="Class" fullName="CodeStack.SwEx.PMPage.PropertyManagerPageHandlerEx" filterName="PropertyManagerPageHandlerEx" isExposed="False">
+    <Filter entryType="Event" fullName="CodeStack.SwEx.PMPage.PropertyManagerPageHandlerEx.Closed" filterName="Closed" isExposed="True" />
+    <Filter entryType="Event" fullName="CodeStack.SwEx.PMPage.PropertyManagerPageHandlerEx.Closing" filterName="Closing" isExposed="True" />
+    <Filter entryType="Event" fullName="CodeStack.SwEx.PMPage.PropertyManagerPageHandlerEx.DataChanged" filterName="DataChanged" isExposed="True" />
+  </Filter>
+</Filter>
+    </ApiFilter>
   </PropertyGroup>
   <!-- There are no properties for these groups.  AnyCPU needs to appear in order for Visual Studio to perform
 			 the build.  The others are optional common platform types that may appear. -->

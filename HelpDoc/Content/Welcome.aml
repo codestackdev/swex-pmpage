@@ -2,7 +2,7 @@
 <topic id="welcome" revisionNumber="1">
 		<developerConceptualDocument xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:xlink="http://www.w3.org/1999/xlink">
 		<introduction>
-			<para>SwEx.Pmp enables SOLIDWORKS  developers to develop property manager pages based on the data model</para>
+			<para>SwEx.PMPage enables SOLIDWORKS  developers to develop property manager pages based on the data model</para>
 		</introduction>
 
 		<relatedTopics>

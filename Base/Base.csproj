@@ -58,8 +58,8 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
-    <Reference Include="Xarial.VPages.Framework">
-      <HintPath>..\..\_vpages-sw-dev\Base\bin\Debug\Xarial.VPages.Framework.dll</HintPath>
+    <Reference Include="Xarial.VPages.Framework, Version=0.2.0.0, Culture=neutral, PublicKeyToken=6dcec729ca6a1943, processorArchitecture=MSIL">
+      <HintPath>..\packages\Xarial.VPages.Framework.0.2.0-beta\lib\net40\Xarial.VPages.Framework.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -98,6 +98,12 @@
     <Compile Include="PropertyManagerPageBuilder.cs" />
     <Compile Include="PropertyManagerPageEx.cs" />
     <Compile Include="PropertyManagerPageHandlerEx.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
