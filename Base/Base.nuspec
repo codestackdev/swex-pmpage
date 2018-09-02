@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>CodeStack.SwEx.PMPage</id>
+    <version>0.2.0-beta</version>
+    <title>Framework for developing property manager pages in SOLIDWORKS</title>
+    <authors>CodeStack</authors>
+    <owners>CodeStack</owners>
+    <licenseUrl>https://github.com/codestack-net-dev/vpages-sw/blob/master/LICENSE</licenseUrl>
+    <projectUrl>https://www.codestack.net/labs/solidworks/swex/pmpage</projectUrl>
+    <iconUrl>https://www.codestack.net/labs/solidworks/swex/pmpage/logo.png</iconUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Data driven SOLIDWORKS property manager pages based on vPages framework</description>
+    <releaseNotes></releaseNotes>
+    <copyright>Copyright © CodeStack 2018</copyright>
+    <tags>Pages PMP SOLIDWORKS Property Manager Page</tags>
+  </metadata>
+  <files>
+    <file src="thirdpty\SolidWorks.Interop.sldworks.dll" target="lib\net40" />
+	<file src="thirdpty\SolidWorks.Interop.swconst.dll" target="lib\net40" />
+	<file src="thirdpty\SolidWorks.Interop.swpublished.dll" target="lib\net40" />
+  </files>
+</package>

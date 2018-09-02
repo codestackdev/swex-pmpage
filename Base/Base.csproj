@@ -1,0 +1,116 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{8EC761A6-E338-4ED1-AF15-5F159341DA9C}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CodeStack.SwEx.PMPage</RootNamespace>
+    <AssemblyName>CodeStack.SwEx.PMPage</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\Release\CodeStack.SwEx.PMPage.xml</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>false</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>
+    </AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="SolidWorks.Interop.sldworks">
+      <HintPath>thirdpty\SolidWorks.Interop.sldworks.dll</HintPath>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="SolidWorks.Interop.swconst">
+      <HintPath>thirdpty\SolidWorks.Interop.swconst.dll</HintPath>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="SolidWorks.Interop.swpublished">
+      <HintPath>thirdpty\SolidWorks.Interop.swpublished.dll</HintPath>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Xarial.VPages.Framework, Version=0.2.0.0, Culture=neutral, PublicKeyToken=6dcec729ca6a1943, processorArchitecture=MSIL">
+      <HintPath>..\packages\Xarial.VPages.Framework.0.2.0-beta\lib\net40\Xarial.VPages.Framework.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Attributes\ControlAttributionAttribute.cs" />
+    <Compile Include="Attributes\ControlOptionsAttribute.cs" />
+    <Compile Include="Attributes\HelpAttribute.cs" />
+    <Compile Include="Attributes\SelectionBoxOptionsAttribute.cs" />
+    <Compile Include="Attributes\NumberBoxOptionsAttribute.cs" />
+    <Compile Include="Attributes\PageOptionsAttribute.cs" />
+    <Compile Include="Attributes\SelectionBoxAttribute.cs" />
+    <Compile Include="Attributes\ComboBoxOptionsAttribute.cs" />
+    <Compile Include="Attributes\TextBoxOptionsAttribute.cs" />
+    <Compile Include="Base\ClosingArg.cs" />
+    <Compile Include="Base\IPropertyManagerPageEx.cs" />
+    <Compile Include="Base\IPropertyManagerPageHandlerEx.cs" />
+    <Compile Include="Base\PropertyManagerPageClosedDelegate.cs" />
+    <Compile Include="Base\PropertyManagerPageClosingDelegate.cs" />
+    <Compile Include="Constructors\PropertyManagerPageConstructor.cs" />
+    <Compile Include="Constructors\PropertyManagerPageControlConstructor.cs" />
+    <Compile Include="Constructors\PropertyManagerPageComboBoxConstructor.cs" />
+    <Compile Include="Constructors\PropertyManagerPageGroupConstructor.cs" />
+    <Compile Include="Constructors\PropertyManagerPageSelectionBoxConstructor.cs" />
+    <Compile Include="Constructors\PropertyManagerPageNumberBoxConstructor.cs" />
+    <Compile Include="Constructors\PropertyManagerPageCheckBoxConstructor.cs" />
+    <Compile Include="Constructors\PropertyManagerPageTextBoxConstructor.cs" />
+    <Compile Include="Controls\PropertyManagerPagePageEx.cs" />
+    <Compile Include="Controls\PropertyManagerPageButtonEx.cs" />
+    <Compile Include="Controls\PropertyManagerPageCheckBoxEx.cs" />
+    <Compile Include="Controls\PropertyManagerPageComboBoxEx.cs" />
+    <Compile Include="Controls\PropertyManagerPageControlEx.cs" />
+    <Compile Include="Controls\PropertyManagerPageGroupEx.cs" />
+    <Compile Include="Controls\PropertyManagerPageNumberBoxEx.cs" />
+    <Compile Include="Controls\PropertyManagerPageSelectionBoxEx.cs" />
+    <Compile Include="Controls\PropertyManagerPageTextBoxEx.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="PropertyManagerPageBuilder.cs" />
+    <Compile Include="PropertyManagerPageEx.cs" />
+    <Compile Include="PropertyManagerPageHandlerEx.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
