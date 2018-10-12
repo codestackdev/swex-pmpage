@@ -19,9 +19,9 @@ namespace CodeStack.SwEx.PMPage.Controls
 
         public SolidWorks.Interop.sldworks.IPropertyManagerPageNumberbox NumberBox { get; private set; }
 
-        public PropertyManagerPageNumberBoxEx(int id,
+        public PropertyManagerPageNumberBoxEx(int id, object tag,
             SolidWorks.Interop.sldworks.IPropertyManagerPageNumberbox numberBox, 
-            PropertyManagerPageHandlerEx handler) : base(id, handler)
+            PropertyManagerPageHandlerEx handler) : base(id, tag, handler)
         {
             NumberBox = numberBox;
             m_Handler.NumberChanged += OnNumberChanged;

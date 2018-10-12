@@ -74,13 +74,17 @@
   <ItemGroup>
     <Compile Include="Attributes\ControlAttributionAttribute.cs" />
     <Compile Include="Attributes\ControlOptionsAttribute.cs" />
+    <Compile Include="Attributes\DependentOn.cs" />
     <Compile Include="Attributes\HelpAttribute.cs" />
+    <Compile Include="Attributes\IgnoreBindingAttribute.cs" />
     <Compile Include="Attributes\SelectionBoxOptionsAttribute.cs" />
     <Compile Include="Attributes\NumberBoxOptionsAttribute.cs" />
     <Compile Include="Attributes\PageOptionsAttribute.cs" />
     <Compile Include="Attributes\SelectionBoxAttribute.cs" />
     <Compile Include="Attributes\ComboBoxOptionsAttribute.cs" />
+    <Compile Include="Attributes\ControlTagAttribute.cs" />
     <Compile Include="Attributes\TextBoxOptionsAttribute.cs" />
+    <Compile Include="Base\DependencyHandler.cs" />
     <Compile Include="Base\ClosingArg.cs" />
     <Compile Include="Base\IPropertyManagerPageEx.cs" />
     <Compile Include="Base\IPropertyManagerPageHandlerEx.cs" />
@@ -109,9 +113,6 @@
     <Compile Include="PropertyManagerPageHandlerEx.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config">
-      <SubType>Designer</SubType>
-    </None>
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

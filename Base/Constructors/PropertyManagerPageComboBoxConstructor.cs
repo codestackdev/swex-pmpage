@@ -55,7 +55,7 @@ namespace CodeStack.SwEx.PMPage.Constructors
                 }
             }
 
-            return new PropertyManagerPageComboBoxEx(atts.Id, swCtrl, enumValues.AsReadOnly(), handler);
+            return new PropertyManagerPageComboBoxEx(atts.Id, atts.Tag, swCtrl, enumValues.AsReadOnly(), handler);
         }
     }
 }

@@ -5,6 +5,7 @@
 //Product URL: https://www.codestack.net/labs/solidworks/swex/pmp/
 //**********************
 
+using SolidWorks.Interop.sldworks;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,17 +15,21 @@ using Xarial.VPages.Framework.PageElements;
 
 namespace CodeStack.SwEx.PMPage.Controls
 {
-    internal interface IPropertyManagerPageControlEx : IControl
+    public interface IPropertyManagerPageControlEx : IControl
     {
+        IPropertyManagerPageControl SwControl { get; }
     }
 
-    internal abstract class PropertyManagerPageControlEx<TVal> : Control<TVal>, IPropertyManagerPageControlEx
+    public abstract class PropertyManagerPageControlEx<TVal> : Control<TVal>, IPropertyManagerPageControlEx
     {
         protected PropertyManagerPageHandlerEx m_Handler;
         
-        protected PropertyManagerPageControlEx(int id, PropertyManagerPageHandlerEx handler) : base(id)
+        protected PropertyManagerPageControlEx(int id, object tag, PropertyManagerPageHandlerEx handler) 
+            : base(id, tag)
         {
             m_Handler = handler;
         }
+
+        public IPropertyManagerPageControl SwControl => throw new NotImplementedException();
     }
 }

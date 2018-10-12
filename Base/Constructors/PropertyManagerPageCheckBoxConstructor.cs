@@ -33,7 +33,7 @@ namespace CodeStack.SwEx.PMPage.Constructors
         protected override PropertyManagerPageCheckBoxEx CreateControl(
             IPropertyManagerPageCheckbox swCtrl, IAttributeSet atts, THandler handler, short height)
         {
-            return new PropertyManagerPageCheckBoxEx(atts.Id, swCtrl, handler);
+            return new PropertyManagerPageCheckBoxEx(atts.Id, atts.Tag, swCtrl, handler);
         }
     }
 }

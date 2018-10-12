@@ -48,7 +48,7 @@ namespace CodeStack.SwEx.PMPage.Constructors
                 }
             }
 
-            return new PropertyManagerPageTextBoxEx(atts.Id, swCtrl, handler);
+            return new PropertyManagerPageTextBoxEx(atts.Id, atts.Tag, swCtrl, handler);
         }
     }
 }

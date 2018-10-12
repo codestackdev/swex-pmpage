@@ -27,9 +27,9 @@ namespace CodeStack.SwEx.PMPage.Controls
 
         private Type m_ObjType;
 
-        public PropertyManagerPageSelectionBoxEx(ISldWorks app, int id,
+        public PropertyManagerPageSelectionBoxEx(ISldWorks app, int id, object tag,
             IPropertyManagerPageSelectionbox selBox,
-            PropertyManagerPageHandlerEx handler, Type objType) : base(id, handler)
+            PropertyManagerPageHandlerEx handler, Type objType) : base(id, tag, handler)
         {
             m_App = app;
             SelectionBox = selBox;

@@ -20,9 +20,9 @@ namespace CodeStack.SwEx.PMPage.Controls
 
         public IPropertyManagerPageCheckbox CheckBox { get; private set; }
 
-        public PropertyManagerPageCheckBoxEx(int id,
+        public PropertyManagerPageCheckBoxEx(int id, object tag,
             IPropertyManagerPageCheckbox checkBox,
-            PropertyManagerPageHandlerEx handler) : base(id, handler)
+            PropertyManagerPageHandlerEx handler) : base(id, tag, handler)
         {
             CheckBox = checkBox;
             m_Handler.CheckChanged += OnCheckChanged;

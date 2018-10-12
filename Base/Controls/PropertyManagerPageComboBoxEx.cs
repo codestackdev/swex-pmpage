@@ -23,9 +23,9 @@ namespace CodeStack.SwEx.PMPage.Controls
 
         private ReadOnlyCollection<Enum> m_Values;
 
-        public PropertyManagerPageComboBoxEx(int id,
+        public PropertyManagerPageComboBoxEx(int id, object tag,
             IPropertyManagerPageCombobox comboBox, ReadOnlyCollection<Enum> values,
-            PropertyManagerPageHandlerEx handler) : base(id, handler)
+            PropertyManagerPageHandlerEx handler) : base(id, tag, handler)
         {
             ComboBox = comboBox;
             m_Values = values;

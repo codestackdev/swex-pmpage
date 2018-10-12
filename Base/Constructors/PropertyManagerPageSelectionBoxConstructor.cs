@@ -69,7 +69,8 @@ namespace CodeStack.SwEx.PMPage.Constructors
                 }
             }
 
-            return new PropertyManagerPageSelectionBoxEx(m_App, atts.Id, swCtrl, handler, atts.BoundType);
+            return new PropertyManagerPageSelectionBoxEx(m_App, atts.Id, atts.Tag,
+                swCtrl, handler, atts.BoundType);
         }
     }
 }

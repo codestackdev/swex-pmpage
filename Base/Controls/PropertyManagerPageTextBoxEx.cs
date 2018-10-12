@@ -19,9 +19,9 @@ namespace CodeStack.SwEx.PMPage.Controls
 
         public SolidWorks.Interop.sldworks.IPropertyManagerPageTextbox TextBox { get; private set; }
         
-        internal PropertyManagerPageTextBoxEx(int id,
+        internal PropertyManagerPageTextBoxEx(int id, object tag,
             SolidWorks.Interop.sldworks.IPropertyManagerPageTextbox textBox,
-            PropertyManagerPageHandlerEx handler) : base(id, handler)
+            PropertyManagerPageHandlerEx handler) : base(id, tag, handler)
         {
             TextBox = textBox;
             m_Handler.TextChanged += OnTextChanged;
