@@ -15,19 +15,16 @@ using Xarial.VPages.Framework.PageElements;
 
 namespace CodeStack.SwEx.PMPage.Controls
 {
-    internal class PropertyManagerPageComboBoxEx : PropertyManagerPageControlEx<Enum>
+    internal class PropertyManagerPageComboBoxEx : PropertyManagerPageControlEx<Enum, IPropertyManagerPageCombobox>
     {
         protected override event ControlValueChangedDelegate<Enum> ValueChanged;
-
-        public IPropertyManagerPageCombobox ComboBox { get; private set; }
-
+        
         private ReadOnlyCollection<Enum> m_Values;
 
         public PropertyManagerPageComboBoxEx(int id, object tag,
             IPropertyManagerPageCombobox comboBox, ReadOnlyCollection<Enum> values,
-            PropertyManagerPageHandlerEx handler) : base(id, tag, handler)
+            PropertyManagerPageHandlerEx handler) : base(comboBox, id, tag, handler)
         {
-            ComboBox = comboBox;
             m_Values = values;
             m_Handler.ComboBoxChanged += OnComboBoxChanged;
         }
@@ -42,12 +39,12 @@ namespace CodeStack.SwEx.PMPage.Controls
 
         protected override Enum GetSpecificValue()
         {
-            return m_Values[ComboBox.CurrentSelection];
+            return m_Values[SwControl.CurrentSelection];
         }
 
         protected override void SetSpecificValue(Enum value)
         {
-            ComboBox.CurrentSelection = (short)m_Values.IndexOf(value);
+            SwControl.CurrentSelection = (short)m_Values.IndexOf(value);
         }
     }
 }

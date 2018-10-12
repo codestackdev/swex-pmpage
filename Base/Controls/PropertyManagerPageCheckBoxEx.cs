@@ -14,17 +14,14 @@ using Xarial.VPages.Framework.PageElements;
 
 namespace CodeStack.SwEx.PMPage.Controls
 {
-    internal class PropertyManagerPageCheckBoxEx : PropertyManagerPageControlEx<bool>
+    internal class PropertyManagerPageCheckBoxEx : PropertyManagerPageControlEx<bool, IPropertyManagerPageCheckbox>
     {
         protected override event ControlValueChangedDelegate<bool> ValueChanged;
-
-        public IPropertyManagerPageCheckbox CheckBox { get; private set; }
-
+        
         public PropertyManagerPageCheckBoxEx(int id, object tag,
             IPropertyManagerPageCheckbox checkBox,
-            PropertyManagerPageHandlerEx handler) : base(id, tag, handler)
+            PropertyManagerPageHandlerEx handler) : base(checkBox, id, tag, handler)
         {
-            CheckBox = checkBox;
             m_Handler.CheckChanged += OnCheckChanged;
         }
 
@@ -38,12 +35,12 @@ namespace CodeStack.SwEx.PMPage.Controls
 
         protected override bool GetSpecificValue()
         {
-            return CheckBox.Checked;
+            return SwControl.Checked;
         }
 
         protected override void SetSpecificValue(bool value)
         {
-            CheckBox.Checked = value;
+            SwControl.Checked = value;
         }
     }
 }

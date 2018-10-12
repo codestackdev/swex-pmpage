@@ -5,6 +5,7 @@
 //Product URL: https://www.codestack.net/labs/solidworks/swex/pmp/
 //**********************
 
+using SolidWorks.Interop.sldworks;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,17 +14,14 @@ using Xarial.VPages.Framework.PageElements;
 
 namespace CodeStack.SwEx.PMPage.Controls
 {
-    internal class PropertyManagerPageNumberBoxEx : PropertyManagerPageControlEx<double>
+    internal class PropertyManagerPageNumberBoxEx : PropertyManagerPageControlEx<double, IPropertyManagerPageNumberbox>
     {
         protected override event ControlValueChangedDelegate<double> ValueChanged;
 
-        public SolidWorks.Interop.sldworks.IPropertyManagerPageNumberbox NumberBox { get; private set; }
-
         public PropertyManagerPageNumberBoxEx(int id, object tag,
-            SolidWorks.Interop.sldworks.IPropertyManagerPageNumberbox numberBox, 
-            PropertyManagerPageHandlerEx handler) : base(id, tag, handler)
+            IPropertyManagerPageNumberbox numberBox, 
+            PropertyManagerPageHandlerEx handler) : base(numberBox, id, tag, handler)
         {
-            NumberBox = numberBox;
             m_Handler.NumberChanged += OnNumberChanged;
         }
 
@@ -37,12 +35,12 @@ namespace CodeStack.SwEx.PMPage.Controls
         
         protected override double GetSpecificValue()
         {
-            return NumberBox.Value;
+            return SwControl.Value;
         }
 
         protected override void SetSpecificValue(double value)
         {
-            NumberBox.Value = value;
+            SwControl.Value = value;
         }
     }
 }

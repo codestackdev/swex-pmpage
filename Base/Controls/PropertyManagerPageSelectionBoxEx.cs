@@ -17,11 +17,9 @@ using Xarial.VPages.Framework.PageElements;
 
 namespace CodeStack.SwEx.PMPage.Controls
 {
-    internal class PropertyManagerPageSelectionBoxEx : PropertyManagerPageControlEx<object>
+    internal class PropertyManagerPageSelectionBoxEx : PropertyManagerPageControlEx<object, IPropertyManagerPageSelectionbox>
     {
         protected override event ControlValueChangedDelegate<object> ValueChanged;
-
-        public IPropertyManagerPageSelectionbox SelectionBox { get; private set; }
 
         private ISldWorks m_App;
 
@@ -29,10 +27,9 @@ namespace CodeStack.SwEx.PMPage.Controls
 
         public PropertyManagerPageSelectionBoxEx(ISldWorks app, int id, object tag,
             IPropertyManagerPageSelectionbox selBox,
-            PropertyManagerPageHandlerEx handler, Type objType) : base(id, tag, handler)
+            PropertyManagerPageHandlerEx handler, Type objType) : base(selBox, id, tag, handler)
         {
             m_App = app;
-            SelectionBox = selBox;
             m_ObjType = objType;
 
             m_Handler.SelectionChanged += OnSelectionChanged;
@@ -54,9 +51,9 @@ namespace CodeStack.SwEx.PMPage.Controls
             {
                 var list = Activator.CreateInstance(m_ObjType) as IList;
 
-                for (int i = 0; i < SelectionBox.ItemCount; i++)
+                for (int i = 0; i < SwControl.ItemCount; i++)
                 {
-                    var selIndex = SelectionBox.SelectionIndex[i];
+                    var selIndex = SwControl.SelectionIndex[i];
                     var obj = selMgr.GetSelectedObject6(selIndex, -1);
                     list.Add(obj);
                 }
@@ -65,11 +62,11 @@ namespace CodeStack.SwEx.PMPage.Controls
             }
             else
             {
-                Debug.Assert(SelectionBox.ItemCount <= 1, "Single entity only");
+                Debug.Assert(SwControl.ItemCount <= 1, "Single entity only");
 
-                if (SelectionBox.ItemCount == 1)
+                if (SwControl.ItemCount == 1)
                 {
-                    var selIndex = SelectionBox.SelectionIndex[0];
+                    var selIndex = SwControl.SelectionIndex[0];
                     var obj = selMgr.GetSelectedObject6(selIndex, -1);
                     return obj;
                 }
@@ -82,7 +79,7 @@ namespace CodeStack.SwEx.PMPage.Controls
 
         protected override void SetSpecificValue(object value)
         {
-            SelectionBox.SetSelectionFocus();
+            SwControl.SetSelectionFocus();
 
             if (value != null)
             {
@@ -103,7 +100,7 @@ namespace CodeStack.SwEx.PMPage.Controls
                 }
 
                 var selData = m_App.IActiveDoc2.ISelectionManager.CreateSelectData();
-                selData.Mark = SelectionBox.Mark;
+                selData.Mark = SwControl.Mark;
                 m_App.IActiveDoc2.Extension.MultiSelect2(disps.ToArray(), true, selData.Mark);
             }
         }
