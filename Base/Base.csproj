@@ -74,9 +74,10 @@
   <ItemGroup>
     <Compile Include="Attributes\ControlAttributionAttribute.cs" />
     <Compile Include="Attributes\ControlOptionsAttribute.cs" />
-    <Compile Include="Attributes\DependentOn.cs" />
+    <Compile Include="Attributes\DependentOnAttribute.cs" />
     <Compile Include="Attributes\HelpAttribute.cs" />
     <Compile Include="Attributes\IgnoreBindingAttribute.cs" />
+    <Compile Include="Attributes\MessageAttribute.cs" />
     <Compile Include="Attributes\SelectionBoxOptionsAttribute.cs" />
     <Compile Include="Attributes\NumberBoxOptionsAttribute.cs" />
     <Compile Include="Attributes\PageOptionsAttribute.cs" />
@@ -88,6 +89,7 @@
     <Compile Include="Base\ClosingArg.cs" />
     <Compile Include="Base\IPropertyManagerPageEx.cs" />
     <Compile Include="Base\IPropertyManagerPageHandlerEx.cs" />
+    <Compile Include="Base\ISelectionCustomFilter.cs" />
     <Compile Include="Base\PropertyManagerPageClosedDelegate.cs" />
     <Compile Include="Base\PropertyManagerPageClosingDelegate.cs" />
     <Compile Include="Constructors\PropertyManagerPageConstructor.cs" />

@@ -21,11 +21,15 @@ namespace CodeStack.SwEx.PMPage
     [ComVisible(true)]
     public abstract class PropertyManagerPageHandlerEx : IPropertyManagerPageHandlerEx, IPropertyManagerPage2Handler9
     {
+        internal delegate void SubmitSelectionDelegate(int Id, object Selection, int SelType, ref string ItemText, ref bool res);
+
         internal event Action<int, string> TextChanged;
         internal event Action<int, double> NumberChanged;
         internal event Action<int, bool> CheckChanged;
         internal event Action<int, int> SelectionChanged;
         internal event Action<int, int> ComboBoxChanged;
+        internal event Action<int, int> SubmitSelectionChanged;
+        internal event SubmitSelectionDelegate SubmitSelection;
 
         internal event Action HelpRequested;
         internal event Action WhatsNewRequested;
@@ -206,7 +210,11 @@ namespace CodeStack.SwEx.PMPage
 
         public bool OnSubmitSelection(int Id, object Selection, int SelType, ref string ItemText)
         {
-            return true;
+            var res = true;
+
+            SubmitSelection?.Invoke(Id, Selection, SelType, ref ItemText, ref res);
+
+            return res;
         }
 
         public bool OnTabClicked(int Id)

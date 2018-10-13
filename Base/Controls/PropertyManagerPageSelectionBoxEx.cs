@@ -5,6 +5,7 @@
 //Product URL: https://www.codestack.net/labs/solidworks/swex/pmp/
 //**********************
 
+using CodeStack.SwEx.PMPage.Base;
 using SolidWorks.Interop.sldworks;
 using System;
 using System.Collections;
@@ -25,14 +26,34 @@ namespace CodeStack.SwEx.PMPage.Controls
 
         private Type m_ObjType;
 
+        private ISelectionCustomFilter m_CustomFilter;
+
         public PropertyManagerPageSelectionBoxEx(ISldWorks app, int id, object tag,
             IPropertyManagerPageSelectionbox selBox,
-            PropertyManagerPageHandlerEx handler, Type objType) : base(selBox, id, tag, handler)
+            PropertyManagerPageHandlerEx handler, Type objType, ISelectionCustomFilter customFilter = null)
+            : base(selBox, id, tag, handler)
         {
             m_App = app;
             m_ObjType = objType;
+            m_CustomFilter = customFilter;
 
             m_Handler.SelectionChanged += OnSelectionChanged;
+
+            if (m_CustomFilter != null)
+            {
+                m_Handler.SubmitSelection += OnSubmitSelection;
+            }
+        }
+
+        private void OnSubmitSelection(int Id, object Selection, int SelType, ref string ItemText, ref bool res)
+        {
+            if (Id == this.Id)
+            {
+                Debug.Assert(m_CustomFilter != null, "This event must not be attached if custom filter is not specified");
+
+                res = m_CustomFilter.Filter(this, Selection,
+                    (SolidWorks.Interop.swconst.swSelectType_e)SelType, ref ItemText);
+            }
         }
 
         private void OnSelectionChanged(int id, int count)

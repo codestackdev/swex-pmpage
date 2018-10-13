@@ -10,6 +10,8 @@ using SolidWorks.Interop.swconst;
 using SolidWorks.Interop.sldworks;
 using Xarial.VPages.Framework.Attributes;
 using System.Collections.Generic;
+using System;
+using CodeStack.SwEx.PMPage.Base;
 
 namespace CodeStack.SwEx.PMPage.Attributes
 {
@@ -33,6 +35,11 @@ namespace CodeStack.SwEx.PMPage.Attributes
         /// <remarks>If multiple selections box are used - use different selection marks for each of them
         /// to differentiate the selections</remarks>
         public int SelectionMark { get; private set; }
+        
+        /// <summary>
+        /// Type of custom filter of <see cref="ISelectionCustomFilter"/> type
+        /// </summary>
+        public Type CustomFilter { get; private set; }
 
         public SelectionBoxAttribute(params swSelectType_e[] filters)
             : this(0, filters)
@@ -40,10 +47,16 @@ namespace CodeStack.SwEx.PMPage.Attributes
         }
 
         public SelectionBoxAttribute(int mark, params swSelectType_e[] filters)
+            : this(mark, null, filters)
+        {
+        }
+
+        public SelectionBoxAttribute(int mark, Type customFilter, params swSelectType_e[] filters)
             : base(typeof(IPropertyManagerPageSelectionBoxConstructor))
         {
             Filters = filters;
             SelectionMark = mark;
+            CustomFilter = customFilter;
         }
     }
 }

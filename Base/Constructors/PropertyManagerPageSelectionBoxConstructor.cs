@@ -18,6 +18,7 @@ using CodeStack.SwEx.PMPage.Attributes;
 using System.Drawing;
 using SolidWorks.Interop.sldworks;
 using System.Collections;
+using CodeStack.SwEx.PMPage.Base;
 
 namespace CodeStack.SwEx.PMPage.Constructors
 {
@@ -47,6 +48,19 @@ namespace CodeStack.SwEx.PMPage.Constructors
 
             swCtrl.SingleEntityOnly = !(typeof(IList).IsAssignableFrom(atts.BoundType));
 
+            ISelectionCustomFilter customFilter = null;
+
+            if (selAtt.CustomFilter != null)
+            {
+                customFilter = Activator.CreateInstance(selAtt.CustomFilter) as ISelectionCustomFilter;
+
+                if (customFilter == null)
+                {
+                    throw new InvalidCastException(
+                        $"Specified custom filter of type {selAtt.CustomFilter.FullName} cannot be cast to {typeof(ISelectionCustomFilter).FullName}");
+                }
+            }
+
             if (height == -1)
             {
                 height = 20;
@@ -70,7 +84,7 @@ namespace CodeStack.SwEx.PMPage.Constructors
             }
 
             return new PropertyManagerPageSelectionBoxEx(m_App, atts.Id, atts.Tag,
-                swCtrl, handler, atts.BoundType);
+                swCtrl, handler, atts.BoundType, customFilter);
         }
     }
 }

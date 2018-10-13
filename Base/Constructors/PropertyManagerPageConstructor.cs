@@ -68,6 +68,18 @@ namespace CodeStack.SwEx.PMPage.Constructors
                 (int)opts,
                 handler, ref err) as IPropertyManagerPage2;
 
+            if (atts.Has<MessageAttribute>())
+            {
+                var msgAtt = atts.Get<MessageAttribute>();
+                page.SetMessage3(msgAtt.Text, (int)msgAtt.Visibility,
+                    (int)msgAtt.Expanded, msgAtt.Caption);
+            }
+            else if (!string.IsNullOrEmpty(atts.Description))
+            {
+                page.SetMessage3(atts.Description, (int)swPropertyManagerPageMessageVisibility.swMessageBoxVisible,
+                    (int)swPropertyManagerPageMessageExpanded.swMessageBoxExpand, "");
+            }
+
             return new PropertyManagerPagePageEx<THandler>(page, handler, m_App, helpLink, whatsNewLink);
         }
     }
