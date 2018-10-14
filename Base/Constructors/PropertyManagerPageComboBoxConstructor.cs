@@ -17,6 +17,7 @@ using Xarial.VPages.Framework.Attributes;
 using Xarial.VPages.Framework.Core;
 using SolidWorks.Interop.sldworks;
 using CodeStack.SwEx.PMPage.Attributes;
+using CodeStack.SwEx.Common.Icons;
 
 namespace CodeStack.SwEx.PMPage.Constructors
 {
@@ -25,8 +26,8 @@ namespace CodeStack.SwEx.PMPage.Constructors
         : PropertyManagerPageControlConstructor<THandler, PropertyManagerPageComboBoxEx, IPropertyManagerPageCombobox>
         where THandler : PropertyManagerPageHandlerEx, new()
     {
-        public PropertyManagerPageComboBoxConstructor() 
-            : base(swPropertyManagerPageControlType_e.swControlType_Combobox)
+        public PropertyManagerPageComboBoxConstructor(IconsConverter iconsConv) 
+            : base(swPropertyManagerPageControlType_e.swControlType_Combobox, iconsConv)
         {
         }
 

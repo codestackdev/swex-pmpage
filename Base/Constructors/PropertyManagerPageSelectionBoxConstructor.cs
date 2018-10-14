@@ -19,6 +19,7 @@ using System.Drawing;
 using SolidWorks.Interop.sldworks;
 using System.Collections;
 using CodeStack.SwEx.PMPage.Base;
+using CodeStack.SwEx.Common.Icons;
 
 namespace CodeStack.SwEx.PMPage.Constructors
 {
@@ -33,8 +34,8 @@ namespace CodeStack.SwEx.PMPage.Constructors
     {
         private ISldWorks m_App;
 
-        public PropertyManagerPageSelectionBoxConstructor(ISldWorks app) 
-            : base(swPropertyManagerPageControlType_e.swControlType_Selectionbox)
+        public PropertyManagerPageSelectionBoxConstructor(ISldWorks app, IconsConverter iconsConv) 
+            : base(swPropertyManagerPageControlType_e.swControlType_Selectionbox, iconsConv)
         {
             m_App = app;
         }

@@ -109,6 +109,8 @@
     <Compile Include="Controls\PropertyManagerPageNumberBoxEx.cs" />
     <Compile Include="Controls\PropertyManagerPageSelectionBoxEx.cs" />
     <Compile Include="Controls\PropertyManagerPageTextBoxEx.cs" />
+    <Compile Include="Data\ControlIcon.cs" />
+    <Compile Include="Data\TitleIcon.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="PropertyManagerPageBuilder.cs" />
     <Compile Include="PropertyManagerPageEx.cs" />

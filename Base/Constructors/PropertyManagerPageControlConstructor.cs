@@ -5,11 +5,13 @@
 //Product URL: https://www.codestack.net/labs/solidworks/swex/pmp/
 //**********************
 
+using CodeStack.SwEx.Common.Icons;
 using CodeStack.SwEx.PMPage.Attributes;
 using CodeStack.SwEx.PMPage.Controls;
 using SolidWorks.Interop.swconst;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -29,9 +31,11 @@ namespace CodeStack.SwEx.PMPage.Constructors
             short align, short opts, string tooltip);
 
         private swPropertyManagerPageControlType_e m_Type;
+        private IconsConverter m_IconConv;
 
-        protected PropertyManagerPageControlConstructor(swPropertyManagerPageControlType_e type)
+        protected PropertyManagerPageControlConstructor(swPropertyManagerPageControlType_e type, IconsConverter iconsConv)
         {
+            m_IconConv = iconsConv;
             m_Type = type;
         }
 
@@ -121,6 +125,12 @@ namespace CodeStack.SwEx.PMPage.Constructors
                 if (attribution.StandardIcon != 0)
                 {
                     swCtrl.SetStandardPictureLabel((int)attribution.StandardIcon);
+                }
+                else if (attribution.Icon != null)
+                {
+                    var icons = m_IconConv.ConvertIcon(attribution.Icon, false, Color.White);
+                    var res = swCtrl.SetPictureLabelByName(icons[0], icons[1]);
+                    Debug.Assert(res);
                 }
             }
             

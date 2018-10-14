@@ -9,10 +9,12 @@ using System.ComponentModel;
 using SolidWorks.Interop.sldworks;
 using CodeStack.SwEx.PMPage.Base;
 using CodeStack.SwEx.PMPage.Controls;
+using SwVPagesSample.Properties;
 
 namespace SwVPagesSample
 {
-    [PageOptions(swPropertyManagerPageOptions_e.swPropertyManagerOptions_OkayButton
+    [PageOptions(typeof(Resources), nameof(Resources.shield_icon),
+        swPropertyManagerPageOptions_e.swPropertyManagerOptions_OkayButton
         | swPropertyManagerPageOptions_e.swPropertyManagerOptions_CancelButton 
         | swPropertyManagerPageOptions_e.swPropertyManagerOptions_WhatsNew)]
     [Message("This is a sample property page", "MyCaption",
@@ -26,6 +28,7 @@ namespace SwVPagesSample
         [ControlAttribution(swControlBitmapLabelType_e.swBitmapLabel_Depth)]
         public string Text2 { get; set; }
 
+        [ControlAttribution(typeof(Resources), nameof(Resources.shield_icon))]
         public int Number1 { get; set; }
 
         public double FloatingNumber1 { get; set; }

@@ -144,6 +144,8 @@ namespace SwVPagesSample
 
             m_App.IActiveDoc2.ClearSelection2(true);
 
+            m_ActivePage?.Dispose();
+
             m_ActivePage = new PropertyManagerPageEx<PropertyPageEventsHandler, DataModel>(m_Model, m_App);
 
             m_ActivePage.Show();
@@ -168,6 +170,8 @@ namespace SwVPagesSample
 
             GC.Collect();
             GC.WaitForPendingFinalizers();
+
+            m_ActivePage?.Dispose();
 
             return true;
         }

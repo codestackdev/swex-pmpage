@@ -36,7 +36,7 @@ namespace CodeStack.SwEx.PMPage.Controls
         bool Visible { get; set; }
     }
 
-    public abstract class PropertyManagerPageControlEx<TVal, TSwControl>
+    internal abstract class PropertyManagerPageControlEx<TVal, TSwControl>
         : Control<TVal>, IPropertyManagerPageControlEx
         where TSwControl : class
     {
@@ -49,7 +49,7 @@ namespace CodeStack.SwEx.PMPage.Controls
             m_Handler = handler;
         }
 
-        public TSwControl SwControl { get; private set; }
+        internal TSwControl SwControl { get; private set; }
 
         public bool Enabled
         {
