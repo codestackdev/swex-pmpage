@@ -128,7 +128,7 @@ namespace CodeStack.SwEx.PMPage.Constructors
                 }
                 else if (attribution.Icon != null)
                 {
-                    var icons = m_IconConv.ConvertIcon(attribution.Icon, false, Color.White);
+                    var icons = m_IconConv.ConvertIcon(attribution.Icon, false);
                     var res = swCtrl.SetPictureLabelByName(icons[0], icons[1]);
                     Debug.Assert(res);
                 }

@@ -81,7 +81,7 @@ namespace CodeStack.SwEx.PMPage.Constructors
 
             if (titleIcon != null)
             {
-                var iconPath = m_IconsConv.ConvertIcon(titleIcon, false, Color.White).First();
+                var iconPath = m_IconsConv.ConvertIcon(titleIcon, false).First();
                 page.SetTitleBitmap2(iconPath);
             }
 

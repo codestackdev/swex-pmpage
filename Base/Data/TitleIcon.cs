@@ -11,6 +11,14 @@ namespace CodeStack.SwEx.PMPage.Data
     {
         internal Image Icon { get; private set; }
 
+        public Color TransparencyKey
+        {
+            get
+            {
+                return Color.White;
+            }
+        }
+
         internal TitleIcon(Image icon)
         {
             Icon = icon;

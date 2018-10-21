@@ -14,6 +14,14 @@ namespace CodeStack.SwEx.PMPage.Data
         internal Image Icon { get; private set; }
         internal Image Mask { get; private set; }
 
+        public Color TransparencyKey
+        {
+            get
+            {
+                return Color.White;
+            }
+        }
+
         internal ControlIcon(Image icon) 
             : this(icon, CreateMask(icon))
         {   
