@@ -18,6 +18,8 @@ using Xarial.VPages.Framework.Core;
 using SolidWorks.Interop.sldworks;
 using CodeStack.SwEx.PMPage.Attributes;
 using CodeStack.SwEx.Common.Icons;
+using CodeStack.SwEx.Common.Reflection;
+using System.ComponentModel;
 
 namespace CodeStack.SwEx.PMPage.Constructors
 {
@@ -35,9 +37,22 @@ namespace CodeStack.SwEx.PMPage.Constructors
             IPropertyManagerPageCombobox swCtrl, IAttributeSet atts, THandler handler, short height)
         {
             var enumValues = Enum.GetValues(atts.BoundType).Cast<Enum>().ToList();
-
+            
             var values = enumValues.Select(
-                e => e.ToString()).ToArray();
+                e => 
+                {
+                    var text = "";
+
+                    e.TryGetAttribute<DisplayNameAttribute>(a => text = a.DisplayName);
+
+                    if (string.IsNullOrEmpty(text))
+                    {
+                        text = e.ToString();
+                    }
+
+                    return text;
+
+                }).ToArray();
 
             swCtrl.AddItems(values);
 

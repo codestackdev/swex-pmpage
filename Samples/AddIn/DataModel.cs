@@ -67,6 +67,7 @@ namespace SwVPagesSample
 
     public enum Options_e
     {
+        [ComboBoxItemText("Option One")]
         Option1,
         Option2,
         Option3

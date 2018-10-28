@@ -69,6 +69,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Attributes\ComboBoxItemTextAttribute.cs" />
     <Compile Include="Attributes\ControlAttributionAttribute.cs" />
     <Compile Include="Attributes\ControlOptionsAttribute.cs" />
     <Compile Include="Attributes\DependentOnAttribute.cs" />

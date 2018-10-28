@@ -104,6 +104,7 @@ namespace CodeStack.SwEx.PMPage
         public void OnComboboxSelectionChanged(int Id, int Item)
         {
             ComboBoxChanged?.Invoke(Id, Item);
+            DataChanged?.Invoke();
         }
 
         public void OnGainedFocus(int Id)

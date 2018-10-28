@@ -148,7 +148,13 @@ namespace SwVPagesSample
 
             m_ActivePage = new PropertyManagerPageEx<PropertyPageEventsHandler, DataModel>(m_Model, m_App);
 
+            m_ActivePage.Handler.DataChanged += OnDataChanged;
+
             m_ActivePage.Show();
+        }
+
+        private void OnDataChanged()
+        {
         }
 
         public int EnablePMP()
