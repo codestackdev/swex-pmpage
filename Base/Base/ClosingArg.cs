@@ -27,5 +27,9 @@ namespace CodeStack.SwEx.PMPage.Base
         /// Message of the error to be displayed to the user or empty string if no error to be displayed
         /// </summary>
         public string ErrorMessage { get; set; }
+
+        internal ClosingArg()
+        {
+        }
     }
 }

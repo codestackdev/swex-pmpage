@@ -12,6 +12,9 @@ namespace CodeStack.SwEx.PMPage.Base
     /// <summary>
     /// Handler for the control dependencies marked with <see cref="DependentOnAttribute"/>
     /// </summary>
+    /// <remarks>This handler should be used if it is required to change the state of controls
+    /// depending on the states/values of other controls.
+    /// For example one control should be disabled if check box is checked</remarks>
     public abstract class DependencyHandler : IDependencyHandler
     {
         [Browsable(false)]
@@ -44,6 +47,11 @@ namespace CodeStack.SwEx.PMPage.Base
             }
         }
 
+        /// <summary>
+        /// Called when the control state needs to be updated (i.e. one of the parent dependency controls has changed its value)
+        /// </summary>
+        /// <param name="control">This is a source control decorated with <see cref="DependentOnAttribute"/></param>
+        /// <param name="parents">Dependency controls. These are the controls passed as the parameter to <see cref="DependentOnAttribute"/></param>
         protected abstract void UpdateControlState(IPropertyManagerPageControlEx control,
             IPropertyManagerPageControlEx[] parents);
 

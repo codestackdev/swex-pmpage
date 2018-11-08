@@ -41,7 +41,7 @@ namespace CodeStack.SwEx.PMPage
             }
         }
 
-        private IconsConverter m_IconsConv;
+        private readonly IconsConverter m_IconsConv;
 
         /// <param name="model">Data model to create property manager page for</param>
         /// <param name="app">Pointer to session of SOLIDWORKS where the property manager page to be created</param>

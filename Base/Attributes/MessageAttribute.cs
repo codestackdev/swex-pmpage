@@ -7,14 +7,24 @@ using Xarial.VPages.Framework.Base;
 
 namespace CodeStack.SwEx.PMPage.Attributes
 {
+    /// <summary>
+    /// Attributes allows to specify the message to be displayed in the property manager page
+    /// </summary>
     [AttributeUsage(AttributeTargets.Class)]
     public class MessageAttribute : Attribute, IAttribute
     {
-        public string Text { get; private set; }
-        public swPropertyManagerPageMessageVisibility Visibility { get; private set; }
-        public swPropertyManagerPageMessageExpanded Expanded { get; private set; }
-        public string Caption { get; private set; }
+        internal string Text { get; private set; }
+        internal swPropertyManagerPageMessageVisibility Visibility { get; private set; }
+        internal swPropertyManagerPageMessageExpanded Expanded { get; private set; }
+        internal string Caption { get; private set; }
 
+        /// <summary>
+        /// Constructor to specify message and its parameters
+        /// </summary>
+        /// <param name="text">Text to be displayed in the message</param>
+        /// <param name="caption">Message box caption</param>
+        /// <param name="visibility">Visibility option as defined in <see href="http://help.solidworks.com/2014/English/api/swconst/SolidWorks.Interop.swconst~SolidWorks.Interop.swconst.swPropertyManagerPageMessageVisibility.html">swPropertyManagerPageMessageVisibility Enumeration</see></param>
+        /// <param name="expanded">Expansion state as defined in <see href="http://help.solidworks.com/2014/english/api/swconst/solidworks.interop.swconst~solidworks.interop.swconst.swpropertymanagerpagemessageexpanded.html">swPropertyManagerPageMessageExpanded Enumeration</see></param>
         public MessageAttribute(string text, string caption,
             swPropertyManagerPageMessageVisibility visibility = swPropertyManagerPageMessageVisibility.swMessageBoxVisible,
             swPropertyManagerPageMessageExpanded expanded = swPropertyManagerPageMessageExpanded.swMessageBoxExpand)

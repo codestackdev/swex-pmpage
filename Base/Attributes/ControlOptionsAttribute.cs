@@ -19,58 +19,29 @@ namespace CodeStack.SwEx.PMPage.Attributes
     /// Generic options for all controls
     /// </summary>
     public class ControlOptionsAttribute : Attribute, IAttribute
-    {
-        /// <summary>
-        /// Generic control options as defined in <see href="http://help.solidworks.com/2016/english/api/swconst/solidworks.interop.swconst~solidworks.interop.swconst.swaddcontroloptions_e.html">swAddControlOptions_e Enumeration</see>
-        /// </summary>
-        public swAddControlOptions_e Options { get; private set; }
+    {   
+        internal swAddControlOptions_e Options { get; private set; }
+        internal swPropertyManagerPageControlLeftAlign_e Align { get; private set; }
+        internal KnownColor BackgroundColor { get; private set; }
+        internal KnownColor TextColor { get; private set; }
+        internal short Left { get; private set; }
+        internal short Top { get; private set; }
+        internal short Width { get; private set; }
+        internal short Height { get; private set; }
+        internal swPropMgrPageControlOnResizeOptions_e ResizeOptions { get; private set; }
 
         /// <summary>
-        /// Control alignment options as defined in <see href="http://help.solidworks.com/2016/english/api/swconst/solidworks.interop.swconst~solidworks.interop.swconst.swpropertymanagerpagecontrolleftalign_e.html">swPropertyManagerPageControlLeftAlign_e Enumeration</see>
+        /// Constructor allowing to specify control common parameters
         /// </summary>
-        public swPropertyManagerPageControlLeftAlign_e Align { get; private set; }
-
-        /// <summary>
-        /// Background color of control
-        /// </summary>
-        /// <remarks>Use 0 for default color</remarks>
-        public KnownColor BackgroundColor { get; private set; }
-
-        /// <summary>
-        /// Color of the text on the control
-        /// </summary>
-        /// <remarks>Use 0 for default color</remarks>
-        public KnownColor TextColor { get; private set; }
-
-        /// <summary>
-        /// Left alignment of the control
-        /// </summary>
-        /// -1 for default alignment
-        public short Left { get; private set; }
-
-        /// <summary>
-        /// Top alignment of the control
-        /// </summary>
-        /// <remarks>Use -1 to align the control under the previous control</remarks>
-        public short Top { get; private set; }
-
-        /// <summary>
-        /// Width of the control
-        /// </summary>
-        /// <remarks>-1 for auto width</remarks>
-        public short Width { get; private set; }
-
-        /// <summary>
-        /// Height of the control in property manager page dialog box units
-        /// </summary>
-        /// <remarks>Use -1 for the auto height</remarks>
-        public short Height { get; private set; }
-
-        /// <summary>
-        /// Options to resize as defined in <see href="http://help.solidworks.com/2016/english/api/swconst/solidworks.interop.swconst~solidworks.interop.swconst.swpropmgrpagecontrolonresizeoptions_e.html">swPropMgrPageControlOnResizeOptions_e Enumeration</see>
-        /// </summary>
-        public swPropMgrPageControlOnResizeOptions_e ResizeOptions { get; private set; }
-
+        /// <param name="opts">Generic control options as defined in <see href="http://help.solidworks.com/2016/english/api/swconst/solidworks.interop.swconst~solidworks.interop.swconst.swaddcontroloptions_e.html">swAddControlOptions_e Enumeration</see></param>
+        /// <param name="align">Control alignment options as defined in <see href="http://help.solidworks.com/2016/english/api/swconst/solidworks.interop.swconst~solidworks.interop.swconst.swpropertymanagerpagecontrolleftalign_e.html">swPropertyManagerPageControlLeftAlign_e Enumeration</see></param>
+        /// <param name="backgroundColor">Background color of control. Use 0 for default color</param>
+        /// <param name="textColor">Color of the text on the control. Use 0 for default color</param>
+        /// <param name="left">Left alignment of the control. Use -1 for default alignment</param>
+        /// <param name="top">Top alignment of the control. Use -1 to align the control under the previous control</param>
+        /// <param name="width">Width of the control. Use -1 for auto width</param>
+        /// <param name="height">Height of the control in property manager page dialog box units. Use -1 for the auto height</param>
+        /// <param name="resizeOptions">Options to resize as defined in <see href="http://help.solidworks.com/2016/english/api/swconst/solidworks.interop.swconst~solidworks.interop.swconst.swpropmgrpagecontrolonresizeoptions_e.html">swPropMgrPageControlOnResizeOptions_e Enumeration</see></param>
         public ControlOptionsAttribute(
             swAddControlOptions_e opts = swAddControlOptions_e.swControlOptions_Enabled | swAddControlOptions_e.swControlOptions_Visible,
             swPropertyManagerPageControlLeftAlign_e align = swPropertyManagerPageControlLeftAlign_e.swControlAlign_LeftEdge,

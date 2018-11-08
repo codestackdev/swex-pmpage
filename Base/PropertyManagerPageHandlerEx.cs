@@ -11,6 +11,7 @@ using SolidWorks.Interop.swconst;
 using SolidWorks.Interop.swpublished;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
@@ -52,30 +53,42 @@ namespace CodeStack.SwEx.PMPage
             m_App = app;
         }
 
+        [Browsable(false)]
+        [EditorBrowsable(EditorBrowsableState.Never)]
         public void AfterActivation()
         {
         }
 
+        [Browsable(false)]
+        [EditorBrowsable(EditorBrowsableState.Never)]
         public void AfterClose()
         {
             Closed?.Invoke(m_CloseReason);
         }
 
+        [Browsable(false)]
+        [EditorBrowsable(EditorBrowsableState.Never)]
         public int OnActiveXControlCreated(int Id, bool Status)
         {
             return 0;
         }
 
+        [Browsable(false)]
+        [EditorBrowsable(EditorBrowsableState.Never)]
         public void OnButtonPress(int Id)
         {
         }
 
+        [Browsable(false)]
+        [EditorBrowsable(EditorBrowsableState.Never)]
         public void OnCheckboxCheck(int Id, bool Checked)
         {
             CheckChanged?.Invoke(Id, Checked);
             DataChanged?.Invoke();
         }
 
+        [Browsable(false)]
+        [EditorBrowsable(EditorBrowsableState.Never)]
         public void OnClose(int Reason)
         {
             m_CloseReason = (swPropertyManagerPageCloseReasons_e)Reason;
@@ -97,118 +110,170 @@ namespace CodeStack.SwEx.PMPage
             }
         }
 
+        [Browsable(false)]
+        [EditorBrowsable(EditorBrowsableState.Never)]
         public void OnComboboxEditChanged(int Id, string Text)
         {
         }
 
+        [Browsable(false)]
+        [EditorBrowsable(EditorBrowsableState.Never)]
         public void OnComboboxSelectionChanged(int Id, int Item)
         {
             ComboBoxChanged?.Invoke(Id, Item);
             DataChanged?.Invoke();
         }
 
+        [Browsable(false)]
+        [EditorBrowsable(EditorBrowsableState.Never)]
         public void OnGainedFocus(int Id)
         {
         }
 
+        [Browsable(false)]
+        [EditorBrowsable(EditorBrowsableState.Never)]
         public void OnGroupCheck(int Id, bool Checked)
         {
         }
 
+        [Browsable(false)]
+        [EditorBrowsable(EditorBrowsableState.Never)]
         public void OnGroupExpand(int Id, bool Expanded)
         {
         }
 
+        [Browsable(false)]
+        [EditorBrowsable(EditorBrowsableState.Never)]
         public bool OnHelp()
         {
             HelpRequested?.Invoke();
             return true;
         }
 
+        [Browsable(false)]
+        [EditorBrowsable(EditorBrowsableState.Never)]
         public bool OnKeystroke(int Wparam, int Message, int Lparam, int Id)
         {
             return true;
         }
 
+        [Browsable(false)]
+        [EditorBrowsable(EditorBrowsableState.Never)]
         public void OnListboxRMBUp(int Id, int PosX, int PosY)
         {
         }
 
+        [Browsable(false)]
+        [EditorBrowsable(EditorBrowsableState.Never)]
         public void OnListboxSelectionChanged(int Id, int Item)
         {
         }
 
+        [Browsable(false)]
+        [EditorBrowsable(EditorBrowsableState.Never)]
         public void OnLostFocus(int Id)
         {
         }
 
+        [Browsable(false)]
+        [EditorBrowsable(EditorBrowsableState.Never)]
         public bool OnNextPage()
         {
             return true;
         }
 
+        [Browsable(false)]
+        [EditorBrowsable(EditorBrowsableState.Never)]
         public void OnNumberboxChanged(int Id, double Value)
         {
             NumberChanged?.Invoke(Id, Value);
             DataChanged?.Invoke();
         }
 
+        [Browsable(false)]
+        [EditorBrowsable(EditorBrowsableState.Never)]
         public void OnNumberBoxTrackingCompleted(int Id, double Value)
         {
         }
 
+        [Browsable(false)]
+        [EditorBrowsable(EditorBrowsableState.Never)]
         public void OnOptionCheck(int Id)
         {
         }
 
+        [Browsable(false)]
+        [EditorBrowsable(EditorBrowsableState.Never)]
         public void OnPopupMenuItem(int Id)
         {
         }
 
+        [Browsable(false)]
+        [EditorBrowsable(EditorBrowsableState.Never)]
         public void OnPopupMenuItemUpdate(int Id, ref int retval)
         {
         }
 
+        [Browsable(false)]
+        [EditorBrowsable(EditorBrowsableState.Never)]
         public bool OnPreview()
         {
             return true;
         }
 
+        [Browsable(false)]
+        [EditorBrowsable(EditorBrowsableState.Never)]
         public bool OnPreviousPage()
         {
             return true;
         }
 
+        [Browsable(false)]
+        [EditorBrowsable(EditorBrowsableState.Never)]
         public void OnRedo()
         {
         }
 
+        [Browsable(false)]
+        [EditorBrowsable(EditorBrowsableState.Never)]
         public void OnSelectionboxCalloutCreated(int Id)
         {
         }
 
+        [Browsable(false)]
+        [EditorBrowsable(EditorBrowsableState.Never)]
         public void OnSelectionboxCalloutDestroyed(int Id)
         {
         }
 
+        [Browsable(false)]
+        [EditorBrowsable(EditorBrowsableState.Never)]
         public void OnSelectionboxFocusChanged(int Id)
         {
         }
-        
+
+        [Browsable(false)]
+        [EditorBrowsable(EditorBrowsableState.Never)]
         public void OnSelectionboxListChanged(int Id, int Count)
         {
             SelectionChanged?.Invoke(Id, Count);
             DataChanged?.Invoke();
         }
 
+        [Browsable(false)]
+        [EditorBrowsable(EditorBrowsableState.Never)]
         public void OnSliderPositionChanged(int Id, double Value)
         {
         }
 
+        [Browsable(false)]
+        [EditorBrowsable(EditorBrowsableState.Never)]
         public void OnSliderTrackingCompleted(int Id, double Value)
         {
         }
 
+        [Browsable(false)]
+        [EditorBrowsable(EditorBrowsableState.Never)]
         public bool OnSubmitSelection(int Id, object Selection, int SelType, ref string ItemText)
         {
             var res = true;
@@ -218,26 +283,36 @@ namespace CodeStack.SwEx.PMPage
             return res;
         }
 
+        [Browsable(false)]
+        [EditorBrowsable(EditorBrowsableState.Never)]
         public bool OnTabClicked(int Id)
         {
             return true;
         }
 
+        [Browsable(false)]
+        [EditorBrowsable(EditorBrowsableState.Never)]
         public void OnTextboxChanged(int Id, string Text)
         {
             TextChanged?.Invoke(Id, Text);
             DataChanged?.Invoke();
         }
 
+        [Browsable(false)]
+        [EditorBrowsable(EditorBrowsableState.Never)]
         public void OnUndo()
         {
         }
 
+        [Browsable(false)]
+        [EditorBrowsable(EditorBrowsableState.Never)]
         public void OnWhatsNew()
         {
             WhatsNewRequested?.Invoke();
         }
 
+        [Browsable(false)]
+        [EditorBrowsable(EditorBrowsableState.Never)]
         public int OnWindowFromHandleControlCreated(int Id, bool Status)
         {
             return 0;

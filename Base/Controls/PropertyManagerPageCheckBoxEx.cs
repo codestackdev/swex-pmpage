@@ -6,10 +6,6 @@
 //**********************
 
 using SolidWorks.Interop.sldworks;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using Xarial.VPages.Framework.PageElements;
 
 namespace CodeStack.SwEx.PMPage.Controls
