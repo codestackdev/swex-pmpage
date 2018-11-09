@@ -27,12 +27,16 @@ namespace CodeStack.SwEx.PMPage.Attributes
 
         internal TitleIcon Icon { get; private set; }
 
+        /// <summary>Constructor for specifying property manager page options</summary>
         /// <param name="opts">property page options as defined in <see href="http://help.solidworks.com/2016/english/api/swconst/solidworks.interop.swconst~solidworks.interop.swconst.swpropertymanagerpageoptions_e.html">swPropertyManagerPageOptions_e Enumeration</see></param>
         public PageOptionsAttribute(swPropertyManagerPageOptions_e opts)
         {
             Options = opts;
         }
 
+        /// <inheritdoc cref="PageOptionsAttribute(swPropertyManagerPageOptions_e)"/>
+        /// <param name="resType"><token>resType</token></param>
+        /// <param name="iconResName">Name of image resource for proeprty manager page icon</param>
         public PageOptionsAttribute(Type resType, string iconResName,
             swPropertyManagerPageOptions_e opts = swPropertyManagerPageOptions_e.swPropertyManagerOptions_OkayButton | swPropertyManagerPageOptions_e.swPropertyManagerOptions_CancelButton) : this(opts)
         {
