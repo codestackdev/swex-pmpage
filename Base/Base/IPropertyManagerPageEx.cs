@@ -1,8 +1,11 @@
-﻿using System;
+﻿using CodeStack.SwEx.PMPage.Attributes;
+using CodeStack.SwEx.PMPage.Controls;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
+using Xarial.VPages.Framework.Base;
 
 namespace CodeStack.SwEx.PMPage.Base
 {
@@ -28,6 +31,12 @@ namespace CodeStack.SwEx.PMPage.Base
         /// Pointer to the handler
         /// </summary>
         THandler Handler { get; }
+        /// <summary>
+        /// List of all controls created in the property manager page
+        /// </summary>
+        /// <remarks>Tag data model fields with <see cref="ControlTagAttribute"/>
+        /// and use <see cref="IControl.Tag"/> property to find the corresponding controls created for the data fields</remarks>
+        IEnumerable<IPropertyManagerPageControlEx> Controls { get; }
 
         /// <summary>
         /// Display property manager page modeless

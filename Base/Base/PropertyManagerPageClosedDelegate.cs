@@ -1,4 +1,11 @@
-﻿using SolidWorks.Interop.swconst;
+﻿//**********************
+//SwEx.Pmp
+//Copyright(C) 2018 www.codestack.net
+//License: https://github.com/codestack-net-dev/vpages-sw/blob/master/LICENSE
+//Product URL: https://www.codestack.net/labs/solidworks/swex/pmp/
+//**********************
+
+using SolidWorks.Interop.swconst;
 
 namespace CodeStack.SwEx.PMPage.Base
 {

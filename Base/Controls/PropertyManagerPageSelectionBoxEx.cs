@@ -5,6 +5,7 @@
 //Product URL: https://www.codestack.net/labs/solidworks/swex/pmp/
 //**********************
 
+using CodeStack.SwEx.PMPage.Base;
 using SolidWorks.Interop.sldworks;
 using System;
 using System.Collections;
@@ -17,25 +18,42 @@ using Xarial.VPages.Framework.PageElements;
 
 namespace CodeStack.SwEx.PMPage.Controls
 {
-    internal class PropertyManagerPageSelectionBoxEx : PropertyManagerPageControlEx<object>
+    internal class PropertyManagerPageSelectionBoxEx : PropertyManagerPageControlEx<object, IPropertyManagerPageSelectionbox>
     {
         protected override event ControlValueChangedDelegate<object> ValueChanged;
-
-        public IPropertyManagerPageSelectionbox SelectionBox { get; private set; }
 
         private ISldWorks m_App;
 
         private Type m_ObjType;
 
-        public PropertyManagerPageSelectionBoxEx(ISldWorks app, int id,
+        private ISelectionCustomFilter m_CustomFilter;
+
+        public PropertyManagerPageSelectionBoxEx(ISldWorks app, int id, object tag,
             IPropertyManagerPageSelectionbox selBox,
-            PropertyManagerPageHandlerEx handler, Type objType) : base(id, handler)
+            PropertyManagerPageHandlerEx handler, Type objType, ISelectionCustomFilter customFilter = null)
+            : base(selBox, id, tag, handler)
         {
             m_App = app;
-            SelectionBox = selBox;
             m_ObjType = objType;
+            m_CustomFilter = customFilter;
 
             m_Handler.SelectionChanged += OnSelectionChanged;
+
+            if (m_CustomFilter != null)
+            {
+                m_Handler.SubmitSelection += OnSubmitSelection;
+            }
+        }
+
+        private void OnSubmitSelection(int Id, object Selection, int SelType, ref string ItemText, ref bool res)
+        {
+            if (Id == this.Id)
+            {
+                Debug.Assert(m_CustomFilter != null, "This event must not be attached if custom filter is not specified");
+
+                res = m_CustomFilter.Filter(this, Selection,
+                    (SolidWorks.Interop.swconst.swSelectType_e)SelType, ref ItemText);
+            }
         }
 
         private void OnSelectionChanged(int id, int count)
@@ -54,9 +72,9 @@ namespace CodeStack.SwEx.PMPage.Controls
             {
                 var list = Activator.CreateInstance(m_ObjType) as IList;
 
-                for (int i = 0; i < SelectionBox.ItemCount; i++)
+                for (int i = 0; i < SwControl.ItemCount; i++)
                 {
-                    var selIndex = SelectionBox.SelectionIndex[i];
+                    var selIndex = SwControl.SelectionIndex[i];
                     var obj = selMgr.GetSelectedObject6(selIndex, -1);
                     list.Add(obj);
                 }
@@ -65,11 +83,11 @@ namespace CodeStack.SwEx.PMPage.Controls
             }
             else
             {
-                Debug.Assert(SelectionBox.ItemCount <= 1, "Single entity only");
+                Debug.Assert(SwControl.ItemCount <= 1, "Single entity only");
 
-                if (SelectionBox.ItemCount == 1)
+                if (SwControl.ItemCount == 1)
                 {
-                    var selIndex = SelectionBox.SelectionIndex[0];
+                    var selIndex = SwControl.SelectionIndex[0];
                     var obj = selMgr.GetSelectedObject6(selIndex, -1);
                     return obj;
                 }
@@ -82,7 +100,7 @@ namespace CodeStack.SwEx.PMPage.Controls
 
         protected override void SetSpecificValue(object value)
         {
-            SelectionBox.SetSelectionFocus();
+            SwControl.SetSelectionFocus();
 
             if (value != null)
             {
@@ -103,7 +121,7 @@ namespace CodeStack.SwEx.PMPage.Controls
                 }
 
                 var selData = m_App.IActiveDoc2.ISelectionManager.CreateSelectData();
-                selData.Mark = SelectionBox.Mark;
+                selData.Mark = SwControl.Mark;
                 m_App.IActiveDoc2.Extension.MultiSelect2(disps.ToArray(), true, selData.Mark);
             }
         }

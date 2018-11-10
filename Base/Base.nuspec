@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>CodeStack.SwEx.PMPage</id>
-    <version>0.2.0-beta</version>
+    <version>0.4.0.0</version>
     <title>Framework for developing property manager pages in SOLIDWORKS</title>
     <authors>CodeStack</authors>
     <owners>CodeStack</owners>
@@ -15,9 +15,4 @@
     <copyright>Copyright © CodeStack 2018</copyright>
     <tags>Pages PMP SOLIDWORKS Property Manager Page</tags>
   </metadata>
-  <files>
-    <file src="thirdpty\SolidWorks.Interop.sldworks.dll" target="lib\net40" />
-	<file src="thirdpty\SolidWorks.Interop.swconst.dll" target="lib\net40" />
-	<file src="thirdpty\SolidWorks.Interop.swpublished.dll" target="lib\net40" />
-  </files>
 </package>

@@ -34,7 +34,8 @@ namespace CodeStack.SwEx.PMPage.Constructors
                 (int)(swAddGroupBoxOptions_e.swGroupBoxOptions_Expanded
                 | swAddGroupBoxOptions_e.swGroupBoxOptions_Visible)) as SolidWorks.Interop.sldworks.IPropertyManagerPageGroup;
 
-            return new PropertyManagerPageGroupEx<THandler>(atts.Id, page.Handler, grp, page.App, page);
+            return new PropertyManagerPageGroupEx<THandler>(atts.Id, atts.Tag,
+                page.Handler, grp, page.App, page);
         }
     }
 }

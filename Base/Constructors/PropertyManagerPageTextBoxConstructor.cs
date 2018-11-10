@@ -17,6 +17,7 @@ using SolidWorks.Interop.swconst;
 using CodeStack.SwEx.PMPage.Attributes;
 using System.Drawing;
 using SolidWorks.Interop.sldworks;
+using CodeStack.SwEx.Common.Icons;
 
 namespace CodeStack.SwEx.PMPage.Constructors
 {
@@ -25,8 +26,8 @@ namespace CodeStack.SwEx.PMPage.Constructors
         : PropertyManagerPageControlConstructor<THandler, PropertyManagerPageTextBoxEx, IPropertyManagerPageTextbox>
         where THandler : PropertyManagerPageHandlerEx, new()
     {
-        public PropertyManagerPageTextBoxConstructor()
-            : base(swPropertyManagerPageControlType_e.swControlType_Textbox)
+        public PropertyManagerPageTextBoxConstructor(IconsConverter iconsConv)
+            : base(swPropertyManagerPageControlType_e.swControlType_Textbox, iconsConv)
         {
         }
 
@@ -48,7 +49,7 @@ namespace CodeStack.SwEx.PMPage.Constructors
                 }
             }
 
-            return new PropertyManagerPageTextBoxEx(atts.Id, swCtrl, handler);
+            return new PropertyManagerPageTextBoxEx(atts.Id, atts.Tag, swCtrl, handler);
         }
     }
 }

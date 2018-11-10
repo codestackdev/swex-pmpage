@@ -20,16 +20,14 @@ namespace CodeStack.SwEx.PMPage.Attributes
     /// </summary>
     public class SelectionBoxOptionsAttribute : Attribute, IAttribute
     {
-        /// <summary>
-        /// Selection box style as defined in <see href="http://help.solidworks.com/2016/english/api/swconst/solidworks.interop.swconst~solidworks.interop.swconst.swpropmgrpageselectionboxstyle_e.html">swPropMgrPageSelectionBoxStyle_e Enumeration</see>
-        /// </summary>
-        public swPropMgrPageSelectionBoxStyle_e Style { get; private set; }
+        internal swPropMgrPageSelectionBoxStyle_e Style { get; private set; }
+        internal KnownColor SelectionColor { get; private set; }
 
         /// <summary>
-        /// Color of the selections in this selection box
+        /// Constructor for selection box options
         /// </summary>
-        public KnownColor SelectionColor { get; private set; }
-
+        /// <param name="style">Selection box style as defined in <see href="http://help.solidworks.com/2016/english/api/swconst/solidworks.interop.swconst~solidworks.interop.swconst.swpropmgrpageselectionboxstyle_e.html">swPropMgrPageSelectionBoxStyle_e Enumeration</see></param>
+        /// <param name="selColor">Color of the selections in this selection box</param>
         public SelectionBoxOptionsAttribute(
             swPropMgrPageSelectionBoxStyle_e style = 0,
             KnownColor selColor = 0)

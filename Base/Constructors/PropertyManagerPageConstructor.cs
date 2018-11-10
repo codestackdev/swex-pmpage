@@ -15,6 +15,9 @@ using Xarial.VPages.Framework.Base;
 using SolidWorks.Interop.sldworks;
 using SolidWorks.Interop.swconst;
 using CodeStack.SwEx.PMPage.Attributes;
+using CodeStack.SwEx.Common.Icons;
+using CodeStack.SwEx.PMPage.Data;
+using System.Drawing;
 
 namespace CodeStack.SwEx.PMPage.Constructors
 {
@@ -23,9 +26,12 @@ namespace CodeStack.SwEx.PMPage.Constructors
     {
         private ISldWorks m_App;
 
-        internal PropertyManagerPageConstructor(ISldWorks app)
+        private IconsConverter m_IconsConv;
+
+        internal PropertyManagerPageConstructor(ISldWorks app, IconsConverter iconsConv)
         {
             m_App = app;
+            m_IconsConv = iconsConv;
         }
 
         protected override PropertyManagerPagePageEx<THandler> Create(IAttributeSet atts)
@@ -36,9 +42,14 @@ namespace CodeStack.SwEx.PMPage.Constructors
 
             swPropertyManagerPageOptions_e opts;
 
+            TitleIcon titleIcon = null;
+
             if (atts.Has<PageOptionsAttribute>())
             {
-                opts = atts.Get<PageOptionsAttribute>().Options;
+                var optsAtt = atts.Get<PageOptionsAttribute>();
+
+                opts = optsAtt.Options;
+                titleIcon = optsAtt.Icon;
             }
             else
             {
@@ -67,6 +78,24 @@ namespace CodeStack.SwEx.PMPage.Constructors
             var page = m_App.CreatePropertyManagerPage(atts.Name,
                 (int)opts,
                 handler, ref err) as IPropertyManagerPage2;
+
+            if (titleIcon != null)
+            {
+                var iconPath = m_IconsConv.ConvertIcon(titleIcon, false).First();
+                page.SetTitleBitmap2(iconPath);
+            }
+
+            if (atts.Has<MessageAttribute>())
+            {
+                var msgAtt = atts.Get<MessageAttribute>();
+                page.SetMessage3(msgAtt.Text, (int)msgAtt.Visibility,
+                    (int)msgAtt.Expanded, msgAtt.Caption);
+            }
+            else if (!string.IsNullOrEmpty(atts.Description))
+            {
+                page.SetMessage3(atts.Description, (int)swPropertyManagerPageMessageVisibility.swMessageBoxVisible,
+                    (int)swPropertyManagerPageMessageExpanded.swMessageBoxExpand, "");
+            }
 
             return new PropertyManagerPagePageEx<THandler>(page, handler, m_App, helpLink, whatsNewLink);
         }

@@ -17,6 +17,7 @@ using SolidWorks.Interop.swconst;
 using CodeStack.SwEx.PMPage.Attributes;
 using System.Drawing;
 using SolidWorks.Interop.sldworks;
+using CodeStack.SwEx.Common.Icons;
 
 namespace CodeStack.SwEx.PMPage.Constructors
 {
@@ -25,15 +26,15 @@ namespace CodeStack.SwEx.PMPage.Constructors
         : PropertyManagerPageControlConstructor<THandler, PropertyManagerPageCheckBoxEx, IPropertyManagerPageCheckbox>
         where THandler : PropertyManagerPageHandlerEx, new()
     {
-        public PropertyManagerPageCheckBoxConstructor() 
-            : base(swPropertyManagerPageControlType_e.swControlType_Checkbox)
+        public PropertyManagerPageCheckBoxConstructor(IconsConverter iconsConv) 
+            : base(swPropertyManagerPageControlType_e.swControlType_Checkbox, iconsConv)
         {
         }
 
         protected override PropertyManagerPageCheckBoxEx CreateControl(
             IPropertyManagerPageCheckbox swCtrl, IAttributeSet atts, THandler handler, short height)
         {
-            return new PropertyManagerPageCheckBoxEx(atts.Id, swCtrl, handler);
+            return new PropertyManagerPageCheckBoxEx(atts.Id, atts.Tag, swCtrl, handler);
         }
     }
 }

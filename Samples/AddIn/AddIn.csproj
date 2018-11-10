@@ -98,24 +98,26 @@
     <SignAssembly>false</SignAssembly>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="SolidWorks.Interop.sldworks, Version=22.5.0.77, Culture=neutral, PublicKeyToken=7c4797c3e4eeac03, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <EmbedInteropTypes>False</EmbedInteropTypes>
-      <HintPath>..\..\Base\thirdpty\SolidWorks.Interop.sldworks.dll</HintPath>
+    <Reference Include="CodeStack.SwEx.Common, Version=0.9.0.0, Culture=neutral, PublicKeyToken=a46023996d4724e7, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\CodeStack.SwEx.Common.0.9.0\lib\net40\CodeStack.SwEx.Common.dll</HintPath>
     </Reference>
-    <Reference Include="SolidWorks.Interop.swconst, Version=22.5.0.77, Culture=neutral, PublicKeyToken=19f43e188e4269d8, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
+    <Reference Include="SolidWorks.Interop.sldworks, Version=26.2.0.63, Culture=neutral, PublicKeyToken=7c4797c3e4eeac03, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\CodeStack.SwEx.Common.0.9.0\lib\net40\SolidWorks.Interop.sldworks.dll</HintPath>
+      <Private>True</Private>
       <EmbedInteropTypes>False</EmbedInteropTypes>
-      <HintPath>..\..\Base\thirdpty\SolidWorks.Interop.swconst.dll</HintPath>
     </Reference>
-    <Reference Include="SolidWorks.Interop.swpublished, Version=22.5.0.77, Culture=neutral, PublicKeyToken=89a97bdc5284e6d8, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
+    <Reference Include="SolidWorks.Interop.swconst, Version=26.2.0.63, Culture=neutral, PublicKeyToken=19f43e188e4269d8, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\CodeStack.SwEx.Common.0.9.0\lib\net40\SolidWorks.Interop.swconst.dll</HintPath>
+      <Private>True</Private>
       <EmbedInteropTypes>False</EmbedInteropTypes>
-      <HintPath>..\..\Base\thirdpty\SolidWorks.Interop.swpublished.dll</HintPath>
+    </Reference>
+    <Reference Include="SolidWorks.Interop.swpublished, Version=26.2.0.63, Culture=neutral, PublicKeyToken=89a97bdc5284e6d8, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\CodeStack.SwEx.Common.0.9.0\lib\net40\SolidWorks.Interop.swpublished.dll</HintPath>
+      <Private>True</Private>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
     </Reference>
     <Reference Include="SolidWorksTools, Version=2.0.0.0, Culture=neutral, PublicKeyToken=bd18593873b4686d, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>thirdpty\SolidWorksTools.dll</HintPath>
+      <HintPath>..\..\packages\CodeStack.SwEx.Common.0.9.0\lib\net40\SolidWorksTools.dll</HintPath>
     </Reference>
     <Reference Include="System">
       <Name>System</Name>
@@ -130,13 +132,18 @@
     <Reference Include="System.XML">
       <Name>System.XML</Name>
     </Reference>
-    <Reference Include="Xarial.VPages.Framework, Version=0.2.0.0, Culture=neutral, PublicKeyToken=6dcec729ca6a1943, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Xarial.VPages.Framework.0.2.0-beta\lib\net40\Xarial.VPages.Framework.dll</HintPath>
+    <Reference Include="Xarial.VPages.Framework, Version=0.3.0.0, Culture=neutral, PublicKeyToken=6dcec729ca6a1943, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Xarial.VPages.Framework.0.3.0\lib\net40\Xarial.VPages.Framework.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="PropertyPageEventsHandler.cs" />
     <Compile Include="DataModel.cs" />
@@ -145,6 +152,10 @@
     </Compile>
     <EmbeddedResource Include="Icons\IconLarge.bmp" />
     <EmbeddedResource Include="Icons\IconSmall.bmp" />
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
@@ -161,6 +172,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\button-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\shield-icon.png" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

@@ -22,7 +22,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugType>pdbonly</DebugType>
+    <DebugType>none</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
@@ -31,24 +31,30 @@
     <DocumentationFile>bin\Release\CodeStack.SwEx.PMPage.xml</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup>
-    <SignAssembly>false</SignAssembly>
-  </PropertyGroup>
-  <PropertyGroup>
     <AssemblyOriginatorKeyFile>
     </AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="SolidWorks.Interop.sldworks">
-      <HintPath>thirdpty\SolidWorks.Interop.sldworks.dll</HintPath>
+    <Reference Include="CodeStack.SwEx.Common, Version=0.9.0.0, Culture=neutral, PublicKeyToken=a46023996d4724e7, processorArchitecture=MSIL">
+      <HintPath>..\packages\CodeStack.SwEx.Common.0.9.0\lib\net40\CodeStack.SwEx.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="SolidWorks.Interop.sldworks, Version=26.2.0.63, Culture=neutral, PublicKeyToken=7c4797c3e4eeac03, processorArchitecture=MSIL">
+      <HintPath>..\packages\CodeStack.SwEx.Common.0.9.0\lib\net40\SolidWorks.Interop.sldworks.dll</HintPath>
+      <Private>True</Private>
       <EmbedInteropTypes>False</EmbedInteropTypes>
     </Reference>
-    <Reference Include="SolidWorks.Interop.swconst">
-      <HintPath>thirdpty\SolidWorks.Interop.swconst.dll</HintPath>
+    <Reference Include="SolidWorks.Interop.swconst, Version=26.2.0.63, Culture=neutral, PublicKeyToken=19f43e188e4269d8, processorArchitecture=MSIL">
+      <HintPath>..\packages\CodeStack.SwEx.Common.0.9.0\lib\net40\SolidWorks.Interop.swconst.dll</HintPath>
+      <Private>True</Private>
       <EmbedInteropTypes>False</EmbedInteropTypes>
     </Reference>
-    <Reference Include="SolidWorks.Interop.swpublished">
-      <HintPath>thirdpty\SolidWorks.Interop.swpublished.dll</HintPath>
+    <Reference Include="SolidWorks.Interop.swpublished, Version=26.2.0.63, Culture=neutral, PublicKeyToken=89a97bdc5284e6d8, processorArchitecture=MSIL">
+      <HintPath>..\packages\CodeStack.SwEx.Common.0.9.0\lib\net40\SolidWorks.Interop.swpublished.dll</HintPath>
+      <Private>True</Private>
       <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="SolidWorksTools, Version=2.0.0.0, Culture=neutral, PublicKeyToken=bd18593873b4686d, processorArchitecture=MSIL">
+      <HintPath>..\packages\CodeStack.SwEx.Common.0.9.0\lib\net40\SolidWorksTools.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -58,23 +64,30 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
-    <Reference Include="Xarial.VPages.Framework, Version=0.2.0.0, Culture=neutral, PublicKeyToken=6dcec729ca6a1943, processorArchitecture=MSIL">
-      <HintPath>..\packages\Xarial.VPages.Framework.0.2.0-beta\lib\net40\Xarial.VPages.Framework.dll</HintPath>
+    <Reference Include="Xarial.VPages.Framework, Version=0.3.0.0, Culture=neutral, PublicKeyToken=6dcec729ca6a1943, processorArchitecture=MSIL">
+      <HintPath>..\packages\Xarial.VPages.Framework.0.3.0\lib\net40\Xarial.VPages.Framework.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Attributes\ComboBoxItemTextAttribute.cs" />
     <Compile Include="Attributes\ControlAttributionAttribute.cs" />
     <Compile Include="Attributes\ControlOptionsAttribute.cs" />
+    <Compile Include="Attributes\DependentOnAttribute.cs" />
     <Compile Include="Attributes\HelpAttribute.cs" />
+    <Compile Include="Attributes\IgnoreBindingAttribute.cs" />
+    <Compile Include="Attributes\MessageAttribute.cs" />
     <Compile Include="Attributes\SelectionBoxOptionsAttribute.cs" />
     <Compile Include="Attributes\NumberBoxOptionsAttribute.cs" />
     <Compile Include="Attributes\PageOptionsAttribute.cs" />
     <Compile Include="Attributes\SelectionBoxAttribute.cs" />
     <Compile Include="Attributes\ComboBoxOptionsAttribute.cs" />
+    <Compile Include="Attributes\ControlTagAttribute.cs" />
     <Compile Include="Attributes\TextBoxOptionsAttribute.cs" />
+    <Compile Include="Base\DependencyHandler.cs" />
     <Compile Include="Base\ClosingArg.cs" />
     <Compile Include="Base\IPropertyManagerPageEx.cs" />
     <Compile Include="Base\IPropertyManagerPageHandlerEx.cs" />
+    <Compile Include="Base\ISelectionCustomFilter.cs" />
     <Compile Include="Base\PropertyManagerPageClosedDelegate.cs" />
     <Compile Include="Base\PropertyManagerPageClosingDelegate.cs" />
     <Compile Include="Constructors\PropertyManagerPageConstructor.cs" />
@@ -94,15 +107,14 @@
     <Compile Include="Controls\PropertyManagerPageNumberBoxEx.cs" />
     <Compile Include="Controls\PropertyManagerPageSelectionBoxEx.cs" />
     <Compile Include="Controls\PropertyManagerPageTextBoxEx.cs" />
+    <Compile Include="Data\ControlIcon.cs" />
+    <Compile Include="Data\TitleIcon.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="PropertyManagerPageBuilder.cs" />
     <Compile Include="PropertyManagerPageEx.cs" />
     <Compile Include="PropertyManagerPageHandlerEx.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config">
-      <SubType>Designer</SubType>
-    </None>
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

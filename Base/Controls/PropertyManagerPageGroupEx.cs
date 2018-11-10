@@ -23,9 +23,9 @@ namespace CodeStack.SwEx.PMPage.Controls
 
         internal PropertyManagerPagePageEx<THandler> ParentPage { get; private set; }
 
-        internal PropertyManagerPageGroupEx(int id, THandler handler,
+        internal PropertyManagerPageGroupEx(int id, object tag, THandler handler,
             IPropertyManagerPageGroup group,
-            ISldWorks app, PropertyManagerPagePageEx<THandler> parentPage) : base(id)
+            ISldWorks app, PropertyManagerPagePageEx<THandler> parentPage) : base(id, tag)
         {
             Group = group;
             Handler = handler;

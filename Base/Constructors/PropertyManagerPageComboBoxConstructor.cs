@@ -17,6 +17,9 @@ using Xarial.VPages.Framework.Attributes;
 using Xarial.VPages.Framework.Core;
 using SolidWorks.Interop.sldworks;
 using CodeStack.SwEx.PMPage.Attributes;
+using CodeStack.SwEx.Common.Icons;
+using CodeStack.SwEx.Common.Reflection;
+using System.ComponentModel;
 
 namespace CodeStack.SwEx.PMPage.Constructors
 {
@@ -25,8 +28,8 @@ namespace CodeStack.SwEx.PMPage.Constructors
         : PropertyManagerPageControlConstructor<THandler, PropertyManagerPageComboBoxEx, IPropertyManagerPageCombobox>
         where THandler : PropertyManagerPageHandlerEx, new()
     {
-        public PropertyManagerPageComboBoxConstructor() 
-            : base(swPropertyManagerPageControlType_e.swControlType_Combobox)
+        public PropertyManagerPageComboBoxConstructor(IconsConverter iconsConv) 
+            : base(swPropertyManagerPageControlType_e.swControlType_Combobox, iconsConv)
         {
         }
 
@@ -34,9 +37,22 @@ namespace CodeStack.SwEx.PMPage.Constructors
             IPropertyManagerPageCombobox swCtrl, IAttributeSet atts, THandler handler, short height)
         {
             var enumValues = Enum.GetValues(atts.BoundType).Cast<Enum>().ToList();
-
+            
             var values = enumValues.Select(
-                e => e.ToString()).ToArray();
+                e => 
+                {
+                    var text = "";
+
+                    e.TryGetAttribute<DisplayNameAttribute>(a => text = a.DisplayName);
+
+                    if (string.IsNullOrEmpty(text))
+                    {
+                        text = e.ToString();
+                    }
+
+                    return text;
+
+                }).ToArray();
 
             swCtrl.AddItems(values);
 
@@ -55,7 +71,7 @@ namespace CodeStack.SwEx.PMPage.Constructors
                 }
             }
 
-            return new PropertyManagerPageComboBoxEx(atts.Id, swCtrl, enumValues.AsReadOnly(), handler);
+            return new PropertyManagerPageComboBoxEx(atts.Id, atts.Tag, swCtrl, enumValues.AsReadOnly(), handler);
         }
     }
 }

@@ -19,16 +19,14 @@ namespace CodeStack.SwEx.PMPage.Attributes
     /// <remarks>Applied to the model class</remarks>
     public class HelpAttribute : Attribute, IAttribute
     {
-        /// <summary>
-        /// Link to help documentation
-        /// </summary>
-        public string HelpLink { get; private set; }
+        internal string HelpLink { get; private set; }
+        internal string WhatsNewLink { get; private set; }
 
         /// <summary>
-        /// Link to what's new page
+        /// Constuctor for specifying links to help resources
         /// </summary>
-        public string WhatsNewLink { get; private set; }
-
+        /// <param name="helpLink">Link to help documentation</param>
+        /// <param name="whatsNewLink">Link to what's new page</param>
         public HelpAttribute(string helpLink, string whatsNewLink = "")
         {
             HelpLink = helpLink;
