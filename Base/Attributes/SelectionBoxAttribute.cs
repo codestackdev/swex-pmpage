@@ -54,12 +54,15 @@ namespace CodeStack.SwEx.PMPage.Attributes
             Filters = filters;
             SelectionMark = mark;
 
-            if (!typeof(ISelectionCustomFilter).IsAssignableFrom(customFilter))
+            if (customFilter != null)
             {
-                throw new InvalidCastException($"{customFilter.FullName} doesn't implement {typeof(ISelectionCustomFilter).FullName}");
-            }
+                if (!typeof(ISelectionCustomFilter).IsAssignableFrom(customFilter))
+                {
+                    throw new InvalidCastException($"{customFilter.FullName} doesn't implement {typeof(ISelectionCustomFilter).FullName}");
+                }
 
-            CustomFilter = customFilter;
+                CustomFilter = customFilter;
+            }
         }
     }
 }

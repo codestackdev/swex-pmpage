@@ -15,9 +15,4 @@
     <copyright>Copyright © CodeStack 2018</copyright>
     <tags>Pages PMP SOLIDWORKS Property Manager Page</tags>
   </metadata>
-  <files>
-    <file src="thirdpty\SolidWorks.Interop.sldworks.dll" target="lib\net40" />
-	<file src="thirdpty\SolidWorks.Interop.swconst.dll" target="lib\net40" />
-	<file src="thirdpty\SolidWorks.Interop.swpublished.dll" target="lib\net40" />
-  </files>
 </package>

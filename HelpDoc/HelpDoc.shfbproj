@@ -69,7 +69,11 @@
     <Filter entryType="Event" fullName="CodeStack.SwEx.PMPage.PropertyManagerPageHandlerEx.DataChanged" filterName="DataChanged" isExposed="True" />
   </Filter>
 </Filter>
-    </ApiFilter>
+<Filter entryType="Namespace" fullName="CodeStack.SwEx.PMPage.Base" isExposed="True">
+  <Filter entryType="Class" fullName="CodeStack.SwEx.PMPage.Base.DependencyHandler" filterName="DependencyHandler" isExposed="True">
+    <Filter entryType="Method" fullName="CodeStack.SwEx.PMPage.Base.DependencyHandler.UpdateState" filterName="UpdateState" isExposed="False" />
+  </Filter>
+</Filter></ApiFilter>
     <ComponentConfigurations>
       <ComponentConfig id="API Token Resolution" enabled="True" xmlns="">
         <component id="API Token Resolution">{@TokenFiles}
@@ -106,6 +110,7 @@
     <None Include="Content\VersionHistory\VersionHistory.aml" />
     <None Include="Content\Welcome.aml" />
     <None Include="Content\VersionHistory\v0.1.0.aml" />
+    <None Include="Content\VersionHistory\v0.4.0.aml" />
   </ItemGroup>
   <ItemGroup>
     <ContentLayout Include="ContentLayout.content" />

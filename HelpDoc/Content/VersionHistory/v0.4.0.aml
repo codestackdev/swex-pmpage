@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<topic id="v0-4-0" revisionNumber="1">
+	<developerConceptualDocument xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:xlink="http://www.w3.org/1999/xlink">
+		<introduction>
+			<para>Version 0.4.0 was released on November 10 2018
+			</para>
+		</introduction>
+
+		<section>
+			<title>First stable release</title>
+			<content>
+
+				<list class="bullet">
+					<listItem>
+						<para>Added support for control tags and dependencies</para>
+          </listItem>
+          <listItem>
+            <para>Exposed control interface to access native SOLIDWORKS Property Manager Page Control</para>
+          </listItem>
+          <listItem>
+            <para>Added support for custom icons for controls and property page</para>
+					</listItem>
+          <listItem>
+            <para>Added the ability to add message to property page</para>
+          </listItem>
+          <listItem>
+            <para>Added ability to specify display text for enumeration fields used as items for combo box control</para>
+          </listItem>
+          <listItem>
+            <para>Added the ability to provide custom selection filter for the selection box control</para>
+          </listItem>
+          <listItem>
+            <para>Added the ability to ignore properties from creation property page controls</para>
+          </listItem>
+				</list>
+
+			</content>
+		</section>
+
+		<relatedTopics>
+			<link xlink:href="version-history" />
+		</relatedTopics>
+
+	</developerConceptualDocument>
+</topic>
