@@ -24,20 +24,22 @@ namespace CodeStack.SwEx.PMPage.Constructors
     internal class PropertyManagerPageConstructor<THandler> : PageConstructor<PropertyManagerPagePageEx<THandler>>
         where THandler : PropertyManagerPageHandlerEx, new()
     {
-        private ISldWorks m_App;
+        private readonly ISldWorks m_App;
+        private readonly IconsConverter m_IconsConv;
+        private readonly THandler m_Handler;
 
-        private IconsConverter m_IconsConv;
-
-        internal PropertyManagerPageConstructor(ISldWorks app, IconsConverter iconsConv)
+        internal PropertyManagerPageConstructor(ISldWorks app, IconsConverter iconsConv, THandler handler)
         {
             m_App = app;
             m_IconsConv = iconsConv;
+
+            m_Handler = handler;
+            handler.Init(m_App);
         }
 
         protected override PropertyManagerPagePageEx<THandler> Create(IAttributeSet atts)
         {
-            var handler = new THandler();
-            handler.Init(m_App);
+            
             int err = -1;
 
             swPropertyManagerPageOptions_e opts;
@@ -77,7 +79,7 @@ namespace CodeStack.SwEx.PMPage.Constructors
 
             var page = m_App.CreatePropertyManagerPage(atts.Name,
                 (int)opts,
-                handler, ref err) as IPropertyManagerPage2;
+                m_Handler, ref err) as IPropertyManagerPage2;
 
             if (titleIcon != null)
             {
@@ -97,7 +99,7 @@ namespace CodeStack.SwEx.PMPage.Constructors
                     (int)swPropertyManagerPageMessageExpanded.swMessageBoxExpand, "");
             }
 
-            return new PropertyManagerPagePageEx<THandler>(page, handler, m_App, helpLink, whatsNewLink);
+            return new PropertyManagerPagePageEx<THandler>(page, m_Handler, m_App, helpLink, whatsNewLink);
         }
     }
 }

@@ -30,7 +30,7 @@ namespace CodeStack.SwEx.PMPage.Attributes
         internal bool Inclusive { get; private set; }
 
         /// <summary>
-        /// Constructor fo rspecifying number box options
+        /// Constructor for specifying number box options
         /// </summary>
         /// <param name="style">Number box style as defined in <see href="http://help.solidworks.com/2016/english/api/swconst/solidworks.interop.swconst~solidworks.interop.swconst.swpropmgrpagenumberboxstyle_e.html">swPropMgrPageNumberBoxStyle_e Enumeration</see>0 for default style</param>
         public NumberBoxOptionsAttribute(swPropMgrPageNumberBoxStyle_e style = 0)

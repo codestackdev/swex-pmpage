@@ -36,7 +36,7 @@ namespace CodeStack.SwEx.PMPage.Attributes
 
         /// <inheritdoc cref="PageOptionsAttribute(swPropertyManagerPageOptions_e)"/>
         /// <param name="resType"><token>resType</token></param>
-        /// <param name="iconResName">Name of image resource for proeprty manager page icon</param>
+        /// <param name="iconResName">Name of image resource for property manager page icon</param>
         public PageOptionsAttribute(Type resType, string iconResName,
             swPropertyManagerPageOptions_e opts = swPropertyManagerPageOptions_e.swPropertyManagerOptions_OkayButton | swPropertyManagerPageOptions_e.swPropertyManagerOptions_CancelButton) : this(opts)
         {

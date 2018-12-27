@@ -18,8 +18,8 @@ namespace CodeStack.SwEx.PMPage
         : PageBuilder<PropertyManagerPagePageEx<THandler>, PropertyManagerPageGroupEx<THandler>, IPropertyManagerPageControlEx>
         where THandler : PropertyManagerPageHandlerEx, new()
     {
-        internal PropertyManagerPageBuilder(ISldWorks app, IconsConverter iconsConv)
-            : base(new TypeDataBinder(), new PropertyManagerPageConstructor<THandler>(app, iconsConv),
+        internal PropertyManagerPageBuilder(ISldWorks app, IconsConverter iconsConv, THandler handler)
+            : base(new TypeDataBinder(), new PropertyManagerPageConstructor<THandler>(app, iconsConv, handler),
                   new PropertyManagerPageGroupConstructor<THandler>(),
                   new PropertyManagerPageTextBoxConstructor<THandler>(iconsConv),
                   new PropertyManagerPageNumberBoxConstructor<THandler>(iconsConv),
