@@ -132,7 +132,7 @@
     <Reference Include="System.XML">
       <Name>System.XML</Name>
     </Reference>
-    <Reference Include="Xarial.VPages.Framework, Version=0.3.0.0, Culture=neutral, PublicKeyToken=6dcec729ca6a1943, processorArchitecture=MSIL">
+    <Reference Include="Xarial.VPages.Framework, Version=0.3.1.0, Culture=neutral, PublicKeyToken=null, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Xarial.VPages.Framework.0.3.0\lib\net40\Xarial.VPages.Framework.dll</HintPath>
     </Reference>
   </ItemGroup>

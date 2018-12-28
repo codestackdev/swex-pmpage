@@ -82,7 +82,7 @@ namespace CodeStack.SwEx.PMPage
 
             m_Handler = new THandler();
             
-            m_PmpBuilder = new PropertyManagerPageBuilder<THandler>(app, m_IconsConv, m_Handler);
+            m_PmpBuilder = new PropertyManagerPageBuilder<THandler>(app, m_IconsConv, m_Handler, Logger);
         }
 
         /// <inheritdoc/>
@@ -104,19 +104,38 @@ namespace CodeStack.SwEx.PMPage
 
             const int OPTS_DEFAULT = 0;
 
+            DisposeActivePage();
+
             m_App.IActiveDoc2.ClearSelection2(true);
 
             m_ActivePage = m_PmpBuilder.CreatePage(model);
-
             m_Controls = m_ActivePage.Binding.Bindings.Select(b => b.Control)
                 .OfType<IPropertyManagerPageControlEx>().ToArray();
 
             m_ActivePage.Page.Show2(OPTS_DEFAULT);
+
+            //updating control states
+            m_ActivePage.Binding.Dependency.UpdateAll();
+        }
+
+        private void DisposeActivePage()
+        {
+            if (m_ActivePage != null)
+            {
+                foreach (var ctrl in m_ActivePage.Binding.Bindings.Select(b => b.Control).OfType<IDisposable>())
+                {
+                    ctrl.Dispose();
+                }
+
+                m_ActivePage = null;
+            }
         }
 
         public void Dispose()
         {
             Logger.Log("Disposing page");
+
+            DisposeActivePage();
 
             m_IconsConv.Dispose();
         }

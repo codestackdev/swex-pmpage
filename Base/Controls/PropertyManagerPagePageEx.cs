@@ -66,5 +66,12 @@ namespace CodeStack.SwEx.PMPage.Controls
                     (int)swMessageBoxIcon_e.swMbWarning, (int)swMessageBoxBtn_e.swMbOk);
             }
         }
+
+        public override void Dispose()
+        {
+            base.Dispose();
+            Handler.HelpRequested -= OnHelpRequested;
+            Handler.WhatsNewRequested -= OnWhatsNewRequested;
+        }
     }
 }

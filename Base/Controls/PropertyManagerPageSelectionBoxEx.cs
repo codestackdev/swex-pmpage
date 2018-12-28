@@ -134,5 +134,12 @@ namespace CodeStack.SwEx.PMPage.Controls
                 return typeof(IList).IsAssignableFrom(m_ObjType);
             }
         }
+
+        public override void Dispose()
+        {
+            base.Dispose();
+            m_Handler.SelectionChanged -= OnSelectionChanged;
+            m_Handler.SubmitSelection -= OnSubmitSelection;
+        }
     }
 }
