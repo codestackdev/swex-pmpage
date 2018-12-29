@@ -73,6 +73,13 @@ namespace CodeStack.SwEx.PMPage
         /// <summary>Creates instance of property manager page</summary>
         /// <param name="app">Pointer to session of SOLIDWORKS where the property manager page to be created</param>
         public PropertyManagerPageEx(ISldWorks app)
+            : this(app, null)
+        {
+            
+        }
+
+        [Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
+        public PropertyManagerPageEx(ISldWorks app, IPageSpec pageSpec)
         {
             m_App = app;
 
@@ -81,8 +88,8 @@ namespace CodeStack.SwEx.PMPage
             m_IconsConv = new IconsConverter();
 
             m_Handler = new THandler();
-            
-            m_PmpBuilder = new PropertyManagerPageBuilder<THandler>(app, m_IconsConv, m_Handler, Logger);
+
+            m_PmpBuilder = new PropertyManagerPageBuilder<THandler>(app, m_IconsConv, m_Handler, pageSpec, Logger);
         }
 
         /// <inheritdoc/>
