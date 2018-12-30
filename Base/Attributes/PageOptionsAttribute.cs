@@ -38,9 +38,14 @@ namespace CodeStack.SwEx.PMPage.Attributes
         /// <param name="resType"><token>resType</token></param>
         /// <param name="iconResName">Name of image resource for property manager page icon</param>
         public PageOptionsAttribute(Type resType, string iconResName,
-            swPropertyManagerPageOptions_e opts = swPropertyManagerPageOptions_e.swPropertyManagerOptions_OkayButton | swPropertyManagerPageOptions_e.swPropertyManagerOptions_CancelButton) : this(opts)
+            swPropertyManagerPageOptions_e opts = swPropertyManagerPageOptions_e.swPropertyManagerOptions_OkayButton | swPropertyManagerPageOptions_e.swPropertyManagerOptions_CancelButton) 
+            : this(new TitleIcon(ResourceHelper.GetResource<Image>(resType, iconResName)), opts)
         {
-            Icon = new TitleIcon(ResourceHelper.GetResource<Image>(resType, iconResName));
+        }
+
+        internal PageOptionsAttribute(TitleIcon icon, swPropertyManagerPageOptions_e opts) : this(opts)
+        {
+            Icon = icon;
         }
     }
 }

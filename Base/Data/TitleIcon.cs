@@ -7,6 +7,7 @@
 
 using CodeStack.SwEx.Common.Icons;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Drawing;
 
 namespace CodeStack.SwEx.PMPage.Data

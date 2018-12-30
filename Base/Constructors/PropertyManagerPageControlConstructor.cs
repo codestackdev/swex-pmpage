@@ -20,12 +20,28 @@ using Xarial.VPages.Framework.Constructors;
 
 namespace CodeStack.SwEx.PMPage.Constructors
 {
+    internal interface IPropertyManagerPageElementConstructor<THandler> 
+        : IPageElementConstructor<PropertyManagerPageGroupEx<THandler>, PropertyManagerPagePageEx<THandler>>
+        where THandler : PropertyManagerPageHandlerEx, new()
+    {
+        Type ControlType { get; }
+        void PostProcessControls(IEnumerable<IPropertyManagerPageControlEx> ctrls);
+    }
+
     internal abstract class PropertyManagerPageControlConstructor<THandler, TControl, TControlSw>
-            : ControlConstructor<TControl, PropertyManagerPageGroupEx<THandler>, PropertyManagerPagePageEx<THandler>>
+            : ControlConstructor<TControl, PropertyManagerPageGroupEx<THandler>, PropertyManagerPagePageEx<THandler>>, IPropertyManagerPageElementConstructor<THandler>
             where THandler : PropertyManagerPageHandlerEx, new()
             where TControl : IPropertyManagerPageControlEx
             where TControlSw : class
     {
+        public Type ControlType
+        {
+            get
+            {
+                return typeof(TControl);
+            }
+        }
+
         protected delegate TSwControl CreateControlDelegate<TSwControl>(
             int id, short type, string name,
             short align, short opts, string tooltip);
@@ -142,6 +158,10 @@ namespace CodeStack.SwEx.PMPage.Constructors
             var color = Color.FromKnownColor(knownColor);
 
             return (color.R << 0) | (color.G << 8) | (color.B << 16);
+        }
+
+        public virtual void PostProcessControls(IEnumerable<IPropertyManagerPageControlEx> ctrls)
+        {
         }
     }
 }

@@ -29,7 +29,6 @@ namespace CodeStack.SwEx.PMPage
         internal event Action<int, bool> CheckChanged;
         internal event Action<int, int> SelectionChanged;
         internal event Action<int, int> ComboBoxChanged;
-        internal event Action<int, int> SubmitSelectionChanged;
         internal event SubmitSelectionDelegate SubmitSelection;
 
         internal event Action HelpRequested;

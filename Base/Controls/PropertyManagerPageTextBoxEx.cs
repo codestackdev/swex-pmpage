@@ -42,5 +42,11 @@ namespace CodeStack.SwEx.PMPage.Controls
         {
             SwControl.Text = value;
         }
+
+        public override void Dispose()
+        {
+            base.Dispose();
+            m_Handler.TextChanged -= OnTextChanged;
+        }
     }
 }
