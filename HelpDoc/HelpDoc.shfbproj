@@ -60,20 +60,21 @@
     </NamespaceSummaries>
     <ApiFilter>
       <Filter entryType="Namespace" fullName="CodeStack.SwEx.PMPage" isExposed="False">
-  <Filter entryType="Class" fullName="CodeStack.SwEx.PMPage.PropertyManagerPageEx`2" filterName="PropertyManagerPageEx`2" isExposed="True">
-    <Filter entryType="Method" fullName="CodeStack.SwEx.PMPage.PropertyManagerPageEx`2.Dispose" filterName="Dispose" isExposed="False" />
-  </Filter>
-  <Filter entryType="Class" fullName="CodeStack.SwEx.PMPage.PropertyManagerPageHandlerEx" filterName="PropertyManagerPageHandlerEx" isExposed="False">
-    <Filter entryType="Event" fullName="CodeStack.SwEx.PMPage.PropertyManagerPageHandlerEx.Closed" filterName="Closed" isExposed="True" />
-    <Filter entryType="Event" fullName="CodeStack.SwEx.PMPage.PropertyManagerPageHandlerEx.Closing" filterName="Closing" isExposed="True" />
-    <Filter entryType="Event" fullName="CodeStack.SwEx.PMPage.PropertyManagerPageHandlerEx.DataChanged" filterName="DataChanged" isExposed="True" />
-  </Filter>
-</Filter>
-<Filter entryType="Namespace" fullName="CodeStack.SwEx.PMPage.Base" isExposed="True">
-  <Filter entryType="Class" fullName="CodeStack.SwEx.PMPage.Base.DependencyHandler" filterName="DependencyHandler" isExposed="True">
-    <Filter entryType="Method" fullName="CodeStack.SwEx.PMPage.Base.DependencyHandler.UpdateState" filterName="UpdateState" isExposed="False" />
-  </Filter>
-</Filter></ApiFilter>
+        <Filter entryType="Class" fullName="CodeStack.SwEx.PMPage.PropertyManagerPageEx`2" filterName="PropertyManagerPageEx`2" isExposed="True">
+          <Filter entryType="Method" fullName="CodeStack.SwEx.PMPage.PropertyManagerPageEx`2.Dispose" filterName="Dispose" isExposed="False" />
+        </Filter>
+        <Filter entryType="Class" fullName="CodeStack.SwEx.PMPage.PropertyManagerPageHandlerEx" filterName="PropertyManagerPageHandlerEx" isExposed="False">
+          <Filter entryType="Event" fullName="CodeStack.SwEx.PMPage.PropertyManagerPageHandlerEx.Closed" filterName="Closed" isExposed="True" />
+          <Filter entryType="Event" fullName="CodeStack.SwEx.PMPage.PropertyManagerPageHandlerEx.Closing" filterName="Closing" isExposed="True" />
+          <Filter entryType="Event" fullName="CodeStack.SwEx.PMPage.PropertyManagerPageHandlerEx.DataChanged" filterName="DataChanged" isExposed="True" />
+        </Filter>
+      </Filter>
+      <Filter entryType="Namespace" fullName="CodeStack.SwEx.PMPage.Base" isExposed="True">
+        <Filter entryType="Class" fullName="CodeStack.SwEx.PMPage.Base.DependencyHandler" filterName="DependencyHandler" isExposed="True">
+          <Filter entryType="Method" fullName="CodeStack.SwEx.PMPage.Base.DependencyHandler.UpdateState" filterName="UpdateState" isExposed="False" />
+        </Filter>
+      </Filter>
+    </ApiFilter>
     <ComponentConfigurations>
       <ComponentConfig id="API Token Resolution" enabled="True" xmlns="">
         <component id="API Token Resolution">{@TokenFiles}
@@ -111,6 +112,8 @@
     <None Include="Content\Welcome.aml" />
     <None Include="Content\VersionHistory\v0.1.0.aml" />
     <None Include="Content\VersionHistory\v0.4.0.aml" />
+    <None Include="Content\VersionHistory\v0.4.5.aml" />
+    <Content Include="icons\favicon.ico" />
   </ItemGroup>
   <ItemGroup>
     <ContentLayout Include="ContentLayout.content" />
