@@ -38,5 +38,11 @@ namespace CodeStack.SwEx.PMPage.Controls
         {
             SwControl.Checked = value;
         }
+
+        public override void Dispose()
+        {
+            base.Dispose();
+            m_Handler.CheckChanged -= OnCheckChanged;
+        }
     }
 }

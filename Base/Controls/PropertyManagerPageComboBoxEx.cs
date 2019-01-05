@@ -46,5 +46,11 @@ namespace CodeStack.SwEx.PMPage.Controls
         {
             SwControl.CurrentSelection = (short)m_Values.IndexOf(value);
         }
+
+        public override void Dispose()
+        {
+            base.Dispose();
+            m_Handler.ComboBoxChanged -= OnComboBoxChanged;
+        }
     }
 }

@@ -10,6 +10,7 @@ using SolidWorks.Interop.sldworks;
 using CodeStack.SwEx.PMPage.Base;
 using CodeStack.SwEx.PMPage.Controls;
 using SwVPagesSample.Properties;
+using CodeStack.SwEx.Common.Attributes;
 
 namespace SwVPagesSample
 {
@@ -39,11 +40,11 @@ namespace SwVPagesSample
 
         public DataGroup Group { get; set; }
 
-        [SelectionBox(1, swSelectType_e.swSelDATUMPLANES, swSelectType_e.swSelFACES, swSelectType_e.swSelEDGES)]
+        [SelectionBox(swSelectType_e.swSelDATUMPLANES, swSelectType_e.swSelEDGES, swSelectType_e.swSelFACES)]
         [ControlOptions(height: 50)]
         public List<IEntity> Selection { get; set; }
 
-        [SelectionBox(2, swSelectType_e.swSelSOLIDBODIES)]
+        [SelectionBox(swSelectType_e.swSelSOLIDBODIES)]
         public IBody2 Body { get; set; }
 
         public Options_e Options { get; set; }
@@ -60,14 +61,14 @@ namespace SwVPagesSample
         public string Text3 { get; set; }
         public string Text4 { get; set; }
 
-        [SelectionBox(0, typeof(PlanarFaceFilter), swSelectType_e.swSelFACES)]
+        [SelectionBox(typeof(PlanarFaceFilter), swSelectType_e.swSelFACES)]
         [ControlAttribution(swControlBitmapLabelType_e.swBitmapLabel_SelectFace)]
         public IFace2 PlanarFace { get; set; }
     }
 
     public enum Options_e
     {
-        [ComboBoxItemText("Option One")]
+        [Title("Option One")]
         Option1,
         Option2,
         Option3

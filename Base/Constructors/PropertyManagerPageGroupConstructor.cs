@@ -19,9 +19,23 @@ using Xarial.VPages.Framework.Core;
 namespace CodeStack.SwEx.PMPage.Constructors
 {
     [DefaultType(typeof(SpecialTypes.ComplexType))]
-    internal class PropertyManagerPageGroupConstructor<THandler> : GroupConstructor<PropertyManagerPageGroupEx<THandler>, PropertyManagerPagePageEx<THandler>>
+    internal class PropertyManagerPageGroupConstructor<THandler> 
+        : GroupConstructor<PropertyManagerPageGroupEx<THandler>, PropertyManagerPagePageEx<THandler>>, IPropertyManagerPageElementConstructor<THandler>
         where THandler : PropertyManagerPageHandlerEx, new()
     {
+        public Type ControlType
+        {
+            get
+            {
+                return typeof(PropertyManagerPageGroupEx<THandler>);
+            }
+        }
+
+        public void PostProcessControls(IEnumerable<IPropertyManagerPageControlEx> ctrls)
+        {
+            //TODO: not used
+        }
+
         protected override PropertyManagerPageGroupEx<THandler> Create(PropertyManagerPageGroupEx<THandler> group, IAttributeSet atts)
         {
             //NOTE: nested groups are not supported in SOLIDWORKS, creating the group in page instead

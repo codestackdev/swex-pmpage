@@ -11,6 +11,8 @@ namespace CodeStack.SwEx.PMPage.Attributes
     /// Specifies the display text for the combobox item in enumerator
     /// </summary>
     [AttributeUsage(AttributeTargets.Field)]
+    [Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
+    [Obsolete("Deprecated. Use Common.Attributes.TitleAttribute instead")]
     public class ComboBoxItemTextAttribute : DisplayNameAttribute
     {
         /// <summary>

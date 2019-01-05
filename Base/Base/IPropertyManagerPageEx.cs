@@ -41,8 +41,13 @@ namespace CodeStack.SwEx.PMPage.Base
         /// <summary>
         /// Display property manager page modeless
         /// </summary>
+        /// <param name="model">Data model to create property manager page for</param>
         /// <remarks>Control is returned immediately after calling the method.
         /// Use <see cref="THandler.Closed"/> event to receive a notification when this property manager page is closed</remarks>
+        void Show(TModel model);
+
+        [Obsolete("Deprecated. Use another overload")]
+        [Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
         void Show();
     }
 }

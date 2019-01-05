@@ -104,8 +104,6 @@ namespace CodeStack.SwEx.PMPage.Controls
 
             if (value != null)
             {
-                //TODO: deselect selected objects
-
                 var disps = new List<DispatchWrapper>();
 
                 if (SupportsMultiEntities)
@@ -120,18 +118,28 @@ namespace CodeStack.SwEx.PMPage.Controls
                     disps.Add(new DispatchWrapper(value));
                 }
 
-                var selData = m_App.IActiveDoc2.ISelectionManager.CreateSelectData();
+                var selMgr = m_App.IActiveDoc2.ISelectionManager;
+                
+                var selData = selMgr.CreateSelectData();
                 selData.Mark = SwControl.Mark;
-                m_App.IActiveDoc2.Extension.MultiSelect2(disps.ToArray(), true, selData.Mark);
+
+                m_App.IActiveDoc2.Extension.MultiSelect2(disps.ToArray(), true, selData);
             }
         }
-
+        
         private bool SupportsMultiEntities
         {
             get
             {
                 return typeof(IList).IsAssignableFrom(m_ObjType);
             }
+        }
+
+        public override void Dispose()
+        {
+            base.Dispose();
+            m_Handler.SelectionChanged -= OnSelectionChanged;
+            m_Handler.SubmitSelection -= OnSubmitSelection;
         }
     }
 }

@@ -14,7 +14,8 @@
         <HelpKeyword index="K" term="version, 1.0.0.0" />
       </HelpKeywords>
     </Topic>
-    <Topic id="v0-2-0" visible="True" isSelected="true" title="Version 0.2.0" />
-    <Topic id="v0-4-0" visible="True" title="Version 0.4.0" />
+    <Topic id="v0-2-0" visible="True" title="Version 0.2.0" />
+    <Topic id="v0-4-0" visible="True" isSelected="true" title="Version 0.4.0" />
+    <Topic id="v0-4-5" visible="True" title="Version 0.4.5" />
   </Topic>
 </Topics>

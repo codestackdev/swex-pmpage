@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<topic id="v0-4-5" revisionNumber="1">
+	<developerConceptualDocument xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:xlink="http://www.w3.org/1999/xlink">
+		<introduction>
+			<para>Version 0.4.5 was released on December 31 2018
+			</para>
+		</introduction>
+
+		<section>
+			<title>Enhancements and bug fixes</title>
+			<content>
+
+				<list class="bullet">
+					<listItem>
+						<para>
+              <externalLink>
+                <linkText>Issue 2</linkText>
+                <linkUri>https://github.com/codestack-net-dev/vpages-sw/issues/2</linkUri>
+              </externalLink> Need to clear selection before showing property page with selection boxes
+            </para>
+          </listItem>
+          <listItem>
+            <para>
+              <externalLink>
+                <linkText>Issue 3</linkText>
+                <linkUri>https://github.com/codestack-net-dev/vpages-sw/issues/3</linkUri>
+              </externalLink> Selected entities appeared in wrong selection boxes
+            </para>
+          </listItem>
+          <listItem>
+            <para>
+              <externalLink>
+                <linkText>Issue 6</linkText>
+                <linkUri>https://github.com/codestack-net-dev/vpages-sw/issues/6</linkUri>
+              </externalLink> Enable dependency doesn't work when page is reloaded
+            </para>
+          </listItem>
+          <listItem>
+            <para>
+              <externalLink>
+                <linkText>Issue 7</linkText>
+                <linkUri>https://github.com/codestack-net-dev/vpages-sw/issues/7</linkUri>
+              </externalLink> Explain better how to handle multiple selection boxes in one page
+            </para>
+          </listItem>
+				</list>
+
+			</content>
+		</section>
+
+		<relatedTopics>
+			<link xlink:href="version-history" />
+		</relatedTopics>
+
+	</developerConceptualDocument>
+</topic>

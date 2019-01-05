@@ -18,9 +18,9 @@ namespace CodeStack.SwEx.PMPage.Controls
     internal class PropertyManagerPagePageEx<THandler> : Page
         where THandler : PropertyManagerPageHandlerEx, new()
     {
-        public IPropertyManagerPage2 Page { get; private set; }
-        public THandler Handler { get; private set; }
-        public ISldWorks App { get; private set; }
+        internal IPropertyManagerPage2 Page { get; private set; }
+        internal THandler Handler { get; private set; }
+        internal ISldWorks App { get; private set; }
 
         private string m_HelpLink;
         private string m_WhatsNewLink;
@@ -65,6 +65,13 @@ namespace CodeStack.SwEx.PMPage.Controls
                 App.SendMsgToUser2("Not available",
                     (int)swMessageBoxIcon_e.swMbWarning, (int)swMessageBoxBtn_e.swMbOk);
             }
+        }
+
+        public override void Dispose()
+        {
+            base.Dispose();
+            Handler.HelpRequested -= OnHelpRequested;
+            Handler.WhatsNewRequested -= OnWhatsNewRequested;
         }
     }
 }

@@ -130,7 +130,10 @@ namespace SwVPagesSample
             m_CmdMgr = m_App.GetCommandManager(cookie);
             AddCommandMgr();
 
-            //m_PmpBuilder = new PropertyManagerPageBuilder<PropertyPageEventsHandler>(m_App);
+            m_ActivePage = new PropertyManagerPageEx<PropertyPageEventsHandler, DataModel>(m_App);
+
+            m_ActivePage.Handler.DataChanged += OnDataChanged;
+            m_ActivePage.Handler.Closed += OnClosed;
 
             return true;
         }
@@ -142,15 +145,11 @@ namespace SwVPagesSample
                 m_Model = new DataModel();
             }
 
-            m_App.IActiveDoc2.ClearSelection2(true);
+            m_ActivePage.Show(m_Model);
+        }
 
-            m_ActivePage?.Dispose();
-
-            m_ActivePage = new PropertyManagerPageEx<PropertyPageEventsHandler, DataModel>(m_Model, m_App);
-
-            m_ActivePage.Handler.DataChanged += OnDataChanged;
-
-            m_ActivePage.Show();
+        private void OnClosed(swPropertyManagerPageCloseReasons_e reason)
+        {
         }
 
         private void OnDataChanged()

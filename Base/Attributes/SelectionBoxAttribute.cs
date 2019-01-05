@@ -33,7 +33,7 @@ namespace CodeStack.SwEx.PMPage.Attributes
         /// </summary>
         /// <param name="filters">Filters allowed for selection into this selection box</param>
         public SelectionBoxAttribute(params swSelectType_e[] filters)
-            : this(0, filters)
+            : this(-1, filters)
         {
         }
 
@@ -42,6 +42,12 @@ namespace CodeStack.SwEx.PMPage.Attributes
         /// to differentiate the selections</param>
         public SelectionBoxAttribute(int mark, params swSelectType_e[] filters)
             : this(mark, null, filters)
+        {
+        }
+
+        /// <inheritdoc cref="SelectionBoxAttribute(int, Type, swSelectType_e[])"/>
+        public SelectionBoxAttribute(Type customFilter, params swSelectType_e[] filters)
+            : this(-1, customFilter, filters)
         {
         }
 
