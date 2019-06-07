@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>CodeStack.SwEx.PMPage</id>
-    <version>0.4.5.0</version>
+    <version>0.4.6.0</version>
     <title>Framework for developing property manager pages in SOLIDWORKS</title>
     <authors>CodeStack</authors>
     <owners>CodeStack</owners>
@@ -12,7 +12,7 @@
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Data driven SOLIDWORKS property manager pages based on vPages framework</description>
     <releaseNotes></releaseNotes>
-    <copyright>Copyright © CodeStack 2018</copyright>
+    <copyright>Copyright © CodeStack 2019</copyright>
     <tags>Pages PMP SOLIDWORKS Property Manager Page</tags>
   </metadata>
 </package>
