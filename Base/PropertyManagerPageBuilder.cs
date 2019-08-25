@@ -1,7 +1,7 @@
 ﻿//**********************
-//SwEx.Pmp
-//Copyright(C) 2018 www.codestack.net
-//License: https://github.com/codestack-net-dev/vpages-sw/blob/master/LICENSE
+//SwEx.PMPage - data driven framework for SOLIDWORKS Property Manager Pages
+//Copyright(C) 2019 www.codestack.net
+//License: https://github.com/codestackdev/swex-pmpage/blob/master/LICENSE
 //Product URL: https://www.codestack.net/labs/solidworks/swex/pmp/
 //**********************
 
@@ -20,6 +20,7 @@ using System;
 using CodeStack.SwEx.PMPage.Base;
 using CodeStack.SwEx.PMPage.Attributes;
 using CodeStack.SwEx.PMPage.Data;
+using System.Reflection;
 
 namespace CodeStack.SwEx.PMPage
 {
@@ -49,45 +50,12 @@ namespace CodeStack.SwEx.PMPage
             private readonly IAttributeSet m_BaseAttSet;
             private readonly string m_Title;
 
-            public Type BoundType
-            {
-                get
-                {
-                    return m_BaseAttSet.BoundType;
-                }
-            }
-
-            public string Description
-            {
-                get
-                {
-                    return m_BaseAttSet.Description;
-                }
-            }
-
-            public int Id
-            {
-                get
-                {
-                    return m_BaseAttSet.Id;
-                }
-            }
-
-            public string Name
-            {
-                get
-                {
-                    return m_Title;
-                }
-            }
-
-            public object Tag
-            {
-                get
-                {
-                    return m_BaseAttSet.Tag;
-                }
-            }
+            public Type BoundType => m_BaseAttSet.BoundType;
+            public string Description => m_BaseAttSet.Description;
+            public int Id => m_BaseAttSet.Id;
+            public string Name => m_Title;
+            public object Tag => m_BaseAttSet.Tag;
+            public MemberInfo BoundMemberInfo => m_BaseAttSet.BoundMemberInfo;
 
             public void Add<TAtt>(TAtt att) where TAtt : Xarial.VPages.Framework.Base.IAttribute
             {

@@ -1,4 +1,11 @@
-﻿using CodeStack.SwEx.PMPage.Attributes;
+﻿//**********************
+//SwEx.PMPage - data driven framework for SOLIDWORKS Property Manager Pages
+//Copyright(C) 2019 www.codestack.net
+//License: https://github.com/codestackdev/swex-pmpage/blob/master/LICENSE
+//Product URL: https://www.codestack.net/labs/solidworks/swex/pmp/
+//**********************
+
+using CodeStack.SwEx.PMPage.Attributes;
 using CodeStack.SwEx.PMPage.Controls;
 using System;
 using System.Collections.Generic;
