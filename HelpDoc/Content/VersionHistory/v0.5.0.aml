@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<topic id="v0-5-0" revisionNumber="1">
+	<developerConceptualDocument xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:xlink="http://www.w3.org/1999/xlink">
+		<introduction>
+			<para>Version 0.5.0 was released on August 25 2019
+			</para>
+		</introduction>
+
+		<section>
+			<title>Enhancements and bug fixes</title>
+			<content>
+
+				<list class="bullet">
+					<listItem>
+						<para>
+              <externalLink>
+                <linkText>Issue 8</linkText>
+                <linkUri>https://github.com/codestackdev/swex-pmpage/issues/8</linkUri>
+              </externalLink> Tooltip is not displayed if ClosingArg.Cancel = true but either title or description is not specified
+            </para>
+          </listItem>
+          <listItem>
+            <para>
+              <externalLink>
+                <linkText>Issue 9</linkText>
+                <linkUri>https://github.com/codestackdev/swex-pmpage/issues/9</linkUri>
+              </externalLink> Need to support IconAttribute for the control icons
+            </para>
+          </listItem>
+          <listItem>
+            <para>
+              <externalLink>
+                <linkText>Issue 10</linkText>
+                <linkUri>https://github.com/codestackdev/swex-pmpage/issues/10</linkUri>
+              </externalLink> Need to support IconAttribute for the page title icon
+            </para>
+          </listItem>
+          <listItem>
+            <para>
+              <externalLink>
+                <linkText>Issue 4 (Common)</linkText>
+                <linkUri>https://github.com/codestackdev/swex-common/issues/4</linkUri>
+              </externalLink> Protect transparency key when generating icons with IconConverter utility
+            </para>
+          </listItem>
+				</list>
+
+			</content>
+		</section>
+
+		<relatedTopics>
+			<link xlink:href="version-history" />
+		</relatedTopics>
+
+	</developerConceptualDocument>
+</topic>

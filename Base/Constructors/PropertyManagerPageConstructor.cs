@@ -40,7 +40,6 @@ namespace CodeStack.SwEx.PMPage.Constructors
 
         protected override PropertyManagerPagePageEx<THandler> Create(IAttributeSet atts)
         {
-            
             int err = -1;
 
             swPropertyManagerPageOptions_e opts;
