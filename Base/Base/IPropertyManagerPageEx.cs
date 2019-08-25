@@ -45,9 +45,5 @@ namespace CodeStack.SwEx.PMPage.Base
         /// <remarks>Control is returned immediately after calling the method.
         /// Use <see cref="THandler.Closed"/> event to receive a notification when this property manager page is closed</remarks>
         void Show(TModel model);
-
-        [Obsolete("Deprecated. Use another overload")]
-        [Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
-        void Show();
     }
 }

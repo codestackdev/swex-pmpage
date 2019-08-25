@@ -133,9 +133,22 @@ namespace SwVPagesSample
             m_ActivePage = new PropertyManagerPageEx<PropertyPageEventsHandler, DataModel>(m_App);
 
             m_ActivePage.Handler.DataChanged += OnDataChanged;
+            m_ActivePage.Handler.Closing += OnPageClosing;
             m_ActivePage.Handler.Closed += OnClosed;
 
             return true;
+        }
+
+        private void OnPageClosing(swPropertyManagerPageCloseReasons_e reason, CodeStack.SwEx.PMPage.Base.ClosingArg arg)
+        {
+            if (reason == swPropertyManagerPageCloseReasons_e.swPropertyManagerPageClose_Okay)
+            {
+                if (m_Model.Body == null)
+                {
+                    arg.Cancel = true;
+                    arg.ErrorMessage = "Select body";
+                }
+            }
         }
 
         public void ShowPMP()

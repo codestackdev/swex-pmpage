@@ -97,10 +97,12 @@ namespace CodeStack.SwEx.PMPage
 
             if (arg.Cancel)
             {
-                if (!string.IsNullOrEmpty(arg.ErrorTitle) && !string.IsNullOrEmpty(arg.ErrorMessage))
+                if (!string.IsNullOrEmpty(arg.ErrorTitle) || !string.IsNullOrEmpty(arg.ErrorMessage))
                 {
+                    var title = !string.IsNullOrEmpty(arg.ErrorTitle) ? arg.ErrorTitle : "Error";
+
                     m_App.ShowBubbleTooltipAt2(0, 0, (int)swArrowPosition.swArrowLeftTop,
-                        arg.ErrorTitle, arg.ErrorMessage, (int)swBitMaps.swBitMapTreeError,
+                        title, arg.ErrorMessage, (int)swBitMaps.swBitMapTreeError,
                         "", "", 0, (int)swLinkString.swLinkStringNone, "", "");
                 }
 

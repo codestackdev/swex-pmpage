@@ -18,6 +18,7 @@ using CodeStack.SwEx.PMPage.Attributes;
 using CodeStack.SwEx.Common.Icons;
 using CodeStack.SwEx.PMPage.Data;
 using System.Drawing;
+using CodeStack.SwEx.Common.Attributes;
 
 namespace CodeStack.SwEx.PMPage.Constructors
 {
@@ -46,12 +47,25 @@ namespace CodeStack.SwEx.PMPage.Constructors
 
             TitleIcon titleIcon = null;
 
+            IconAttribute commIconAtt;
+            if (atts.BoundType.TryGetAttribute(out commIconAtt))
+            {
+                if (commIconAtt.Icon != null)
+                {
+                    titleIcon = new TitleIcon(commIconAtt.Icon);
+                }
+            }
+
             if (atts.Has<PageOptionsAttribute>())
             {
                 var optsAtt = atts.Get<PageOptionsAttribute>();
 
                 opts = optsAtt.Options;
-                titleIcon = optsAtt.Icon;
+
+                if (optsAtt.Icon != null)
+                {
+                    titleIcon = optsAtt.Icon;
+                }
             }
             else
             {
