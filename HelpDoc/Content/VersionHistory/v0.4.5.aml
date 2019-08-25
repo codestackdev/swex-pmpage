@@ -15,7 +15,7 @@
 						<para>
               <externalLink>
                 <linkText>Issue 2</linkText>
-                <linkUri>https://github.com/codestack-net-dev/vpages-sw/issues/2</linkUri>
+                <linkUri>https://github.com/codestackdev/swex-pmpage/issues/2</linkUri>
               </externalLink> Need to clear selection before showing property page with selection boxes
             </para>
           </listItem>
@@ -23,7 +23,7 @@
             <para>
               <externalLink>
                 <linkText>Issue 3</linkText>
-                <linkUri>https://github.com/codestack-net-dev/vpages-sw/issues/3</linkUri>
+                <linkUri>https://github.com/codestackdev/swex-pmpage/issues/3</linkUri>
               </externalLink> Selected entities appeared in wrong selection boxes
             </para>
           </listItem>
@@ -31,7 +31,7 @@
             <para>
               <externalLink>
                 <linkText>Issue 6</linkText>
-                <linkUri>https://github.com/codestack-net-dev/vpages-sw/issues/6</linkUri>
+                <linkUri>https://github.com/codestackdev/swex-pmpage/issues/6</linkUri>
               </externalLink> Enable dependency doesn't work when page is reloaded
             </para>
           </listItem>
@@ -39,7 +39,7 @@
             <para>
               <externalLink>
                 <linkText>Issue 7</linkText>
-                <linkUri>https://github.com/codestack-net-dev/vpages-sw/issues/7</linkUri>
+                <linkUri>https://github.com/codestackdev/swex-pmpage/issues/7</linkUri>
               </externalLink> Explain better how to handle multiple selection boxes in one page
             </para>
           </listItem>

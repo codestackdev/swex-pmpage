@@ -1,6 +1,6 @@
 [![Documentation](https://img.shields.io/badge/-Documentation-green.svg)](https://www.codestack.net/labs/solidworks/swex/pmpage/)
 [![NuGet](https://img.shields.io/nuget/v/CodeStack.SwEx.PMPage.svg)](https://www.nuget.org/packages/CodeStack.SwEx.PMPage/)
-[![Issues](https://img.shields.io/github/issues/codestack-net-dev/vpages-sw.svg)](https://github.com/codestack-net-dev/vpages-sw/issues)
+[![Issues](https://img.shields.io/github/issues/codestackdev/swex-pmpage.svg)](https://github.com/codestackdev/swex-pmpage/issues)
 
 # SwEx.PMPage
 ![SwEx.PMPage](https://www.codestack.net/labs/solidworks/swex/pmpage/logo.png)

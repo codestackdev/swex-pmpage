@@ -1,4 +1,11 @@
-﻿using CodeStack.SwEx.Common.Attributes;
+﻿//**********************
+//SwEx.PMPage - data driven framework for SOLIDWORKS Property Manager Pages
+//Copyright(C) 2019 www.codestack.net
+//License: https://github.com/codestackdev/swex-pmpage/blob/master/LICENSE
+//Product URL: https://www.codestack.net/labs/solidworks/swex/pmp/
+//**********************
+
+using CodeStack.SwEx.Common.Attributes;
 using CodeStack.SwEx.Common.Base;
 using CodeStack.SwEx.Common.Icons;
 using CodeStack.SwEx.PMPage.Attributes;
@@ -59,17 +66,6 @@ namespace CodeStack.SwEx.PMPage
         private readonly THandler m_Handler;
         private readonly ISldWorks m_App;
 
-        [Obsolete("Deprecated. Use another overload")]
-        [Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
-        public PropertyManagerPageEx(TModel model, ISldWorks app) 
-            : this(app)
-        {   
-            m_ActivePage = m_PmpBuilder.CreatePage(model);
-
-            m_Controls = m_ActivePage.Binding.Bindings.Select(b => b.Control)
-                .OfType<IPropertyManagerPageControlEx>().ToArray();
-        }
-
         /// <summary>Creates instance of property manager page</summary>
         /// <param name="app">Pointer to session of SOLIDWORKS where the property manager page to be created</param>
         public PropertyManagerPageEx(ISldWorks app)
@@ -90,18 +86,6 @@ namespace CodeStack.SwEx.PMPage
             m_Handler = new THandler();
 
             m_PmpBuilder = new PropertyManagerPageBuilder<THandler>(app, m_IconsConv, m_Handler, pageSpec, Logger);
-        }
-
-        /// <inheritdoc/>
-        [Obsolete("Deprecated. Use another overload")]
-        [Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
-        public void Show()
-        {
-            Logger.Log("Opening page");
-
-            const int OPTS_DEFAULT = 0;
-
-            m_ActivePage.Page.Show2(OPTS_DEFAULT);
         }
         
         /// <inheritdoc/>

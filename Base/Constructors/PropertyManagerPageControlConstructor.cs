@@ -1,22 +1,26 @@
 ﻿//**********************
-//SwEx.Pmp
-//Copyright(C) 2018 www.codestack.net
-//License: https://github.com/codestack-net-dev/vpages-sw/blob/master/LICENSE
+//SwEx.PMPage - data driven framework for SOLIDWORKS Property Manager Pages
+//Copyright(C) 2019 www.codestack.net
+//License: https://github.com/codestackdev/swex-pmpage/blob/master/LICENSE
 //Product URL: https://www.codestack.net/labs/solidworks/swex/pmp/
 //**********************
 
 using CodeStack.SwEx.Common.Icons;
 using CodeStack.SwEx.PMPage.Attributes;
 using CodeStack.SwEx.PMPage.Controls;
+using CodeStack.SwEx.PMPage.Data;
 using SolidWorks.Interop.swconst;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using Xarial.VPages.Framework.Base;
 using Xarial.VPages.Framework.Constructors;
+using CodeStack.SwEx.Common.Reflection;
+using CodeStack.SwEx.Common.Attributes;
 
 namespace CodeStack.SwEx.PMPage.Constructors
 {
@@ -134,6 +138,15 @@ namespace CodeStack.SwEx.PMPage.Constructors
                 swCtrl.OptionsForResize = (int)opts.ResizeOptions;
             }
 
+            ControlIcon icon = null;
+
+            var commonIcon = atts.BoundMemberInfo?.TryGetAttribute<IconAttribute>()?.Icon;
+
+            if (commonIcon != null)
+            {
+                icon = new ControlIcon(commonIcon);
+            }
+
             if (atts.Has<ControlAttributionAttribute>())
             {
                 var attribution = atts.Get<ControlAttributionAttribute>();
@@ -144,10 +157,15 @@ namespace CodeStack.SwEx.PMPage.Constructors
                 }
                 else if (attribution.Icon != null)
                 {
-                    var icons = m_IconConv.ConvertIcon(attribution.Icon, false);
-                    var res = swCtrl.SetPictureLabelByName(icons[0], icons[1]);
-                    Debug.Assert(res);
+                    icon = attribution.Icon;
                 }
+            }
+
+            if (icon != null)
+            {
+                var icons = m_IconConv.ConvertIcon(icon, false);
+                var res = swCtrl.SetPictureLabelByName(icons[0], icons[1]);
+                Debug.Assert(res);
             }
             
             return ctrl;

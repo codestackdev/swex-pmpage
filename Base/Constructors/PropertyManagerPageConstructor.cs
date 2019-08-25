@@ -1,7 +1,7 @@
 ﻿//**********************
-//SwEx.Pmp
-//Copyright(C) 2018 www.codestack.net
-//License: https://github.com/codestack-net-dev/vpages-sw/blob/master/LICENSE
+//SwEx.PMPage - data driven framework for SOLIDWORKS Property Manager Pages
+//Copyright(C) 2019 www.codestack.net
+//License: https://github.com/codestackdev/swex-pmpage/blob/master/LICENSE
 //Product URL: https://www.codestack.net/labs/solidworks/swex/pmp/
 //**********************
 
@@ -18,6 +18,7 @@ using CodeStack.SwEx.PMPage.Attributes;
 using CodeStack.SwEx.Common.Icons;
 using CodeStack.SwEx.PMPage.Data;
 using System.Drawing;
+using CodeStack.SwEx.Common.Attributes;
 
 namespace CodeStack.SwEx.PMPage.Constructors
 {
@@ -39,19 +40,31 @@ namespace CodeStack.SwEx.PMPage.Constructors
 
         protected override PropertyManagerPagePageEx<THandler> Create(IAttributeSet atts)
         {
-            
             int err = -1;
 
             swPropertyManagerPageOptions_e opts;
 
             TitleIcon titleIcon = null;
 
+            IconAttribute commIconAtt;
+            if (atts.BoundType.TryGetAttribute(out commIconAtt))
+            {
+                if (commIconAtt.Icon != null)
+                {
+                    titleIcon = new TitleIcon(commIconAtt.Icon);
+                }
+            }
+
             if (atts.Has<PageOptionsAttribute>())
             {
                 var optsAtt = atts.Get<PageOptionsAttribute>();
 
                 opts = optsAtt.Options;
-                titleIcon = optsAtt.Icon;
+
+                if (optsAtt.Icon != null)
+                {
+                    titleIcon = optsAtt.Icon;
+                }
             }
             else
             {

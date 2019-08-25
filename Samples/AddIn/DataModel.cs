@@ -14,7 +14,8 @@ using CodeStack.SwEx.Common.Attributes;
 
 namespace SwVPagesSample
 {
-    [PageOptions(typeof(Resources), nameof(Resources.shield_icon),
+    [Icon(typeof(Resources), nameof(Resources.shield_icon))]
+    [PageOptions(/*typeof(Resources), nameof(Resources.shield_icon),*/
         swPropertyManagerPageOptions_e.swPropertyManagerOptions_OkayButton
         | swPropertyManagerPageOptions_e.swPropertyManagerOptions_CancelButton 
         | swPropertyManagerPageOptions_e.swPropertyManagerOptions_WhatsNew)]

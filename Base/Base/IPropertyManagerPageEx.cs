@@ -1,4 +1,11 @@
-﻿using CodeStack.SwEx.PMPage.Attributes;
+﻿//**********************
+//SwEx.PMPage - data driven framework for SOLIDWORKS Property Manager Pages
+//Copyright(C) 2019 www.codestack.net
+//License: https://github.com/codestackdev/swex-pmpage/blob/master/LICENSE
+//Product URL: https://www.codestack.net/labs/solidworks/swex/pmp/
+//**********************
+
+using CodeStack.SwEx.PMPage.Attributes;
 using CodeStack.SwEx.PMPage.Controls;
 using System;
 using System.Collections.Generic;
@@ -45,9 +52,5 @@ namespace CodeStack.SwEx.PMPage.Base
         /// <remarks>Control is returned immediately after calling the method.
         /// Use <see cref="THandler.Closed"/> event to receive a notification when this property manager page is closed</remarks>
         void Show(TModel model);
-
-        [Obsolete("Deprecated. Use another overload")]
-        [Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
-        void Show();
     }
 }

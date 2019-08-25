@@ -1,7 +1,7 @@
 ﻿//**********************
-//SwEx.Pmp
-//Copyright(C) 2018 www.codestack.net
-//License: https://github.com/codestack-net-dev/vpages-sw/blob/master/LICENSE
+//SwEx.PMPage - data driven framework for SOLIDWORKS Property Manager Pages
+//Copyright(C) 2019 www.codestack.net
+//License: https://github.com/codestackdev/swex-pmpage/blob/master/LICENSE
 //Product URL: https://www.codestack.net/labs/solidworks/swex/pmp/
 //**********************
 
@@ -97,10 +97,12 @@ namespace CodeStack.SwEx.PMPage
 
             if (arg.Cancel)
             {
-                if (!string.IsNullOrEmpty(arg.ErrorTitle) && !string.IsNullOrEmpty(arg.ErrorMessage))
+                if (!string.IsNullOrEmpty(arg.ErrorTitle) || !string.IsNullOrEmpty(arg.ErrorMessage))
                 {
+                    var title = !string.IsNullOrEmpty(arg.ErrorTitle) ? arg.ErrorTitle : "Error";
+
                     m_App.ShowBubbleTooltipAt2(0, 0, (int)swArrowPosition.swArrowLeftTop,
-                        arg.ErrorTitle, arg.ErrorMessage, (int)swBitMaps.swBitMapTreeError,
+                        title, arg.ErrorMessage, (int)swBitMaps.swBitMapTreeError,
                         "", "", 0, (int)swLinkString.swLinkStringNone, "", "");
                 }
 
