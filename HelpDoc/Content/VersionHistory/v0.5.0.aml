@@ -6,6 +6,31 @@
 			</para>
 		</introduction>
 
+    <section>
+      <title>Removed members</title>
+      <content>
+
+        <list class="bullet">
+          <listItem>
+            <para>
+              CodeStack.SwEx.PMPage.Attributes.ComboBoxItemTextAttribute. Replaced with Common.Attributes.TitleAttribute
+            </para>
+          </listItem>
+          <listItem>
+            <para>
+              CodeStack.SwEx.PMPage.Base.IPropertyManagerPageEx{THandler, TModel}.Show. Replaced with CodeStack.SwEx.PMPage.Base.IPropertyManagerPageEx{THandler, TModel}.Show(TModel model)
+            </para>
+          </listItem>
+          <listItem>
+            <para>
+              CodeStack.SwEx.PMPage.PropertyManagerPageEx(TModel model, ISldWorks app). Replaced with CodeStack.SwEx.PMPage.PropertyManagerPageEx(ISldWorks app)
+            </para>
+          </listItem>
+        </list>
+
+      </content>
+    </section>
+    
 		<section>
 			<title>Enhancements and bug fixes</title>
 			<content>
