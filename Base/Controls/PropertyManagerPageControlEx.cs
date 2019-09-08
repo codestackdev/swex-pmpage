@@ -45,21 +45,21 @@ namespace CodeStack.SwEx.PMPage.Controls
         protected PropertyManagerPageControlEx(TSwControl ctrl, int id, object tag, PropertyManagerPageHandlerEx handler)
             : base(id, tag)
         {
-            SwControl = ctrl;
+            SwSpecificControl = ctrl;
             m_Handler = handler;
         }
 
-        internal TSwControl SwControl { get; private set; }
+        protected TSwControl SwSpecificControl { get; private set; }
 
         public bool Enabled
         {
             get
             {
-                return (this as IPropertyManagerPageControlEx).SwControl.Enabled;
+                return SwControl.Enabled;
             }
             set
             {
-                (this as IPropertyManagerPageControlEx).SwControl.Enabled = value;
+                SwControl.Enabled = value;
             }
         }
 
@@ -67,21 +67,21 @@ namespace CodeStack.SwEx.PMPage.Controls
         {
             get
             {
-                return (this as IPropertyManagerPageControlEx).SwControl.Visible;
+                return SwControl.Visible;
             }
             set
             {
-                (this as IPropertyManagerPageControlEx).SwControl.Visible = value;
+                SwControl.Visible = value;
             }
         }
 
-        IPropertyManagerPageControl IPropertyManagerPageControlEx.SwControl
+        public IPropertyManagerPageControl SwControl
         {
             get
             {
-                if (SwControl is IPropertyManagerPageControl)
+                if (SwSpecificControl is IPropertyManagerPageControl)
                 {
-                    return SwControl as IPropertyManagerPageControl;
+                    return SwSpecificControl as IPropertyManagerPageControl;
                 }
                 else
                 {

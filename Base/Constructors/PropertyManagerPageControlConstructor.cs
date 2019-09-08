@@ -21,6 +21,7 @@ using Xarial.VPages.Framework.Base;
 using Xarial.VPages.Framework.Constructors;
 using CodeStack.SwEx.Common.Reflection;
 using CodeStack.SwEx.Common.Attributes;
+using SolidWorks.Interop.sldworks;
 
 namespace CodeStack.SwEx.PMPage.Constructors
 {
@@ -61,32 +62,43 @@ namespace CodeStack.SwEx.PMPage.Constructors
 
         protected override TControl Create(PropertyManagerPageGroupEx<THandler> group, IAttributeSet atts)
         {
-            return AddControl(
-                (i, t, n, a, o, d) => group.Group.AddControl2(i, t, n, a, o, d) as TControlSw,
-                atts, group.Handler);
+            var opts = GetControlOptions(atts);
+
+            var swCtrl = CreateSwControlInGroup(group.Group, opts, atts) as TControlSw;
+
+            AssignControlAttributes(swCtrl, opts, atts);
+
+            return CreateControl(swCtrl, atts, group.Handler, opts.Height);
         }
 
         protected override TControl Create(PropertyManagerPagePageEx<THandler> page, IAttributeSet atts)
         {
-            return AddControl(
-                (i, t, n, a, o, d) => page.Page.AddControl2(i, t, n, a, o, d) as TControlSw,
-                atts, page.Handler);
+            var opts = GetControlOptions(atts);
+
+            var swCtrl = CreateSwControlInPage(page.Page, opts, atts) as TControlSw;
+
+            AssignControlAttributes(swCtrl, opts, atts);
+
+            return CreateControl(swCtrl, atts, page.Handler, opts.Height);
         }
 
-        private TControl AddControl
-            (CreateControlDelegate<TControlSw> creator,
-            IAttributeSet atts, THandler handler)
+        protected virtual TControlSw CreateSwControlInPage(IPropertyManagerPage2 page, 
+            ControlOptionsAttribute opts, IAttributeSet atts)
         {
-            short height;
-            var ctrl = AddControl(atts, m_Type, creator, out height);
-
-            return CreateControl(ctrl, atts, handler, height);
+            return page.AddControl2(atts.Id, (short)m_Type, atts.Name,
+                (short)opts.Align, (short)opts.Options, atts.Description) as TControlSw;
         }
 
-        protected abstract TControl CreateControl(TControlSw swCtrl, IAttributeSet atts, THandler handler, short height);
+        protected virtual TControlSw CreateSwControlInGroup(IPropertyManagerPageGroup group,
+            ControlOptionsAttribute opts, IAttributeSet atts)
+        {
+            return group.AddControl2(atts.Id, (short)m_Type, atts.Name,
+                (short)opts.Align, (short)opts.Options, atts.Description) as TControlSw;
+        }
         
-        protected TSwControl AddControl<TSwControl>(IAttributeSet atts, 
-            swPropertyManagerPageControlType_e type, CreateControlDelegate<TSwControl> creator, out short height)
+        protected abstract TControl CreateControl(TControlSw swCtrl, IAttributeSet atts, THandler handler, short height);
+
+        private ControlOptionsAttribute GetControlOptions(IAttributeSet atts)
         {
             ControlOptionsAttribute opts;
 
@@ -99,14 +111,12 @@ namespace CodeStack.SwEx.PMPage.Constructors
                 opts = new ControlOptionsAttribute();
             }
 
-            var id = atts.Id;
-            var name = atts.Name;
-            var tooltip = atts.Description;
-            height = opts.Height;
-            var ctrl = creator.Invoke(id, (short)type, name, (short)opts.Align,
-                (short)opts.Options, tooltip);
+            return opts;
+        }
 
-            var swCtrl = ctrl as SolidWorks.Interop.sldworks.IPropertyManagerPageControl;
+        private void AssignControlAttributes(TControlSw ctrl, ControlOptionsAttribute opts, IAttributeSet atts)
+        {
+            var swCtrl = ctrl as IPropertyManagerPageControl;
 
             if (opts.BackgroundColor != 0)
             {
@@ -167,10 +177,8 @@ namespace CodeStack.SwEx.PMPage.Constructors
                 var res = swCtrl.SetPictureLabelByName(icons[0], icons[1]);
                 Debug.Assert(res);
             }
-            
-            return ctrl;
         }
-
+        
         protected int ConvertColor(KnownColor knownColor)
         {
             var color = Color.FromKnownColor(knownColor);

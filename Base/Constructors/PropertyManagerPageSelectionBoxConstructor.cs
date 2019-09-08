@@ -96,16 +96,16 @@ namespace CodeStack.SwEx.PMPage.Constructors
             var selBoxes = ctrls.OfType<PropertyManagerPageSelectionBoxEx>().ToArray();
 
             var autoAssignSelMarksCtrls = selBoxes
-                .Where(s => s.SwControl.Mark == -1).ToList();
+                .Where(s => s.SelectionBox.Mark == -1).ToList();
 
             var assignedMarks = ctrls.OfType<PropertyManagerPageSelectionBoxEx>()
-                .Except(autoAssignSelMarksCtrls).Select(c => c.SwControl.Mark).ToList();
+                .Except(autoAssignSelMarksCtrls).Select(c => c.SelectionBox.Mark).ToList();
 
             ValidateMarks(assignedMarks);
 
             if (selBoxes.Length == 1)
             {
-                autoAssignSelMarksCtrls[0].SwControl.Mark = 0;
+                autoAssignSelMarksCtrls[0].SelectionBox.Mark = 0;
             }
             else
             {
@@ -120,11 +120,11 @@ namespace CodeStack.SwEx.PMPage.Constructors
                         index++;
                     } while (assignedMarks.Contains(mark));
 
-                    c.SwControl.Mark = mark;
+                    c.SelectionBox.Mark = mark;
                 });
             }
 
-            m_Logger.Log($"Assigned selection box marks: {string.Join(", ", selBoxes.Select(s => s.SwControl.Mark).ToArray())}");
+            m_Logger.Log($"Assigned selection box marks: {string.Join(", ", selBoxes.Select(s => s.SelectionBox.Mark).ToArray())}");
         }
 
         private void ValidateMarks(List<int> assignedMarks)

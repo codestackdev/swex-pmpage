@@ -35,12 +35,12 @@ namespace CodeStack.SwEx.PMPage.Controls
         
         protected override double GetSpecificValue()
         {
-            return SwControl.Value;
+            return SwSpecificControl.Value;
         }
 
         protected override void SetSpecificValue(double value)
         {
-            SwControl.Value = value;
+            SwSpecificControl.Value = value;
         }
     }
 }
