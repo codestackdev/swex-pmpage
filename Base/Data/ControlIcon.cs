@@ -51,34 +51,15 @@ namespace CodeStack.SwEx.PMPage.Data
 
         private static Image CreateMask(Image icon)
         {
-            var maskImg = new Bitmap(icon);
-
-            var rect = new Rectangle(0, 0, maskImg.Width, maskImg.Height);
-
-            var bmpData = maskImg.LockBits(rect, ImageLockMode.ReadWrite,
-                PixelFormat.Format32bppArgb);
-
-            var ptr = bmpData.Scan0;
-
-            var rgba = new byte[Math.Abs(bmpData.Stride) * maskImg.Height];
-
-            Marshal.Copy(ptr, rgba, 0, rgba.Length);
-
-            for (int i = 0; i < rgba.Length; i += 4)
-            {
-                var a = rgba[i + 3];
-                var mask = (byte)(255 - a);
-                rgba[i] = mask;
-                rgba[i + 1] = mask;
-                rgba[i + 2] = mask;
-                rgba[i + 3] = 255;
-            }
-
-            Marshal.Copy(rgba, 0, bmpData.Scan0, rgba.Length);
-
-            maskImg.UnlockBits(bmpData);
-
-            return maskImg;
+            return IconsConverter.ReplaceColor(icon,
+                new IconsConverter.ColorReplacerDelegate((ref byte r, ref byte g, ref byte b, ref byte a) => 
+                {
+                    var mask = (byte)(255 - a);
+                    r = mask;
+                    g = mask;
+                    b = mask;
+                    a = 255;
+                }));
         }
     }
 }

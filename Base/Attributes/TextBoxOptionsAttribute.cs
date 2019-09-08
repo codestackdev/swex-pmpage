@@ -23,7 +23,7 @@ namespace CodeStack.SwEx.PMPage.Attributes
         internal swPropMgrPageTextBoxStyle_e Style { get; private set; }
 
         /// <summary>
-        /// Constuctor for text box options
+        /// Constructor for text box options
         /// </summary>
         /// <param name="style">Text box control style as defined in <see href="http://help.solidworks.com/2016/english/api/swconst/solidworks.interop.swconst~solidworks.interop.swconst.swpropmgrpagetextboxstyle_e.html">swPropMgrPageTextBoxStyle_e Enumeration</see></param>
         public TextBoxOptionsAttribute(swPropMgrPageTextBoxStyle_e style = 0)

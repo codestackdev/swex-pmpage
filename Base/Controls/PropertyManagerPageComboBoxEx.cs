@@ -39,12 +39,12 @@ namespace CodeStack.SwEx.PMPage.Controls
 
         protected override Enum GetSpecificValue()
         {
-            return m_Values[SwControl.CurrentSelection];
+            return m_Values[SwSpecificControl.CurrentSelection];
         }
 
         protected override void SetSpecificValue(Enum value)
         {
-            SwControl.CurrentSelection = (short)m_Values.IndexOf(value);
+            SwSpecificControl.CurrentSelection = (short)m_Values.IndexOf(value);
         }
 
         public override void Dispose()

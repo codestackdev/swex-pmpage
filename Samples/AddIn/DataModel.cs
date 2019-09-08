@@ -48,12 +48,15 @@ namespace SwVPagesSample
         [SelectionBox(swSelectType_e.swSelSOLIDBODIES)]
         public IBody2 Body { get; set; }
 
-        public Options_e Options { get; set; }
+        public ComboOptions_e Options { get; set; }
 
         [DisplayName("Second Data Group")]
         public DataGroup1 Group1 { get; set; }
 
         public DependencyGroup DepGroup { get; set; }
+
+        [OptionBox]
+        public Options_e Options2 { get; set; }
     }
 
     public class DataGroup
@@ -65,6 +68,14 @@ namespace SwVPagesSample
         [SelectionBox(typeof(PlanarFaceFilter), swSelectType_e.swSelFACES)]
         [ControlAttribution(swControlBitmapLabelType_e.swBitmapLabel_SelectFace)]
         public IFace2 PlanarFace { get; set; }
+    }
+
+    public enum ComboOptions_e
+    {
+        [Title("Combo Option One")]
+        ComboOption1,
+        ComboOption2,
+        ComboOption3
     }
 
     public enum Options_e

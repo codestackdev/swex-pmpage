@@ -29,7 +29,7 @@ namespace CodeStack.SwEx.PMPage.Attributes
         internal Type CustomFilter { get; private set; }
 
         /// <summary>
-        /// Constuctor for selection box options
+        /// Constructor for selection box options
         /// </summary>
         /// <param name="filters">Filters allowed for selection into this selection box</param>
         public SelectionBoxAttribute(params swSelectType_e[] filters)

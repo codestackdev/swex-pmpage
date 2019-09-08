@@ -23,7 +23,7 @@ namespace CodeStack.SwEx.PMPage.Attributes
         internal string WhatsNewLink { get; private set; }
 
         /// <summary>
-        /// Constuctor for specifying links to help resources
+        /// Constructor for specifying links to help resources
         /// </summary>
         /// <param name="helpLink">Link to help documentation</param>
         /// <param name="whatsNewLink">Link to what's new page</param>

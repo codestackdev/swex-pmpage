@@ -31,12 +31,12 @@ namespace CodeStack.SwEx.PMPage.Controls
 
         protected override bool GetSpecificValue()
         {
-            return SwControl.Checked;
+            return SwSpecificControl.Checked;
         }
 
         protected override void SetSpecificValue(bool value)
         {
-            SwControl.Checked = value;
+            SwSpecificControl.Checked = value;
         }
 
         public override void Dispose()

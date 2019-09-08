@@ -45,6 +45,14 @@ namespace CodeStack.SwEx.PMPage.Controls
             }
         }
 
+        internal IPropertyManagerPageSelectionbox SelectionBox
+        {
+            get
+            {
+                return SwSpecificControl;
+            }
+        }
+
         private void OnSubmitSelection(int Id, object Selection, int SelType, ref string ItemText, ref bool res)
         {
             if (Id == this.Id)
@@ -72,9 +80,9 @@ namespace CodeStack.SwEx.PMPage.Controls
             {
                 var list = Activator.CreateInstance(m_ObjType) as IList;
 
-                for (int i = 0; i < SwControl.ItemCount; i++)
+                for (int i = 0; i < SwSpecificControl.ItemCount; i++)
                 {
-                    var selIndex = SwControl.SelectionIndex[i];
+                    var selIndex = SwSpecificControl.SelectionIndex[i];
                     var obj = selMgr.GetSelectedObject6(selIndex, -1);
                     list.Add(obj);
                 }
@@ -83,11 +91,11 @@ namespace CodeStack.SwEx.PMPage.Controls
             }
             else
             {
-                Debug.Assert(SwControl.ItemCount <= 1, "Single entity only");
+                Debug.Assert(SwSpecificControl.ItemCount <= 1, "Single entity only");
 
-                if (SwControl.ItemCount == 1)
+                if (SwSpecificControl.ItemCount == 1)
                 {
-                    var selIndex = SwControl.SelectionIndex[0];
+                    var selIndex = SwSpecificControl.SelectionIndex[0];
                     var obj = selMgr.GetSelectedObject6(selIndex, -1);
                     return obj;
                 }
@@ -100,7 +108,7 @@ namespace CodeStack.SwEx.PMPage.Controls
 
         protected override void SetSpecificValue(object value)
         {
-            SwControl.SetSelectionFocus();
+            SwSpecificControl.SetSelectionFocus();
 
             if (value != null)
             {
@@ -121,7 +129,7 @@ namespace CodeStack.SwEx.PMPage.Controls
                 var selMgr = m_App.IActiveDoc2.ISelectionManager;
                 
                 var selData = selMgr.CreateSelectData();
-                selData.Mark = SwControl.Mark;
+                selData.Mark = SwSpecificControl.Mark;
 
                 m_App.IActiveDoc2.Extension.MultiSelect2(disps.ToArray(), true, selData);
             }
