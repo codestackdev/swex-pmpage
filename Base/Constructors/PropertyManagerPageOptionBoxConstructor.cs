@@ -88,7 +88,8 @@ namespace CodeStack.SwEx.PMPage.Constructors
 
             for (int i = 0; i < options.Count; i++)
             {
-                ctrls[i] = group.AddControl2(atts.Id + i, (short)swPropertyManagerPageControlType_e.swControlType_Option, atts.Name,
+                var name = options.ElementAt(i).Value;
+                ctrls[i] = group.AddControl2(atts.Id + i, (short)swPropertyManagerPageControlType_e.swControlType_Option, name,
                     (short)opts.Align, (short)opts.Options, atts.Description) as IPropertyManagerPageOption;
             }
 
