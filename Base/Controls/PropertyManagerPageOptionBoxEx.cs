@@ -15,6 +15,10 @@ using Xarial.VPages.Framework.PageElements;
 
 namespace CodeStack.SwEx.PMPage.Controls
 {
+    /// <summary>
+    /// Wrapper class around the group of <see href="http://help.solidworks.com/2016/english/api/sldworksapi/solidworks.interop.sldworks~solidworks.interop.sldworks.ipropertymanagerpageoption.html">IPropertyManagerPageOption </see> controls
+    /// </summary>
+    /// <remarks>All set properties will be applied to all controls in the group, while get will return the value of first control</remarks>
     public class PropertyManagerPageOptionBox : IPropertyManagerPageControl, IPropertyManagerPageOption
     {
         private readonly IPropertyManagerPageOption[] m_Ctrls;
@@ -29,6 +33,9 @@ namespace CodeStack.SwEx.PMPage.Controls
             m_Ctrls = ctrls;
         }
 
+        /// <summary>
+        /// Array of controls in the current option group
+        /// </summary>
         public IPropertyManagerPageOption[] Controls
         {
             get

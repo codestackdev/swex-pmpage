@@ -22,6 +22,10 @@ namespace CodeStack.SwEx.PMPage.Attributes
     {
         internal swPropMgrPageOptionStyle_e Style { get; private set; }
         
+        /// <summary>
+        /// Assigns additional options (such as style) for this option box control
+        /// </summary>
+        /// <param name="style"></param>
         public OptionBoxOptionsAttribute(
             swPropMgrPageOptionStyle_e style = 0)
         {

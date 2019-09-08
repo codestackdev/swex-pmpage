@@ -38,6 +38,7 @@ namespace CodeStack.SwEx.PMPage.Base
         /// Pointer to the handler
         /// </summary>
         THandler Handler { get; }
+
         /// <summary>
         /// List of all controls created in the property manager page
         /// </summary>

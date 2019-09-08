@@ -18,6 +18,7 @@ namespace CodeStack.SwEx.PMPage.Attributes
     /// </summary>
     public class DependentOnAttribute : Xarial.VPages.Framework.Attributes.DependentOnAttribute
     {
+        /// <summary>Assigns the dependency based on a handler for the specified dependencies</summary>
         /// <param name="dependencyHandler">Dependency handler of type <see cref="DependencyHandler"/></param>
         /// <param name="dependencies">List of tags of dependent controls. Use <see cref="ControlTagAttribute"/> to tag the controls</param>
         public DependentOnAttribute(Type dependencyHandler, params object[] dependencies)
