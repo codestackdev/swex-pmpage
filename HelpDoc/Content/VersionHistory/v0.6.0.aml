@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<topic id="v0-6-0" revisionNumber="1">
+	<developerConceptualDocument xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:xlink="http://www.w3.org/1999/xlink">
+		<introduction>
+			<para>Version 0.6.0 was released on September 8 2019
+			</para>
+		</introduction>
+
+		<section>
+			<title>Enhancements</title>
+			<content>
+
+				<list class="bullet">
+					<listItem>
+						<para>
+              <externalLink>
+                <linkText>Issue 11</linkText>
+                <linkUri>https://github.com/codestackdev/swex-pmpage/issues/11</linkUri>
+              </externalLink> Add ability to render enum as option boxes (in addition to combobox)
+            </para>
+          </listItem>
+				</list>
+
+			</content>
+		</section>
+
+		<relatedTopics>
+			<link xlink:href="version-history" />
+		</relatedTopics>
+
+	</developerConceptualDocument>
+</topic>
