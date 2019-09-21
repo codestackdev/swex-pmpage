@@ -11,6 +11,7 @@ using CodeStack.SwEx.PMPage.Base;
 using CodeStack.SwEx.PMPage.Controls;
 using SwVPagesSample.Properties;
 using CodeStack.SwEx.Common.Attributes;
+using System.Windows.Forms;
 
 namespace SwVPagesSample
 {
@@ -22,8 +23,10 @@ namespace SwVPagesSample
     [Message("This is a sample property page", "MyCaption",
         swPropertyManagerPageMessageVisibility.swImportantMessageBox,
         swPropertyManagerPageMessageExpanded.swMessageBoxMaintainExpandState)]
-    public class DataModel
+    public class DataModel : INotifyPropertyChanged
     {
+        public event PropertyChangedEventHandler PropertyChanged;
+
         [ControlOptions(backgroundColor: KnownColor.Green, textColor: KnownColor.Yellow)]
         public string Text1 { get; set; }
 
@@ -57,6 +60,37 @@ namespace SwVPagesSample
 
         [OptionBox]
         public Options_e Options2 { get; set; }
+
+        [Title("Sample Button")]
+        public Action Button => OnButtonClick;
+
+        public Image Image1 { get; set; } = Resources.shield_icon;
+
+        private Image m_Image2;
+
+        [BitmapOptions(48, 48)]
+        public Image Image2
+        {
+            get
+            {
+                return m_Image2;
+            }
+            set
+            {
+                m_Image2 = value;
+                this.PropertyChanged.Invoke(this, new PropertyChangedEventArgs(nameof(Image2)));
+            }
+        }
+        
+        private void OnButtonClick()
+        {
+            var fileBrowseDlg = new OpenFileDialog();
+            if (fileBrowseDlg.ShowDialog() == DialogResult.OK)
+            {
+                var file = fileBrowseDlg.FileName;
+                Image2 = Image.FromFile(file);
+            }
+        }
     }
 
     public class DataGroup

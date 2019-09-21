@@ -6,11 +6,8 @@
 //**********************
 
 using CodeStack.SwEx.Common.Icons;
-using System;
 using System.Collections.Generic;
 using System.Drawing;
-using System.Drawing.Imaging;
-using System.Runtime.InteropServices;
 
 namespace CodeStack.SwEx.PMPage.Data
 {
@@ -27,15 +24,28 @@ namespace CodeStack.SwEx.PMPage.Data
             }
         }
 
+        private readonly Size m_Size;
+        
         internal ControlIcon(Image icon) 
             : this(icon, CreateMask(icon))
         {   
         }
 
+        internal ControlIcon(Image icon, Size size)
+            : this(icon, CreateMask(icon), size)
+        {
+        }
+
         internal ControlIcon(Image icon, Image mask)
+            : this(icon, mask, new Size(24, 24))
+        {
+        }
+
+        internal ControlIcon(Image icon, Image mask, Size size)
         {
             Icon = icon;
             Mask = mask;
+            m_Size = size;
         }
         
         public IEnumerable<IconSizeInfo> GetHighResolutionIconSizes()
@@ -45,8 +55,8 @@ namespace CodeStack.SwEx.PMPage.Data
 
         public IEnumerable<IconSizeInfo> GetIconSizes()
         {
-            yield return new IconSizeInfo(Icon, new Size(24, 24));
-            yield return new IconSizeInfo(Mask, new Size(24, 24));
+            yield return new IconSizeInfo(Icon, m_Size);
+            yield return new IconSizeInfo(Mask, m_Size);
         }
 
         private static Image CreateMask(Image icon)

@@ -39,7 +39,16 @@ namespace CodeStack.SwEx.PMPage.Controls
 
         protected override Enum GetSpecificValue()
         {
-            return m_Values[SwSpecificControl.CurrentSelection];
+            var curSelIndex = SwSpecificControl.CurrentSelection;
+
+            if (curSelIndex >= 0 && curSelIndex < m_Values.Count)
+            {
+                return m_Values[curSelIndex];
+            }
+            else
+            {
+                return null;
+            }
         }
 
         protected override void SetSpecificValue(Enum value)

@@ -47,10 +47,6 @@ namespace CodeStack.SwEx.PMPage.Constructors
             }
         }
 
-        protected delegate TSwControl CreateControlDelegate<TSwControl>(
-            int id, short type, string name,
-            short align, short opts, string tooltip);
-
         private swPropertyManagerPageControlType_e m_Type;
         private IconsConverter m_IconConv;
 

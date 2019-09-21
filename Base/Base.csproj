@@ -62,8 +62,8 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
-    <Reference Include="Xarial.VPages.Framework, Version=0.3.3.0, Culture=neutral, PublicKeyToken=6dcec729ca6a1943, processorArchitecture=MSIL">
-      <HintPath>..\packages\Xarial.VPages.Framework.0.3.3\lib\net40\Xarial.VPages.Framework.dll</HintPath>
+    <Reference Include="Xarial.VPages.Framework, Version=0.4.0.0, Culture=neutral, PublicKeyToken=6dcec729ca6a1943, processorArchitecture=MSIL">
+      <HintPath>..\packages\Xarial.VPages.Framework.0.4.0\lib\net40\Xarial.VPages.Framework.dll</HintPath>
       <Private>True</Private>
     </Reference>
   </ItemGroup>
@@ -82,6 +82,7 @@
     <Compile Include="Attributes\SelectionBoxAttribute.cs" />
     <Compile Include="Attributes\ComboBoxOptionsAttribute.cs" />
     <Compile Include="Attributes\ControlTagAttribute.cs" />
+    <Compile Include="Attributes\BitmapOptionsAttribute.cs" />
     <Compile Include="Attributes\TextBoxOptionsAttribute.cs" />
     <Compile Include="Base\DependencyHandler.cs" />
     <Compile Include="Base\ClosingArg.cs" />
@@ -91,6 +92,8 @@
     <Compile Include="Base\ISelectionCustomFilter.cs" />
     <Compile Include="Base\PropertyManagerPageClosedDelegate.cs" />
     <Compile Include="Base\PropertyManagerPageClosingDelegate.cs" />
+    <Compile Include="Constructors\PropertyManagerPageBitmapConstructor.cs" />
+    <Compile Include="Constructors\PropertyManagerPageButtonConstructor.cs" />
     <Compile Include="Constructors\PropertyManagerPageOptionBoxConstructor.cs" />
     <Compile Include="Constructors\PropertyManagerPageConstructor.cs" />
     <Compile Include="Constructors\PropertyManagerPageControlConstructor.cs" />
@@ -100,6 +103,7 @@
     <Compile Include="Constructors\PropertyManagerPageNumberBoxConstructor.cs" />
     <Compile Include="Constructors\PropertyManagerPageCheckBoxConstructor.cs" />
     <Compile Include="Constructors\PropertyManagerPageTextBoxConstructor.cs" />
+    <Compile Include="Controls\PropertyManagerPageBitmapEx.cs" />
     <Compile Include="Controls\PropertyManagerPageOptionBoxEx.cs" />
     <Compile Include="Controls\PropertyManagerPagePageEx.cs" />
     <Compile Include="Controls\PropertyManagerPageButtonEx.cs" />
@@ -115,12 +119,26 @@
     <Compile Include="Data\TitleIcon.cs" />
     <Compile Include="Helper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="PropertyManagerPageBuilder.cs" />
     <Compile Include="PropertyManagerPageEx.cs" />
     <Compile Include="PropertyManagerPageHandlerEx.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\DefaultBitmap.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

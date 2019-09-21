@@ -111,7 +111,9 @@ namespace CodeStack.SwEx.PMPage
                   new PropertyManagerPageCheckBoxConstructor<THandler>(iconsConv),
                   new PropertyManagerPageComboBoxConstructor<THandler>(iconsConv),
                   new PropertyManagerPageSelectionBoxConstructor<THandler>(app, iconsConv, logger),
-                  new PropertyManagerPageOptionBoxConstructor<THandler>(iconsConv))
+                  new PropertyManagerPageOptionBoxConstructor<THandler>(iconsConv),
+                  new PropertyManagerPageButtonConstructor<THandler>(iconsConv),
+                  new PropertyManagerPageBitmapConstructor<THandler>(iconsConv))
         {
             m_PageSpec = pageSpec;
         }
