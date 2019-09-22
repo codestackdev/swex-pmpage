@@ -8,9 +8,9 @@ using Xarial.VPages.Framework.Attributes;
 namespace CodeStack.SwEx.PMPage.Attributes
 {
     /// <summary>
-    /// Attribute indicates that current property should be rendered as tab box
+    /// Attribute indicates that current property or class should be rendered as tab box
     /// </summary>
-    /// <remarks>This attribute is only applicable for complex types which contain nested properties
+    /// <remarks>This attribute is only applicable for complex types which contain nested properties</remarks>
     [AttributeUsage(AttributeTargets.Class | AttributeTargets.Property)]
     public class TabAttribute : SpecificConstructorAttribute
     {

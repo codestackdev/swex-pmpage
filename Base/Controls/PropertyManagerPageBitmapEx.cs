@@ -9,7 +9,6 @@ using CodeStack.SwEx.Common.Icons;
 using CodeStack.SwEx.PMPage.Data;
 using CodeStack.SwEx.PMPage.Properties;
 using SolidWorks.Interop.sldworks;
-using System;
 using System.Drawing;
 using Xarial.VPages.Framework.PageElements;
 
