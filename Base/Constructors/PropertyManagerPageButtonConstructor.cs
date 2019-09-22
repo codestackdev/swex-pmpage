@@ -21,22 +21,22 @@ using CodeStack.SwEx.Common.Icons;
 
 namespace CodeStack.SwEx.PMPage.Constructors
 {
-    [DefaultType(typeof(bool))]
-    internal class PropertyManagerPageCheckBoxConstructor<THandler>
-        : PropertyManagerPageControlConstructor<THandler, PropertyManagerPageCheckBoxEx, IPropertyManagerPageCheckbox>
+    [DefaultType(typeof(Action))]
+    internal class PropertyManagerPageButtonConstructor<THandler>
+        : PropertyManagerPageControlConstructor<THandler, PropertyManagerPageButtonEx, IPropertyManagerPageButton>
         where THandler : PropertyManagerPageHandlerEx, new()
     {
-        public PropertyManagerPageCheckBoxConstructor(IconsConverter iconsConv) 
-            : base(swPropertyManagerPageControlType_e.swControlType_Checkbox, iconsConv)
+        public PropertyManagerPageButtonConstructor(IconsConverter iconsConv) 
+            : base(swPropertyManagerPageControlType_e.swControlType_Button, iconsConv)
         {
         }
 
-        protected override PropertyManagerPageCheckBoxEx CreateControl(
-            IPropertyManagerPageCheckbox swCtrl, IAttributeSet atts, THandler handler, short height)
+        protected override PropertyManagerPageButtonEx CreateControl(
+            IPropertyManagerPageButton swCtrl, IAttributeSet atts, THandler handler, short height)
         {
             swCtrl.Caption = atts.Name;
 
-            return new PropertyManagerPageCheckBoxEx(atts.Id, atts.Tag, swCtrl, handler);
+            return new PropertyManagerPageButtonEx(atts.Id, atts.Tag, swCtrl, handler);
         }
     }
 }

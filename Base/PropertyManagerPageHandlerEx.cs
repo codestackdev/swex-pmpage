@@ -30,6 +30,7 @@ namespace CodeStack.SwEx.PMPage
         internal event Action<int, int> SelectionChanged;
         internal event Action<int, int> ComboBoxChanged;
         internal event Action<int> OptionChecked;
+        internal event Action<int> ButtonPressed;
         internal event SubmitSelectionDelegate SubmitSelection;
 
         internal event Action HelpRequested;
@@ -77,6 +78,7 @@ namespace CodeStack.SwEx.PMPage
         [EditorBrowsable(EditorBrowsableState.Never)]
         public void OnButtonPress(int Id)
         {
+            ButtonPressed?.Invoke(Id);
         }
 
         [Browsable(false)]
@@ -203,6 +205,7 @@ namespace CodeStack.SwEx.PMPage
         public void OnOptionCheck(int Id)
         {
             OptionChecked?.Invoke(Id);
+            DataChanged?.Invoke();
         }
 
         [Browsable(false)]

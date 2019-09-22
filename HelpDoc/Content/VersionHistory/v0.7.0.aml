@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<topic id="v0-7-0" revisionNumber="1">
+	<developerConceptualDocument xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:xlink="http://www.w3.org/1999/xlink">
+		<introduction>
+			<para>Version 0.7.0 was released on September 22 2019
+			</para>
+		</introduction>
+
+		<section>
+			<title>Enhancements</title>
+			<content>
+
+				<list class="bullet">
+					
+          <listItem>
+						<para>
+              <externalLink>
+                <linkText>Issue 12</linkText>
+                <linkUri>https://github.com/codestackdev/swex-pmpage/issues/12</linkUri>
+              </externalLink> Add the ability to create Tabs
+            </para>
+          </listItem>
+
+          <listItem>
+            <para>
+              <externalLink>
+                <linkText>Issue 13</linkText>
+                <linkUri>https://github.com/codestackdev/swex-pmpage/issues/13</linkUri>
+              </externalLink> Need to be able to define button
+            </para>
+          </listItem>
+
+          <listItem>
+            <para>
+              <externalLink>
+                <linkText>Issue 18</linkText>
+                <linkUri>https://github.com/codestackdev/swex-pmpage/issues/18</linkUri>
+              </externalLink> Add an option to create picture in the property manager page
+            </para>
+          </listItem>
+
+          <listItem>
+            <para>
+              <externalLink>
+                <linkText>Issue 19</linkText>
+                <linkUri>https://github.com/codestackdev/swex-pmpage/issues/19</linkUri>
+              </externalLink> Need support for INotifyPropertyChanged
+            </para>
+          </listItem>
+          
+				</list>
+
+			</content>
+		</section>
+
+		<relatedTopics>
+			<link xlink:href="version-history" />
+		</relatedTopics>
+
+	</developerConceptualDocument>
+</topic>

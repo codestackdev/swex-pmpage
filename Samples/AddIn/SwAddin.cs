@@ -31,10 +31,13 @@ namespace SwVPagesSample
 
         public const int CMD_GRP_ID = 0;
         public const int CMD_PMP_ID = 1;
+        public const int CMD_PMP_TAB_ID = 2;
 
         private PropertyManagerPageEx<PropertyPageEventsHandler, DataModel> m_ActivePage;
+        private PropertyManagerPageEx<PropertyPageEventsHandler, TabDataModel> m_ActiveTabPage;
 
         private DataModel m_Model;
+        private TabDataModel m_TabModel;
 
         #region SolidWorks Registration
 
@@ -131,6 +134,7 @@ namespace SwVPagesSample
             AddCommandMgr();
 
             m_ActivePage = new PropertyManagerPageEx<PropertyPageEventsHandler, DataModel>(m_App);
+            m_ActiveTabPage = new PropertyManagerPageEx<PropertyPageEventsHandler, TabDataModel>(m_App);
 
             m_ActivePage.Handler.DataChanged += OnDataChanged;
             m_ActivePage.Handler.Closing += OnPageClosing;
@@ -159,6 +163,16 @@ namespace SwVPagesSample
             }
 
             m_ActivePage.Show(m_Model);
+        }
+
+        public void ShowTabPMP()
+        {
+            if (m_TabModel == null)
+            {
+                m_TabModel = new TabDataModel();
+            }
+
+            m_ActiveTabPage.Show(m_TabModel);
         }
 
         private void OnClosed(swPropertyManagerPageCloseReasons_e reason)
@@ -235,6 +249,9 @@ namespace SwVPagesSample
             int menuToolbarOption = (int)(swCommandItemType_e.swMenuItem | swCommandItemType_e.swToolbarItem);
             cmdIndex = cmdGroup.AddCommandItem2("Show PMP", -1, "Display sample property manager",
                 "Show PMP", 2, "ShowPMP", "EnablePMP", CMD_PMP_ID, menuToolbarOption);
+
+            cmdIndex = cmdGroup.AddCommandItem2("Show Tab PMP", -1, "Display sample property manager",
+                "Show Tab PMP", 2, "ShowTabPMP", "EnablePMP", CMD_PMP_TAB_ID, menuToolbarOption);
 
             cmdGroup.HasToolbar = true;
             cmdGroup.HasMenu = true;

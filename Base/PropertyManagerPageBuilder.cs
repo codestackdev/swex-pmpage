@@ -25,7 +25,7 @@ using System.Reflection;
 namespace CodeStack.SwEx.PMPage
 {
     internal class PropertyManagerPageBuilder<THandler>
-        : PageBuilder<PropertyManagerPagePageEx<THandler>, PropertyManagerPageGroupEx<THandler>, IPropertyManagerPageControlEx>
+        : PageBuilder<PropertyManagerPagePageEx<THandler>, PropertyManagerPageGroupBaseEx<THandler>, IPropertyManagerPageControlEx>
         where THandler : PropertyManagerPageHandlerEx, new()
     {
         private class PmpTypeDataBinder : TypeDataBinder
@@ -111,7 +111,10 @@ namespace CodeStack.SwEx.PMPage
                   new PropertyManagerPageCheckBoxConstructor<THandler>(iconsConv),
                   new PropertyManagerPageComboBoxConstructor<THandler>(iconsConv),
                   new PropertyManagerPageSelectionBoxConstructor<THandler>(app, iconsConv, logger),
-                  new PropertyManagerPageOptionBoxConstructor<THandler>(iconsConv))
+                  new PropertyManagerPageOptionBoxConstructor<THandler>(iconsConv),
+                  new PropertyManagerPageButtonConstructor<THandler>(iconsConv),
+                  new PropertyManagerPageBitmapConstructor<THandler>(iconsConv),
+                  new PropertyManagerPageTabConstructor<THandler>(iconsConv))
         {
             m_PageSpec = pageSpec;
         }

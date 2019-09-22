@@ -20,7 +20,8 @@ namespace CodeStack.SwEx.PMPage.Constructors
 {
     [DefaultType(typeof(SpecialTypes.ComplexType))]
     internal class PropertyManagerPageGroupConstructor<THandler> 
-        : GroupConstructor<PropertyManagerPageGroupEx<THandler>, PropertyManagerPagePageEx<THandler>>, IPropertyManagerPageElementConstructor<THandler>
+        : GroupConstructor<PropertyManagerPageGroupBaseEx<THandler>, PropertyManagerPagePageEx<THandler>>, 
+        IPropertyManagerPageElementConstructor<THandler>
         where THandler : PropertyManagerPageHandlerEx, new()
     {
         public Type ControlType
@@ -36,13 +37,30 @@ namespace CodeStack.SwEx.PMPage.Constructors
             //TODO: not used
         }
 
-        protected override PropertyManagerPageGroupEx<THandler> Create(PropertyManagerPageGroupEx<THandler> group, IAttributeSet atts)
+        protected override PropertyManagerPageGroupBaseEx<THandler> Create(
+            PropertyManagerPageGroupBaseEx<THandler> group, IAttributeSet atts)
         {
+            if (group is PropertyManagerPageTabEx<THandler>)
+            {
+                var grp = (group as PropertyManagerPageTabEx<THandler>).Tab.AddGroupBox(atts.Id, atts.Name,
+                    (int)(swAddGroupBoxOptions_e.swGroupBoxOptions_Expanded
+                    | swAddGroupBoxOptions_e.swGroupBoxOptions_Visible)) as SolidWorks.Interop.sldworks.IPropertyManagerPageGroup;
+
+                return new PropertyManagerPageGroupEx<THandler>(atts.Id, atts.Tag,
+                    group.Handler, grp, group.App, group.ParentPage);
+            }
             //NOTE: nested groups are not supported in SOLIDWORKS, creating the group in page instead
-            return Create(group.ParentPage, atts);
+            else if (group is PropertyManagerPageGroupEx<THandler>)
+            {
+                return Create(group.ParentPage, atts);
+            }
+            else
+            {
+                throw new NullReferenceException("Not supported group type");
+            }
         }
 
-        protected override PropertyManagerPageGroupEx<THandler> Create(PropertyManagerPagePageEx<THandler> page, IAttributeSet atts)
+        protected override PropertyManagerPageGroupBaseEx<THandler> Create(PropertyManagerPagePageEx<THandler> page, IAttributeSet atts)
         {
             var grp = page.Page.AddGroupBox(atts.Id, atts.Name,
                 (int)(swAddGroupBoxOptions_e.swGroupBoxOptions_Expanded

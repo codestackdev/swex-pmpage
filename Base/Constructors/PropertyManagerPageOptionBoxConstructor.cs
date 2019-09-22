@@ -27,6 +27,8 @@ namespace CodeStack.SwEx.PMPage.Constructors
         IPropertyManagerPageOptionBoxConstructor
         where THandler : PropertyManagerPageHandlerEx, new()
     {
+        private delegate IPropertyManagerPageOption ControlCreatorDelegate(int id, short controlType, string caption, short leftAlign, int options, string tip);
+
         public PropertyManagerPageOptionBoxConstructor(IconsConverter iconsConv) 
             : base(swPropertyManagerPageControlType_e.swControlType_Option, iconsConv)
         {
@@ -38,7 +40,7 @@ namespace CodeStack.SwEx.PMPage.Constructors
             return base.Create(page, atts);
         }
 
-        protected override PropertyManagerPageOptionBoxEx Create(PropertyManagerPageGroupEx<THandler> group, IAttributeSet atts, ref int idRange)
+        protected override PropertyManagerPageOptionBoxEx Create(PropertyManagerPageGroupBaseEx<THandler> group, IAttributeSet atts, ref int idRange)
         {
             idRange = Helper.GetEnumFields(atts.BoundType).Count;
             return base.Create(group, atts);
@@ -65,22 +67,28 @@ namespace CodeStack.SwEx.PMPage.Constructors
         protected override PropertyManagerPageOptionBox CreateSwControlInPage(IPropertyManagerPage2 page,
             ControlOptionsAttribute opts, IAttributeSet atts)
         {
-            var options = Helper.GetEnumFields(atts.BoundType);
-
-            var ctrls = new IPropertyManagerPageOption[options.Count];
-
-            for (int i = 0; i < options.Count; i++)
-            {
-                var name = options.ElementAt(i).Value;
-                ctrls[i] = page.AddControl2(atts.Id + i, (short)swPropertyManagerPageControlType_e.swControlType_Option, name,
-                    (short)opts.Align, (short)opts.Options, atts.Description) as IPropertyManagerPageOption;
-            }
-
-            return new PropertyManagerPageOptionBox(ctrls);
+            return CreateOptionBoxControl(opts, atts,
+                (int id, short controlType, string caption, short leftAlign, int options, string tip) =>
+                page.AddControl2(id, controlType, caption, leftAlign, options, tip) as IPropertyManagerPageOption);
         }
 
         protected override PropertyManagerPageOptionBox CreateSwControlInGroup(IPropertyManagerPageGroup group,
             ControlOptionsAttribute opts, IAttributeSet atts)
+        {
+            return CreateOptionBoxControl(opts, atts,
+                (int id, short controlType, string caption, short leftAlign, int options, string tip) =>
+                group.AddControl2(id, controlType, caption, leftAlign, options, tip) as IPropertyManagerPageOption);
+        }
+
+        protected override PropertyManagerPageOptionBox CreateSwControlInTab(IPropertyManagerPageTab tab, ControlOptionsAttribute opts, IAttributeSet atts)
+        {
+            return CreateOptionBoxControl(opts, atts,
+                (int id, short controlType, string caption, short leftAlign, int options, string tip) =>
+                tab.AddControl2(id, controlType, caption, leftAlign, options, tip) as IPropertyManagerPageOption);
+        }
+
+        private PropertyManagerPageOptionBox CreateOptionBoxControl(ControlOptionsAttribute opts, IAttributeSet atts,
+            ControlCreatorDelegate creator)
         {
             var options = Helper.GetEnumFields(atts.BoundType);
 
@@ -89,8 +97,8 @@ namespace CodeStack.SwEx.PMPage.Constructors
             for (int i = 0; i < options.Count; i++)
             {
                 var name = options.ElementAt(i).Value;
-                ctrls[i] = group.AddControl2(atts.Id + i, (short)swPropertyManagerPageControlType_e.swControlType_Option, name,
-                    (short)opts.Align, (short)opts.Options, atts.Description) as IPropertyManagerPageOption;
+                ctrls[i] = creator.Invoke(atts.Id + i, (short)swPropertyManagerPageControlType_e.swControlType_Option, name,
+                    (short)opts.Align, (short)opts.Options, atts.Description);
             }
 
             return new PropertyManagerPageOptionBox(ctrls);
