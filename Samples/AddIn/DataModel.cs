@@ -27,8 +27,21 @@ namespace SwVPagesSample
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
+        private string m_Text1;
+
         [ControlOptions(backgroundColor: KnownColor.Green, textColor: KnownColor.Yellow)]
-        public string Text1 { get; set; }
+        public string Text1
+        {
+            get
+            {
+                return m_Text1;
+            }
+            set
+            {
+                m_Text1 = value;
+                this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Text1)));
+            }
+        }
 
         [ControlAttribution(swControlBitmapLabelType_e.swBitmapLabel_Depth)]
         public string Text2 { get; set; }
@@ -66,7 +79,7 @@ namespace SwVPagesSample
 
         public Image Image1 { get; set; } = Resources.shield_icon;
 
-        private Image m_Image2;
+        private Image m_Image2 = Resources.shield_icon;
 
         [BitmapOptions(48, 48)]
         public Image Image2
@@ -84,12 +97,15 @@ namespace SwVPagesSample
         
         private void OnButtonClick()
         {
-            var fileBrowseDlg = new OpenFileDialog();
-            if (fileBrowseDlg.ShowDialog() == DialogResult.OK)
-            {
-                var file = fileBrowseDlg.FileName;
-                Image2 = Image.FromFile(file);
-            }
+            Text1 = Guid.NewGuid().ToString();
+            DepGroup.IsEnabled = !DepGroup.IsEnabled;
+            
+            //var fileBrowseDlg = new OpenFileDialog();
+            //if (fileBrowseDlg.ShowDialog() == DialogResult.OK)
+            //{
+            //    var file = fileBrowseDlg.FileName;
+            //    Image2 = Image.FromFile(file);
+            //}
         }
     }
 
@@ -132,10 +148,25 @@ namespace SwVPagesSample
         public double Double { get; set; }
     }
 
-    public class DependencyGroup
+    public class DependencyGroup : INotifyPropertyChanged
     {
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        private bool m_IsEnabled;
+
         [ControlTag(ControlTags_e.IsEnabled)]
-        public bool IsEnabled { get; set; }
+        public bool IsEnabled
+        {
+            get
+            {
+                return m_IsEnabled;
+            }
+            set
+            {
+                m_IsEnabled = value;
+                this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(IsEnabled)));
+            }
+        }
 
         [ControlTag(ControlTags_e.EnableBox)]
         [DependentOn(typeof(CheckBoxDrivenEnableHandler), ControlTags_e.IsEnabled)]

@@ -14,16 +14,20 @@ using Xarial.VPages.Framework.PageElements;
 
 namespace CodeStack.SwEx.PMPage.Controls
 {
-    internal class PropertyManagerPageGroupEx<THandler> : PropertyManagerPageGroupBaseEx<THandler>
+    internal abstract class PropertyManagerPageGroupBaseEx<THandler> : Group
         where THandler : PropertyManagerPageHandlerEx, new()
     {
-        public IPropertyManagerPageGroup Group { get; private set; }
+        public ISldWorks App { get; private set; }
+        public THandler Handler { get; private set; }
 
-        internal PropertyManagerPageGroupEx(int id, object tag, THandler handler,
-            IPropertyManagerPageGroup group,
-            ISldWorks app, PropertyManagerPagePageEx<THandler> parentPage) : base(id, tag, handler, app, parentPage)
+        internal PropertyManagerPagePageEx<THandler> ParentPage { get; private set; }
+
+        internal PropertyManagerPageGroupBaseEx(int id, object tag, THandler handler,
+            ISldWorks app, PropertyManagerPagePageEx<THandler> parentPage) : base(id, tag)
         {
-            Group = group;
+            Handler = handler;
+            App = app;
+            ParentPage = parentPage;
         }
     }
 }

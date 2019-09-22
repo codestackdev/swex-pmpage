@@ -14,16 +14,16 @@ using Xarial.VPages.Framework.PageElements;
 
 namespace CodeStack.SwEx.PMPage.Controls
 {
-    internal class PropertyManagerPageGroupEx<THandler> : PropertyManagerPageGroupBaseEx<THandler>
+    internal class PropertyManagerPageTabEx<THandler> : PropertyManagerPageGroupBaseEx<THandler>
         where THandler : PropertyManagerPageHandlerEx, new()
     {
-        public IPropertyManagerPageGroup Group { get; private set; }
+        public IPropertyManagerPageTab Tab { get; private set; }
 
-        internal PropertyManagerPageGroupEx(int id, object tag, THandler handler,
-            IPropertyManagerPageGroup group,
+        internal PropertyManagerPageTabEx(int id, object tag, THandler handler,
+            IPropertyManagerPageTab tab,
             ISldWorks app, PropertyManagerPagePageEx<THandler> parentPage) : base(id, tag, handler, app, parentPage)
         {
-            Group = group;
+            Tab = tab;
         }
     }
 }

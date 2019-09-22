@@ -40,7 +40,7 @@ namespace CodeStack.SwEx.PMPage.Constructors
             return base.Create(page, atts);
         }
 
-        protected override PropertyManagerPageOptionBoxEx Create(PropertyManagerPageGroupEx<THandler> group, IAttributeSet atts, ref int idRange)
+        protected override PropertyManagerPageOptionBoxEx Create(PropertyManagerPageGroupBaseEx<THandler> group, IAttributeSet atts, ref int idRange)
         {
             idRange = Helper.GetEnumFields(atts.BoundType).Count;
             return base.Create(group, atts);
@@ -78,6 +78,13 @@ namespace CodeStack.SwEx.PMPage.Constructors
             return CreateOptionBoxControl(opts, atts,
                 (int id, short controlType, string caption, short leftAlign, int options, string tip) =>
                 group.AddControl2(id, controlType, caption, leftAlign, options, tip) as IPropertyManagerPageOption);
+        }
+
+        protected override PropertyManagerPageOptionBox CreateSwControlInTab(IPropertyManagerPageTab tab, ControlOptionsAttribute opts, IAttributeSet atts)
+        {
+            return CreateOptionBoxControl(opts, atts,
+                (int id, short controlType, string caption, short leftAlign, int options, string tip) =>
+                tab.AddControl2(id, controlType, caption, leftAlign, options, tip) as IPropertyManagerPageOption);
         }
 
         private PropertyManagerPageOptionBox CreateOptionBoxControl(ControlOptionsAttribute opts, IAttributeSet atts,

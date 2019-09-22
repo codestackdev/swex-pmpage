@@ -26,7 +26,7 @@ using SolidWorks.Interop.sldworks;
 namespace CodeStack.SwEx.PMPage.Constructors
 {
     internal interface IPropertyManagerPageElementConstructor<THandler> 
-        : IPageElementConstructor<PropertyManagerPageGroupEx<THandler>, PropertyManagerPagePageEx<THandler>>
+        : IPageElementConstructor<PropertyManagerPageGroupBaseEx<THandler>, PropertyManagerPagePageEx<THandler>>
         where THandler : PropertyManagerPageHandlerEx, new()
     {
         Type ControlType { get; }
@@ -34,7 +34,8 @@ namespace CodeStack.SwEx.PMPage.Constructors
     }
 
     internal abstract class PropertyManagerPageControlConstructor<THandler, TControl, TControlSw>
-            : ControlConstructor<TControl, PropertyManagerPageGroupEx<THandler>, PropertyManagerPagePageEx<THandler>>, IPropertyManagerPageElementConstructor<THandler>
+            : ControlConstructor<TControl, PropertyManagerPageGroupBaseEx<THandler>, PropertyManagerPagePageEx<THandler>>, 
+            IPropertyManagerPageElementConstructor<THandler>
             where THandler : PropertyManagerPageHandlerEx, new()
             where TControl : IPropertyManagerPageControlEx
             where TControlSw : class
@@ -56,11 +57,24 @@ namespace CodeStack.SwEx.PMPage.Constructors
             m_Type = type;
         }
 
-        protected override TControl Create(PropertyManagerPageGroupEx<THandler> group, IAttributeSet atts)
+        protected override TControl Create(PropertyManagerPageGroupBaseEx<THandler> group, IAttributeSet atts)
         {
             var opts = GetControlOptions(atts);
 
-            var swCtrl = CreateSwControlInGroup(group.Group, opts, atts) as TControlSw;
+            TControlSw swCtrl = null;
+
+            if (group is PropertyManagerPageGroupEx<THandler>)
+            {
+                swCtrl = CreateSwControlInGroup((group as PropertyManagerPageGroupEx<THandler>).Group, opts, atts) as TControlSw;
+            }
+            else if (group is PropertyManagerPageTabEx<THandler>)
+            {
+                swCtrl = CreateSwControlInTab((group as PropertyManagerPageTabEx<THandler>).Tab, opts, atts) as TControlSw;
+            }
+            else
+            {
+                throw new NotSupportedException("Type of group is not supported");
+            }
 
             AssignControlAttributes(swCtrl, opts, atts);
 
@@ -91,7 +105,14 @@ namespace CodeStack.SwEx.PMPage.Constructors
             return group.AddControl2(atts.Id, (short)m_Type, atts.Name,
                 (short)opts.Align, (short)opts.Options, atts.Description) as TControlSw;
         }
-        
+
+        protected virtual TControlSw CreateSwControlInTab(IPropertyManagerPageTab tab,
+            ControlOptionsAttribute opts, IAttributeSet atts)
+        {
+            return tab.AddControl2(atts.Id, (short)m_Type, atts.Name,
+                (short)opts.Align, (short)opts.Options, atts.Description) as TControlSw;
+        }
+
         protected abstract TControl CreateControl(TControlSw swCtrl, IAttributeSet atts, THandler handler, short height);
 
         private ControlOptionsAttribute GetControlOptions(IAttributeSet atts)

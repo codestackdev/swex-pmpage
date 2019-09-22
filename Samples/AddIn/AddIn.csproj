@@ -148,6 +148,7 @@
     <Compile Include="SwAddin.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="TabDataModel.cs" />
     <EmbeddedResource Include="Icons\IconLarge.bmp" />
     <EmbeddedResource Include="Icons\IconSmall.bmp" />
     <EmbeddedResource Include="Properties\Resources.resx">
