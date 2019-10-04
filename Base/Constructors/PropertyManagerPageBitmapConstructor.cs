@@ -28,8 +28,8 @@ namespace CodeStack.SwEx.PMPage.Constructors
     {
         private readonly IconsConverter m_IconsConv;
 
-        public PropertyManagerPageBitmapConstructor(IconsConverter iconsConv) 
-            : base(swPropertyManagerPageControlType_e.swControlType_Bitmap, iconsConv)
+        public PropertyManagerPageBitmapConstructor(ISldWorks app, IconsConverter iconsConv) 
+            : base(app, swPropertyManagerPageControlType_e.swControlType_Bitmap, iconsConv)
         {
             m_IconsConv = iconsConv;
         }

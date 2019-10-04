@@ -26,8 +26,8 @@ namespace CodeStack.SwEx.PMPage.Constructors
         : PropertyManagerPageControlConstructor<THandler, PropertyManagerPageTextBoxEx, IPropertyManagerPageTextbox>
         where THandler : PropertyManagerPageHandlerEx, new()
     {
-        public PropertyManagerPageTextBoxConstructor(IconsConverter iconsConv)
-            : base(swPropertyManagerPageControlType_e.swControlType_Textbox, iconsConv)
+        public PropertyManagerPageTextBoxConstructor(ISldWorks app, IconsConverter iconsConv)
+            : base(app, swPropertyManagerPageControlType_e.swControlType_Textbox, iconsConv)
         {
         }
 

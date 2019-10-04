@@ -27,8 +27,8 @@ namespace CodeStack.SwEx.PMPage.Constructors
         : PropertyManagerPageControlConstructor<THandler, PropertyManagerPageNumberBoxEx, IPropertyManagerPageNumberbox>
         where THandler : PropertyManagerPageHandlerEx, new()
     {
-        public PropertyManagerPageNumberBoxConstructor(IconsConverter iconsConv) 
-            : base(swPropertyManagerPageControlType_e.swControlType_Numberbox, iconsConv)
+        public PropertyManagerPageNumberBoxConstructor(ISldWorks app, IconsConverter iconsConv) 
+            : base(app, swPropertyManagerPageControlType_e.swControlType_Numberbox, iconsConv)
         {
         }
 

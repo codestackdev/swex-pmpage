@@ -22,6 +22,7 @@ using Xarial.VPages.Framework.Constructors;
 using CodeStack.SwEx.Common.Reflection;
 using CodeStack.SwEx.Common.Attributes;
 using SolidWorks.Interop.sldworks;
+using CodeStack.SwEx.Common.Enums;
 
 namespace CodeStack.SwEx.PMPage.Constructors
 {
@@ -51,8 +52,12 @@ namespace CodeStack.SwEx.PMPage.Constructors
         private swPropertyManagerPageControlType_e m_Type;
         private IconsConverter m_IconConv;
 
-        protected PropertyManagerPageControlConstructor(swPropertyManagerPageControlType_e type, IconsConverter iconsConv)
+        protected readonly ISldWorks m_App;
+
+        protected PropertyManagerPageControlConstructor(ISldWorks app, swPropertyManagerPageControlType_e type,
+            IconsConverter iconsConv)
         {
+            m_App = app;
             m_IconConv = iconsConv;
             m_Type = type;
         }
@@ -95,22 +100,46 @@ namespace CodeStack.SwEx.PMPage.Constructors
         protected virtual TControlSw CreateSwControlInPage(IPropertyManagerPage2 page, 
             ControlOptionsAttribute opts, IAttributeSet atts)
         {
-            return page.AddControl2(atts.Id, (short)m_Type, atts.Name,
-                (short)opts.Align, (short)opts.Options, atts.Description) as TControlSw;
+            if (m_App.IsVersionNewerOrEqual(SwVersion_e.Sw2014, 1))
+            {
+                return page.AddControl2(atts.Id, (short)m_Type, atts.Name,
+                    (short)opts.Align, (short)opts.Options, atts.Description) as TControlSw;
+            }
+            else
+            {
+                return page.AddControl(atts.Id, (short)m_Type, atts.Name,
+                    (short)opts.Align, (short)opts.Options, atts.Description) as TControlSw;
+            }
         }
 
         protected virtual TControlSw CreateSwControlInGroup(IPropertyManagerPageGroup group,
             ControlOptionsAttribute opts, IAttributeSet atts)
         {
-            return group.AddControl2(atts.Id, (short)m_Type, atts.Name,
-                (short)opts.Align, (short)opts.Options, atts.Description) as TControlSw;
+            if (m_App.IsVersionNewerOrEqual(SwVersion_e.Sw2014, 1))
+            {
+                return group.AddControl2(atts.Id, (short)m_Type, atts.Name,
+                    (short)opts.Align, (short)opts.Options, atts.Description) as TControlSw;
+            }
+            else
+            {
+                return group.AddControl(atts.Id, (short)m_Type, atts.Name,
+                    (short)opts.Align, (short)opts.Options, atts.Description) as TControlSw;
+            }
         }
 
         protected virtual TControlSw CreateSwControlInTab(IPropertyManagerPageTab tab,
             ControlOptionsAttribute opts, IAttributeSet atts)
         {
-            return tab.AddControl2(atts.Id, (short)m_Type, atts.Name,
-                (short)opts.Align, (short)opts.Options, atts.Description) as TControlSw;
+            if (m_App.IsVersionNewerOrEqual(SwVersion_e.Sw2014, 1))
+            {
+                return tab.AddControl2(atts.Id, (short)m_Type, atts.Name,
+                    (short)opts.Align, (short)opts.Options, atts.Description) as TControlSw;
+            }
+            else
+            {
+                return tab.AddControl(atts.Id, (short)m_Type, atts.Name,
+                    (short)opts.Align, (short)opts.Options, atts.Description) as TControlSw;
+            }
         }
 
         protected abstract TControl CreateControl(TControlSw swCtrl, IAttributeSet atts, THandler handler, short height);

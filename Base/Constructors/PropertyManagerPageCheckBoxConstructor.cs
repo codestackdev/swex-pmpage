@@ -26,8 +26,8 @@ namespace CodeStack.SwEx.PMPage.Constructors
         : PropertyManagerPageControlConstructor<THandler, PropertyManagerPageCheckBoxEx, IPropertyManagerPageCheckbox>
         where THandler : PropertyManagerPageHandlerEx, new()
     {
-        public PropertyManagerPageCheckBoxConstructor(IconsConverter iconsConv) 
-            : base(swPropertyManagerPageControlType_e.swControlType_Checkbox, iconsConv)
+        public PropertyManagerPageCheckBoxConstructor(ISldWorks app, IconsConverter iconsConv) 
+            : base(app, swPropertyManagerPageControlType_e.swControlType_Checkbox, iconsConv)
         {
         }
 

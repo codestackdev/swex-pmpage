@@ -28,8 +28,8 @@ namespace CodeStack.SwEx.PMPage.Constructors
         : PropertyManagerPageControlConstructor<THandler, PropertyManagerPageComboBoxEx, IPropertyManagerPageCombobox>
         where THandler : PropertyManagerPageHandlerEx, new()
     {
-        public PropertyManagerPageComboBoxConstructor(IconsConverter iconsConv) 
-            : base(swPropertyManagerPageControlType_e.swControlType_Combobox, iconsConv)
+        public PropertyManagerPageComboBoxConstructor(ISldWorks app, IconsConverter iconsConv) 
+            : base(app, swPropertyManagerPageControlType_e.swControlType_Combobox, iconsConv)
         {
         }
 

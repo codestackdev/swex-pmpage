@@ -26,8 +26,8 @@ namespace CodeStack.SwEx.PMPage.Constructors
         : PropertyManagerPageControlConstructor<THandler, PropertyManagerPageButtonEx, IPropertyManagerPageButton>
         where THandler : PropertyManagerPageHandlerEx, new()
     {
-        public PropertyManagerPageButtonConstructor(IconsConverter iconsConv) 
-            : base(swPropertyManagerPageControlType_e.swControlType_Button, iconsConv)
+        public PropertyManagerPageButtonConstructor(ISldWorks app, IconsConverter iconsConv) 
+            : base(app, swPropertyManagerPageControlType_e.swControlType_Button, iconsConv)
         {
         }
 
