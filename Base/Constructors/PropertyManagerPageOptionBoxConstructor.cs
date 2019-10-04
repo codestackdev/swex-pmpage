@@ -15,6 +15,7 @@ using CodeStack.SwEx.Common.Reflection;
 using System.ComponentModel;
 using SolidWorks.Interop.sldworks;
 using CodeStack.SwEx.PMPage.Attributes;
+using CodeStack.SwEx.Common.Enums;
 
 namespace CodeStack.SwEx.PMPage.Constructors
 {
@@ -29,8 +30,8 @@ namespace CodeStack.SwEx.PMPage.Constructors
     {
         private delegate IPropertyManagerPageOption ControlCreatorDelegate(int id, short controlType, string caption, short leftAlign, int options, string tip);
 
-        public PropertyManagerPageOptionBoxConstructor(IconsConverter iconsConv) 
-            : base(swPropertyManagerPageControlType_e.swControlType_Option, iconsConv)
+        public PropertyManagerPageOptionBoxConstructor(ISldWorks app, IconsConverter iconsConv) 
+            : base(app, swPropertyManagerPageControlType_e.swControlType_Option, iconsConv)
         {
         }
         
@@ -68,8 +69,17 @@ namespace CodeStack.SwEx.PMPage.Constructors
             ControlOptionsAttribute opts, IAttributeSet atts)
         {
             return CreateOptionBoxControl(opts, atts,
-                (int id, short controlType, string caption, short leftAlign, int options, string tip) =>
-                page.AddControl2(id, controlType, caption, leftAlign, options, tip) as IPropertyManagerPageOption);
+                (int id, short controlType, string caption, short leftAlign, int options, string tip) => 
+                {
+                    if (m_App.IsVersionNewerOrEqual(SwVersion_e.Sw2014, 1))
+                    {
+                        return page.AddControl2(id, controlType, caption, leftAlign, options, tip) as IPropertyManagerPageOption;
+                    }
+                    else
+                    {
+                        return page.AddControl(id, controlType, caption, leftAlign, options, tip) as IPropertyManagerPageOption;
+                    }
+                });
         }
 
         protected override PropertyManagerPageOptionBox CreateSwControlInGroup(IPropertyManagerPageGroup group,
@@ -77,14 +87,32 @@ namespace CodeStack.SwEx.PMPage.Constructors
         {
             return CreateOptionBoxControl(opts, atts,
                 (int id, short controlType, string caption, short leftAlign, int options, string tip) =>
-                group.AddControl2(id, controlType, caption, leftAlign, options, tip) as IPropertyManagerPageOption);
+                {
+                    if (m_App.IsVersionNewerOrEqual(SwVersion_e.Sw2014, 1))
+                    {
+                        return group.AddControl2(id, controlType, caption, leftAlign, options, tip) as IPropertyManagerPageOption;
+                    }
+                    else
+                    {
+                        return group.AddControl(id, controlType, caption, leftAlign, options, tip) as IPropertyManagerPageOption;
+                    }
+                });
         }
 
         protected override PropertyManagerPageOptionBox CreateSwControlInTab(IPropertyManagerPageTab tab, ControlOptionsAttribute opts, IAttributeSet atts)
         {
             return CreateOptionBoxControl(opts, atts,
-                (int id, short controlType, string caption, short leftAlign, int options, string tip) =>
-                tab.AddControl2(id, controlType, caption, leftAlign, options, tip) as IPropertyManagerPageOption);
+                (int id, short controlType, string caption, short leftAlign, int options, string tip) => 
+                {
+                    if (m_App.IsVersionNewerOrEqual(SwVersion_e.Sw2014, 1))
+                    {
+                        return tab.AddControl2(id, controlType, caption, leftAlign, options, tip) as IPropertyManagerPageOption;
+                    }
+                    else
+                    {
+                        return tab.AddControl(id, controlType, caption, leftAlign, options, tip) as IPropertyManagerPageOption;
+                    }
+                });
         }
 
         private PropertyManagerPageOptionBox CreateOptionBoxControl(ControlOptionsAttribute opts, IAttributeSet atts,

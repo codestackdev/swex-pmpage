@@ -33,13 +33,11 @@ namespace CodeStack.SwEx.PMPage.Constructors
         IPropertyManagerPageSelectionBoxConstructor
         where THandler : PropertyManagerPageHandlerEx, new()
     {
-        private readonly ISldWorks m_App;
         private readonly ILogger m_Logger;
 
         public PropertyManagerPageSelectionBoxConstructor(ISldWorks app, IconsConverter iconsConv, ILogger logger) 
-            : base(swPropertyManagerPageControlType_e.swControlType_Selectionbox, iconsConv)
+            : base(app, swPropertyManagerPageControlType_e.swControlType_Selectionbox, iconsConv)
         {
-            m_App = app;
             m_Logger = logger;
         }
 

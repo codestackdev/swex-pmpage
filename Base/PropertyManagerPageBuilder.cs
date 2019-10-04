@@ -106,14 +106,14 @@ namespace CodeStack.SwEx.PMPage
             : this(new PmpTypeDataBinder(), 
                   new PropertyManagerPageConstructor<THandler>(app, iconsConv, handler),
                   new PropertyManagerPageGroupConstructor<THandler>(),
-                  new PropertyManagerPageTextBoxConstructor<THandler>(iconsConv),
-                  new PropertyManagerPageNumberBoxConstructor<THandler>(iconsConv),
-                  new PropertyManagerPageCheckBoxConstructor<THandler>(iconsConv),
-                  new PropertyManagerPageComboBoxConstructor<THandler>(iconsConv),
+                  new PropertyManagerPageTextBoxConstructor<THandler>(app, iconsConv),
+                  new PropertyManagerPageNumberBoxConstructor<THandler>(app, iconsConv),
+                  new PropertyManagerPageCheckBoxConstructor<THandler>(app, iconsConv),
+                  new PropertyManagerPageComboBoxConstructor<THandler>(app, iconsConv),
                   new PropertyManagerPageSelectionBoxConstructor<THandler>(app, iconsConv, logger),
-                  new PropertyManagerPageOptionBoxConstructor<THandler>(iconsConv),
-                  new PropertyManagerPageButtonConstructor<THandler>(iconsConv),
-                  new PropertyManagerPageBitmapConstructor<THandler>(iconsConv),
+                  new PropertyManagerPageOptionBoxConstructor<THandler>(app, iconsConv),
+                  new PropertyManagerPageButtonConstructor<THandler>(app, iconsConv),
+                  new PropertyManagerPageBitmapConstructor<THandler>(app, iconsConv),
                   new PropertyManagerPageTabConstructor<THandler>(iconsConv))
         {
             m_PageSpec = pageSpec;
