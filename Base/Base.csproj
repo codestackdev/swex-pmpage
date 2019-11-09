@@ -106,6 +106,7 @@
     <Compile Include="Constructors\PropertyManagerPageCheckBoxConstructor.cs" />
     <Compile Include="Constructors\PropertyManagerPageTextBoxConstructor.cs" />
     <Compile Include="Controls\PropertyManagerPageBitmapEx.cs" />
+    <Compile Include="Controls\PropertyManagerPageElementEx.cs" />
     <Compile Include="Controls\PropertyManagerPageGroupBaseEx.cs" />
     <Compile Include="Controls\PropertyManagerPageTabEx.cs" />
     <Compile Include="Controls\PropertyManagerPageOptionBoxEx.cs" />

@@ -28,15 +28,15 @@ namespace CodeStack.SwEx.PMPage.Base
         [EditorBrowsable(EditorBrowsableState.Never)]
         public void UpdateState(IBinding binding, IBinding[] dependencies)
         {
-            if (binding.Control is IPropertyManagerPageControlEx)
+            if (binding.Control is IPropertyManagerPageElementEx)
             {
-                var ctrl = binding.Control as IPropertyManagerPageControlEx;
+                var ctrl = binding.Control as IPropertyManagerPageElementEx;
 
                 var deps = dependencies.Select(d => 
                 {
-                    if (d.Control is IPropertyManagerPageControlEx)
+                    if (d.Control is IPropertyManagerPageElementEx)
                     {
-                        return d.Control as IPropertyManagerPageControlEx;
+                        return d.Control as IPropertyManagerPageElementEx;
                     }
                     else
                     {
@@ -54,18 +54,31 @@ namespace CodeStack.SwEx.PMPage.Base
             }
         }
 
+        [Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
+        [Obsolete("This method has been deprecated and replaced with UpdateControlState(IPropertyManagerPageElementEx, IPropertyManagerPageElementEx[])")]
+        protected virtual void UpdateControlState(IPropertyManagerPageControlEx control,
+            IPropertyManagerPageControlEx[] parents)
+        {
+        }
+
         /// <summary>
         /// Called when the control state needs to be updated (i.e. one of the parent dependency controls has changed its value)
         /// </summary>
         /// <param name="control">This is a source control decorated with <see cref="DependentOnAttribute"/></param>
         /// <param name="parents">Dependency controls. These are the controls passed as the parameter to <see cref="DependentOnAttribute"/></param>
-        protected abstract void UpdateControlState(IPropertyManagerPageControlEx control,
-            IPropertyManagerPageControlEx[] parents);
+        protected virtual void UpdateControlState(IPropertyManagerPageElementEx control,
+            IPropertyManagerPageElementEx[] parents)
+        {
+            //TODO: remove the obsolete method
+#pragma warning disable CS0618
+            UpdateControlState((IPropertyManagerPageControlEx)control, parents.Cast<IPropertyManagerPageControlEx>().ToArray());
+#pragma warning restore
+        }
 
         private void ThrowInvalidControlException()
         {
             throw new InvalidCastException(
-                $"Bound control is not of type {typeof(IPropertyManagerPageControlEx)}");
+                $"Bound control is not of type {typeof(IPropertyManagerPageElementEx)}");
         }
     }
 }
