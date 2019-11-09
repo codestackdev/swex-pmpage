@@ -6,18 +6,55 @@
 //**********************
 
 using SolidWorks.Interop.sldworks;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Xarial.VPages.Framework.PageElements;
+using System.ComponentModel;
 
 namespace CodeStack.SwEx.PMPage.Controls
 {
-    internal class PropertyManagerPageTabEx<THandler> : PropertyManagerPageGroupBaseEx<THandler>
+    /// <summary>
+    /// Represents the tab control in property manager page
+    /// </summary>
+    public interface IPropertyManagerPageTabEx
+    {
+        /// <summary>
+        /// Pointer to the underlying tab control
+        /// </summary>
+        IPropertyManagerPageTab Tab { get; }
+    }
+
+    internal class PropertyManagerPageTabEx<THandler> : PropertyManagerPageGroupBaseEx<THandler>, IPropertyManagerPageTabEx
         where THandler : PropertyManagerPageHandlerEx, new()
     {
         public IPropertyManagerPageTab Tab { get; private set; }
+
+        /// <summary>
+        /// Not supported
+        /// </summary>
+        [Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Enabled
+        {
+            get
+            {
+                return true;
+            }
+            set
+            {
+            }
+        }
+
+        /// <summary>
+        /// Not supported
+        /// </summary>
+        [Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Visible
+        {
+            get
+            {
+                return true;
+            }
+            set
+            {
+            }
+        }
 
         internal PropertyManagerPageTabEx(int id, object tag, THandler handler,
             IPropertyManagerPageTab tab,

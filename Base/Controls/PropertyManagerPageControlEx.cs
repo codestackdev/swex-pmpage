@@ -18,22 +18,12 @@ namespace CodeStack.SwEx.PMPage.Controls
     /// <summary>
     /// Base wrapper around native SOLIDWORKS Property Manager Page controls (i.e. TextBox, SelectionBox, NumberBox etc.)
     /// </summary>
-    public interface IPropertyManagerPageControlEx : IControl
+    public interface IPropertyManagerPageControlEx : IControl, IPropertyManagerPageElementEx
     {
         /// <summary>
         /// Pointer to the native SOLIDWORKS control of type <see href="http://help.solidworks.com/2012/english/api/sldworksapi/solidworks.interop.sldworks~solidworks.interop.sldworks.ipropertymanagerpagecontrol.html"/>
         /// </summary>
         IPropertyManagerPageControl SwControl { get; }
-
-        /// <summary>
-        /// Enable state of this control
-        /// </summary>
-        bool Enabled { get; set; }
-
-        /// <summary>
-        /// Visibility state of the control
-        /// </summary>
-        bool Visible { get; set; }
     }
 
     internal abstract class PropertyManagerPageControlEx<TVal, TSwControl>
